@@ -22,7 +22,7 @@
 import javax.swing.*;
 
 
-class hauptMenuUI {
+public class hauptMenuUI {
 	// alle Bestandteile des Menüs als Klassenatrribute deklarieren
 	private JMenuBar mainMenuBar = new JMenuBar();
 		private JMenu dateiMenu = new JMenu("Datei");

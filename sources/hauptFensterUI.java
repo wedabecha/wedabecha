@@ -23,7 +23,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class hauptFensterUI extends JFrame {
+public class hauptFensterUI extends JFrame {
 	private JFrame hauptFenster = new JFrame("wedabecha");
 
 	// konstruktor

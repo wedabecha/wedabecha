@@ -75,4 +75,4 @@ class endProgram {
 		// macht sich ganz gut, weil der punkt ja von mehreren stellen aufgerufen werden kann
 		System.exit(0);
 	}
-}
+} // endProgram
