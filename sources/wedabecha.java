@@ -25,6 +25,7 @@ class wedabecha {
 	} //wedabecha()
 
 	public static void main(String args[]){
-	//einstiegspunkt für das programm
+		//einstiegspunkt für das programm
+		new hauptfensterUI();
 	} // main(String args[])
  }
