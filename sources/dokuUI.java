@@ -29,43 +29,45 @@ class dokuUI extends JFrame {
     private JTextArea textArea;
     private JButton schliessenButton;
     private String title;
-	private String areaInhalt = "";
+    private String areaInhalt = "";
 
     public dokuUI(String title) {
 		// der konstruktor soll noch zwei parameter erhalten (siehe hauptMenuListener) :
-		// die parameter sind vom Typ String und kÃ¶nnen folgende Werte enthalten:
+		// die parameter sind vom Typ String und können folgende Werte enthalten:
 		// "Kurzanleitung" und "Doku"
-		setTitle(title);
+	setTitle(title);
 
         if(title.equals("Kurzanleitung")){
             try {
-				FileReader textKurzAnleitung = new FileReader("kurzAnleitung.txt");
+                FileReader textKurzAnleitung = new FileReader("kurzAnleitung.txt");
             	BufferedReader bufferKurzAnleitung = new BufferedReader(textKurzAnleitung);
-				while (bufferKurzAnleitung.readLine() != null) {
-					this.areaInhalt += bufferKurzAnleitung.readLine() +"\n";
-				} // while()
-			} catch (IOException except){
-				// fehlermeldung falls datei nicht gelesen werden kann
-				JOptionPane.showMessageDialog(null,
+                String buffer;
+		while ((buffer=bufferKurzAnleitung.readLine()) != null) {
+                    this.areaInhalt = buffer +"\n";
+                } // while()
+            } catch (IOException except){
+                // fehlermeldung falls datei nicht gelesen werden kann
+		JOptionPane.showMessageDialog(null,
             	"Die Datei, welche die Kurzanleitung enthaelt, konnte nicht gelesen werden.","Dateifehler",
             	JOptionPane.ERROR_MESSAGE );
-			} // try-catch
+            } // try-catch
         }else if(title.equals("Doku")){
             try {
-				FileReader textDoku = new FileReader("doku.txt");
+		FileReader textDoku = new FileReader("doku.txt");
             	BufferedReader bufferDoku = new BufferedReader(textDoku);
-            	areaInhalt = bufferDoku.readLine();
-			} catch (IOException except){
-				// fehlermeldung, falls datei nicht gelesen werden kann
-				JOptionPane.showMessageDialog(null,
+                String buffer;
+                while ((buffer = bufferDoku.readLine()) != null){
+                    this.areaInhalt = buffer +"/n";
+                }//while
+            } catch (IOException except){
+                // fehlermeldung, falls datei nicht gelesen werden kann
+		JOptionPane.showMessageDialog(null,
             	"Die Datei welche die Dokumentation enthaelt, konnte nicht gelesen werden.","Dateifehler",
             	JOptionPane.ERROR_MESSAGE );
-			} // try-catch
-        }else {
-            areaInhalt = "Fehler! Es wurde ein falscher Dateiname angegeben.";
+            } // try-catch
         }
 
-		this.pack();
+	this.pack();
         setSize(400, 400);
         setLocation((getToolkit().getScreenSize().width-400) / 2,
                     (getToolkit().getScreenSize().height-400) / 2);
@@ -73,10 +75,7 @@ class dokuUI extends JFrame {
         setVisible(true);
     }//dokuUI();
 
-    public void pack() { //setzt das Fenster zusammen
-        /*der bergebene String title wird als titel des Fensters eingesetzz und
-         *bestimmt den Inhalt der JTextArea. Der String kann die Werte "Kurzanleitung"
-         *und "Doku" haben */
+    public void pack() {
         getContentPane().setLayout(new BorderLayout());
 
         JPanel gridLayoutPanel = new JPanel();
@@ -99,12 +98,12 @@ class dokuUI extends JFrame {
 	}//pack()
 
 	class schliessenListener implements ActionListener {
-		public void actionPerformed(ActionEvent event){
-			setVisible(false);
-		} // actionPerformed(ActionEvent event)
+            public void actionPerformed(ActionEvent event){
+                setVisible(false);
+            } // actionPerformed(ActionEvent event)
 
-		public void windowClosing(WindowEvent event) {
+            public void windowClosing(WindowEvent event) {
         	setVisible(false);
-		} // windowClosing(WindowEvent event)
+            } // windowClosing(WindowEvent event)
 	} // schliessenListener
 }//dokuUI
