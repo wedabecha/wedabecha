@@ -26,6 +26,7 @@ class HauptfensterUI extends JDialog {
 	private JPanel menuPanel = new JPanel();
 	private JMenuBar menuLeiste = new JMenuBar();
 		private JMenuItem dateiMenu = new JMenuItem("Datei");
+		private JMenuItem bearbeitenMenu = new JMenuItem("Bearbeiten");
 		private JMenuItem tabelleMenu = new JMenuItem("Tabelle");
 		private JMenuItem ansichtMenu = new JMenuItem("Ansicht");
 		private JMenuItem infoMenu = new JMenuItem("Info");
@@ -41,6 +42,7 @@ class HauptfensterUI extends JDialog {
 		this.fenster.add(this.menuPanel);
 		this.menuPanel.add(menuLeiste);
 			this.menuLeiste.add(dateiMenu);
+			this.menuLeiste.add(bearbeitenMenu);
 			this.menuLeiste.add(tabelleMenu);
 			this.menuLeiste.add(ansichtMenu);
 			this.menuLeiste.add(infoMenu);
@@ -49,7 +51,7 @@ class HauptfensterUI extends JDialog {
 		addWindowListener(
 		new WindowAdapter() {
 			public void windowClosing(WindowEvent event) {
-				setVisible(false);
+				System.exit(0);
 			}
 		}
 		); // addWindowListener
