@@ -22,49 +22,68 @@
 
 import javax.swing.*; //brauche ich um die Swing Objekte darzustellen
 import java.awt.*; //wird fuer das Layout benoeigt
-import java.io.*; //wird benötigt um die textdateien einzulesen
+import java.awt.event.*;
+import java.io.*; //wird benï¿½igt um die textdateien einzulesen
 
-public class dokuUI extends JFrame {
+class dokuUI extends JFrame {
     private JTextArea textArea;
     private JButton schliessenButton;
-        
-    public dokuUI(){
-		
-        this.pack();
-        
+    private String title;
+	private String areaInhalt = "";
+
+    public dokuUI(String title) {
+		// der konstruktor soll noch zwei parameter erhalten (siehe hauptMenuListener) :
+		// die parameter sind vom Typ String und kÃ¶nnen folgende Werte enthalten:
+		// "Kurzanleitung" und "Doku"
+		setTitle(title);
+
+        if(title.equals("Kurzanleitung")){
+            try {
+				FileReader textKurzAnleitung = new FileReader("kurzAnleitung.txt");
+            	BufferedReader bufferKurzAnleitung = new BufferedReader(textKurzAnleitung);
+				while (bufferKurzAnleitung.readLine() != null) {
+					this.areaInhalt += bufferKurzAnleitung.readLine() +"\n";
+				} // while()
+			} catch (IOException except){
+				// fehlermeldung falls datei nicht gelesen werden kann
+				JOptionPane.showMessageDialog(null,
+            	"Die Datei, welche die Kurzanleitung enthaelt, konnte nicht gelesen werden.","Dateifehler",
+            	JOptionPane.ERROR_MESSAGE );
+			} // try-catch
+        }else if(title.equals("Doku")){
+            try {
+				FileReader textDoku = new FileReader("doku.txt");
+            	BufferedReader bufferDoku = new BufferedReader(textDoku);
+            	areaInhalt = bufferDoku.readLine();
+			} catch (IOException except){
+				// fehlermeldung, falls datei nicht gelesen werden kann
+				JOptionPane.showMessageDialog(null,
+            	"Die Datei welche die Dokumentation enthaelt, konnte nicht gelesen werden.","Dateifehler",
+            	JOptionPane.ERROR_MESSAGE );
+			} // try-catch
+        }else {
+            areaInhalt = "Fehler! Es wurde ein falscher Dateiname angegeben.";
+        }
+
+		this.pack();
         setSize(400, 400);
         setLocation((getToolkit().getScreenSize().width-400) / 2,
                     (getToolkit().getScreenSize().height-400) / 2);
         setResizable(true);
-        setVisible(true);        
+        setVisible(true);
     }//dokuUI();
 
-    public void pack(String title) throws Exception{ //setzt das Fenster zusammen
-        /*der übergebene String title wird als titel des Fensters eingesetzz und 
+    public void pack() { //setzt das Fenster zusammen
+        /*der bergebene String title wird als titel des Fensters eingesetzz und
          *bestimmt den Inhalt der JTextArea. Der String kann die Werte "Kurzanleitung"
          *und "Doku" haben */
-        
-        setTitle(title);
-        String areaInhalt = "";
-        if(title.equals("Kurzanleitung")){
-            FileReader textKurzAnleitung = new FileReader("kurzAnleitung.txt");
-            BufferedReader bufferKurzAnleitung = new BufferedReader(textKurzAnleitung);
-            areaInhalt = bufferKurzAnleitung.readLine();
-        }else if(title.equals("Doku")){
-            FileReader textDoku = new FileReader("doku.txt");
-            BufferedReader bufferDoku = new BufferedReader(textDoku);
-            areaInhalt = bufferDoku.readLine();
-        }else {
-            areaInhalt = "Fehler! Es wurde ein falscher Dateiname angegeben.";
-        };
-
         getContentPane().setLayout(new BorderLayout());
 
         JPanel gridLayoutPanel = new JPanel();
         getContentPane().add((gridLayoutPanel),BorderLayout.CENTER);
         gridLayoutPanel.setLayout(new GridLayout(1,1));
 
-        textArea = new JTextArea(areaInhalt);
+        textArea = new JTextArea(this.areaInhalt);
         textArea.setEditable(true); //nur zu Testzwecken benï¿½igt
         gridLayoutPanel.add(textArea);
         gridLayoutPanel.add(new JScrollPane(textArea));
@@ -75,9 +94,17 @@ public class dokuUI extends JFrame {
 
         schliessenButton = new JButton("Schliessen");
         flowLayoutPanel.add(schliessenButton);
-        
+
         this.schliessenButton.addActionListener(new schliessenListener());
+	}//pack()
 
-    }//pack()
+	class schliessenListener implements ActionListener {
+		public void actionPerformed(ActionEvent event){
+			setVisible(false);
+		} // actionPerformed(ActionEvent event)
 
+		public void windowClosing(WindowEvent event) {
+        	setVisible(false);
+		} // windowClosing(WindowEvent event)
+	} // schliessenListener
 }//dokuUI

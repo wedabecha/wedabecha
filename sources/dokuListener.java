@@ -18,14 +18,4 @@
  ***************************************************************************/
 import java.awt.event.*;
 
-class schliessenListener implements ActionListener{
-    public void actionPerformed(ActionEvent event){
-        dokuUI.;
-	} // actionPerformed(ActionEvent event)
-    
-    public void windowClosing(WindowEvent event) {
-        dokuUI.setVisible(false);
-	} // windowClosing(WindowEvent event)
-}
 
-   
