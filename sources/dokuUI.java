@@ -25,8 +25,8 @@ import java.awt.*; //wird fuer das Layout benoeigt
 import java.awt.event.*;
 import java.io.*; //wird benï¿½igt um die textdateien einzulesen
 
-class dokuUI extends JFrame {
-    private JTextArea textArea;
+public class dokuUI extends JFrame {
+    private JTextArea textArea = new JTextArea();
     private JButton schliessenButton;
     private String title;
     private String areaInhalt = "";
@@ -42,8 +42,8 @@ class dokuUI extends JFrame {
                 FileReader textKurzAnleitung = new FileReader("kurzAnleitung.txt");
             	BufferedReader bufferKurzAnleitung = new BufferedReader(textKurzAnleitung);
                 String buffer;
-		while ((buffer=bufferKurzAnleitung.readLine()) != null) {
-                    this.areaInhalt = buffer +"\n";
+		while ((buffer = bufferKurzAnleitung.readLine()) != null) {
+                    this.textArea.append(buffer+"\n");
                 } // while()
             } catch (IOException except){
                 // fehlermeldung falls datei nicht gelesen werden kann
@@ -51,13 +51,13 @@ class dokuUI extends JFrame {
             	"Die Datei, welche die Kurzanleitung enthaelt, konnte nicht gelesen werden.","Dateifehler",
             	JOptionPane.ERROR_MESSAGE );
             } // try-catch
-        }else if(title.equals("Doku")){
+        }else if(title.equals("Dokumentation")){
             try {
 		FileReader textDoku = new FileReader("doku.txt");
             	BufferedReader bufferDoku = new BufferedReader(textDoku);
                 String buffer;
                 while ((buffer = bufferDoku.readLine()) != null){
-                    this.areaInhalt = buffer +"/n";
+                    this.textArea.append(buffer +"\n");
                 }//while
             } catch (IOException except){
                 // fehlermeldung, falls datei nicht gelesen werden kann
@@ -82,8 +82,10 @@ class dokuUI extends JFrame {
         getContentPane().add((gridLayoutPanel),BorderLayout.CENTER);
         gridLayoutPanel.setLayout(new GridLayout(1,1));
 
-        textArea = new JTextArea(this.areaInhalt);
-        textArea.setEditable(true); //nur zu Testzwecken benï¿½igt
+        //textArea = new JTextArea();
+        textArea.setLineWrap(true); //Zeilenumbruch generell
+        textArea.setWrapStyleWord(true);//keine Wörter unterbrechen bei Zeilenumbruch
+        textArea.setEditable(false);
         gridLayoutPanel.add(textArea);
         gridLayoutPanel.add(new JScrollPane(textArea));
 
