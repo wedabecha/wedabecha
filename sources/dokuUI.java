@@ -17,18 +17,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.				*
  ***************************************************************************/
 /* Diese Klasse dient zur Darstellung der Dokumentation, Kurzanleitung und der Hilfe.
- *je nach übergebenen Werten wird der gewünschte Text in der TexrArea dargestellt*/
+ *je nach bergebenen Werten wird der gewnschte Text in der TexrArea dargestellt*/
 
 
 import javax.swing.*; //brauche ich um die Swing Objekte darzustellen
-import java.awt.*; //wird für das Layout benötigt
+import java.awt.*; //wird fuer das Layout benoeigt
 
-public class dokuUI extends JFrame{
+public class dokuUI extends JFrame {
     private JTextArea textArea;
     private JButton schliessenButton;
     private String title;
-    
+
     public dokuUI() {
+		// der konstruktor soll noch zwei parameter erhalten (siehe hauptMenuListener) :
+		// die parameter sind vom Typ String und kÃ¶nnen folgende Werte enthalten:
+		// "Kurzanleitung" und "Doku"
         this.pack();
         setTitle(title);
         setSize(400, 400);
@@ -37,33 +40,33 @@ public class dokuUI extends JFrame{
         setResizable(true);
         setVisible(true);
     }//dokuUI();
-    
+
     public void pack(){ //setzt das Fenster zusammen
-                
+
         getContentPane().setLayout(new BorderLayout());
-        
+
         JPanel gridLayoutPanel = new JPanel();
         getContentPane().add((gridLayoutPanel),BorderLayout.CENTER);
         gridLayoutPanel.setLayout(new GridLayout(1,1));
-        
+
         textArea = new JTextArea("lala");
-        textArea.setEditable(true); //nur zu Testzwecken benötigt
+        textArea.setEditable(true); //nur zu Testzwecken benï¿½igt
         gridLayoutPanel.add(textArea);
         gridLayoutPanel.add(new JScrollPane(textArea));
-        
+
         JPanel flowLayoutPanel = new JPanel();
         getContentPane().add((flowLayoutPanel),BorderLayout.SOUTH);
         flowLayoutPanel.setLayout(new FlowLayout());
-        
+
         schliessenButton = new JButton("Schliessen");
         flowLayoutPanel.add(schliessenButton);
-        
+
        // this.schliessenButton.addActionListener(new schliessenListener());
-        
+
     }//pack()
-    
-    
-    
+
+
+
     public static void main(String[] args) {
         new dokuUI();
     }//main()

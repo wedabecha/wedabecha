@@ -78,7 +78,9 @@ class hauptMenuUI {
 
 		// beginn hilfeMenu
 			this.hilfeMenu.add(kurzAnleitungMenuItem);
+				this.kurzAnleitungMenuItem.addActionListener(new hauptMenuKurzAnleitungListener());
 			this.hilfeMenu.add(dokuMenuItem);
+				this.dokuMenuItem.addActionListener(new hauptMenuDokumentationListener());
 			this.hilfeMenu.add(aboutMenuItem);
 		this.mainMenuBar.add(hilfeMenu);
 		// ende hilfeMenu

@@ -24,6 +24,21 @@ und ActionListener-Klassen für die hauptMenuUI
 
 import java.awt.event.*;
 
+class hauptMenuKurzAnleitungListener implements ActionListener {
+	// für den MenuPunkt [Hilfe]->[KurzAnleitung]
+	public void actionPerformed(ActionEvent event){
+		new dokuUI("Kurzanleitung");
+	} // actionPerformed(ActionEvent event)
+} // hauptMenuKurzAnleitungListener
+
+
+class hauptMenuDokumentationListener implements ActionListener {
+	// für den MenuPunkt [Hilfe]->Dokumentation
+	public void actionPerformed(ActionEvent event){
+		new dokuUI("Doku");
+	} // actionPerformed(ActionEvent event)
+} // hauptMenuDokumentationListener
+
 class beendenListener extends WindowAdapter implements ActionListener {
 	// Die Klasse ist der Listener für den Menüpunkt [Datei]->[Programm beenden]
 	// kann ggf. noch für andere Einsatzmöglichkeiten verwendet werden.
