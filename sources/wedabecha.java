@@ -21,11 +21,11 @@
 class wedabecha {
 	//konstruktor
 	public wedabecha(){
-
+		new hauptFensterUI();
 	} //wedabecha()
 
 	public static void main(String args[]){
 		//einstiegspunkt für das programm
-		new hauptfensterUI();
+		new wedabecha();
 	} // main(String args[])
  }

@@ -21,12 +21,12 @@ import java.awt.event.*;
 
 class beendenListener implements ActionListener {
 	public void actionPerformed(ActionEvent event){
-		new end_program();
+		endProgram.endProgram();
 	} // actionPerformed
 } // beendenListener
 
-class end_program {
-	public static void end_program(){
+class endProgram {
+	public static void endProgram(){
 		// end_program() enthält code, der zum beenden des programms erforderlich ist
 		// macht sich ganz gut, weil der punkt ja von mehreren stellen aufgerufen werden kann
 		System.exit(0);

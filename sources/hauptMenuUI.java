@@ -16,27 +16,27 @@
  *   Free Software Foundation, Inc.,										*
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.				*
  ***************************************************************************/
-import java.awt.*;
+import javax.swing.*;
 
-class hauptMenuUI extends MenuBar {
-	private MenuBar mainMenuBar = new MenuBar();
-		private Menu dateiMenu = new Menu("Datei");
-			private MenuItem importiereTabelleMenuItem = new MenuItem("Tabelle importieren");
-			private MenuItem exportiereTabelleMenuItem = new MenuItem("Tabelle exportieren");
-			private MenuItem exportiereGrafikMenuItem = new MenuItem("Grafik exportieren");
-			private MenuItem druckenMenuItem = new MenuItem("Drucken");
-			private MenuItem beendenMenuItem = new MenuItem("Programm beenden");
-		private Menu bearbeitenMenu = new Menu("Bearbeiten");
-		private Menu tabelleMenu = new Menu("Tabelle");
-		private Menu ansichtMenu = new Menu("Ansicht");
-			private MenuItem zeigeGitterMenuItem = new MenuItem("Gitter anzeigen");
-		private Menu hilfeMenu = new Menu("Hilfe");
-			private MenuItem kurzAnleitungMenuItem = new MenuItem("Kurzanleitung");
-			private MenuItem dokuMenuItem = new MenuItem("Dokumentation");
-			private MenuItem aboutMenuItem = new MenuItem("Über");
+class hauptMenuUI extends JMenuBar {
+	private JMenuBar mainMenuBar = new JMenuBar();
+		private JMenu dateiMenu = new JMenu("Datei");
+			private JMenuItem importiereTabelleMenuItem = new JMenuItem("Tabelle importieren");
+			private JMenuItem exportiereTabelleMenuItem = new JMenuItem("Tabelle exportieren");
+			private JMenuItem exportiereGrafikMenuItem = new JMenuItem("Grafik exportieren");
+			private JMenuItem druckenMenuItem = new JMenuItem("Drucken");
+			private JMenuItem beendenMenuItem = new JMenuItem("Programm beenden");
+		private JMenu bearbeitenMenu = new JMenu("Bearbeiten");
+		private JMenu tabelleMenu = new JMenu("Tabelle");
+		private JMenu ansichtMenu = new JMenu("Ansicht");
+			private JMenuItem zeigeGitterMenuItem = new JMenuItem("Gitter anzeigen");
+		private JMenu hilfeMenu = new JMenu("Hilfe");
+			private JMenuItem kurzAnleitungMenuItem = new JMenuItem("Kurzanleitung");
+			private JMenuItem dokuMenuItem = new JMenuItem("Dokumentation");
+			private JMenuItem aboutMenuItem = new JMenuItem("Über");
 
 	// konstruktor
-	public MenuBar hauptMenuUI(){
+	public JMenuBar hauptMenuUI(){
 		this.init();
 		return this.mainMenuBar;
 	} // hauptMenuUI
@@ -62,6 +62,4 @@ class hauptMenuUI extends MenuBar {
 		this.mainMenuBar.add(hilfeMenu);
 
 	} // init()
-
-
 } // hauptMenuUI
