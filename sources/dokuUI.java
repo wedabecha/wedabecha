@@ -22,26 +22,41 @@
 
 import javax.swing.*; //brauche ich um die Swing Objekte darzustellen
 import java.awt.*; //wird fuer das Layout benoeigt
+import java.io.*; //wird benötigt um die textdateien einzulesen
 
 public class dokuUI extends JFrame {
     private JTextArea textArea;
     private JButton schliessenButton;
-    private String title;
-
-    public dokuUI() {
-		// der konstruktor soll noch zwei parameter erhalten (siehe hauptMenuListener) :
-		// die parameter sind vom Typ String und kÃ¶nnen folgende Werte enthalten:
-		// "Kurzanleitung" und "Doku"
+        
+    public dokuUI(){
+		
         this.pack();
-        setTitle(title);
+        
         setSize(400, 400);
         setLocation((getToolkit().getScreenSize().width-400) / 2,
                     (getToolkit().getScreenSize().height-400) / 2);
         setResizable(true);
-        setVisible(true);
+        setVisible(true);        
     }//dokuUI();
 
-    public void pack(){ //setzt das Fenster zusammen
+    public void pack(String title) throws Exception{ //setzt das Fenster zusammen
+        /*der übergebene String title wird als titel des Fensters eingesetzz und 
+         *bestimmt den Inhalt der JTextArea. Der String kann die Werte "Kurzanleitung"
+         *und "Doku" haben */
+        
+        setTitle(title);
+        String areaInhalt = "";
+        if(title.equals("Kurzanleitung")){
+            FileReader textKurzAnleitung = new FileReader("kurzAnleitung.txt");
+            BufferedReader bufferKurzAnleitung = new BufferedReader(textKurzAnleitung);
+            areaInhalt = bufferKurzAnleitung.readLine();
+        }else if(title.equals("Doku")){
+            FileReader textDoku = new FileReader("doku.txt");
+            BufferedReader bufferDoku = new BufferedReader(textDoku);
+            areaInhalt = bufferDoku.readLine();
+        }else {
+            areaInhalt = "Fehler! Es wurde ein falscher Dateiname angegeben.";
+        };
 
         getContentPane().setLayout(new BorderLayout());
 
@@ -49,7 +64,7 @@ public class dokuUI extends JFrame {
         getContentPane().add((gridLayoutPanel),BorderLayout.CENTER);
         gridLayoutPanel.setLayout(new GridLayout(1,1));
 
-        textArea = new JTextArea("lala");
+        textArea = new JTextArea(areaInhalt);
         textArea.setEditable(true); //nur zu Testzwecken benï¿½igt
         gridLayoutPanel.add(textArea);
         gridLayoutPanel.add(new JScrollPane(textArea));
@@ -60,14 +75,9 @@ public class dokuUI extends JFrame {
 
         schliessenButton = new JButton("Schliessen");
         flowLayoutPanel.add(schliessenButton);
-
-       // this.schliessenButton.addActionListener(new schliessenListener());
+        
+        this.schliessenButton.addActionListener(new schliessenListener());
 
     }//pack()
 
-
-
-    public static void main(String[] args) {
-        new dokuUI();
-    }//main()
 }//dokuUI
