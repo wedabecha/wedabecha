@@ -16,9 +16,14 @@
  *   Free Software Foundation, Inc.,										*
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.				*
  ***************************************************************************/
+
+// in dieser Klasse brauchen wir nur Swing, da sie
+// von der hauptFensterUI aus weiterverwendet wird
 import javax.swing.*;
 
-class hauptMenuUI extends JMenuBar {
+
+class hauptMenuUI {
+	// alle Bestandteile des Menüs als Klassenatrribute deklarieren
 	private JMenuBar mainMenuBar = new JMenuBar();
 		private JMenu dateiMenu = new JMenu("Datei");
 			private JMenuItem importiereTabelleMenuItem = new JMenuItem("Tabelle importieren");
@@ -36,14 +41,18 @@ class hauptMenuUI extends JMenuBar {
 			private JMenuItem aboutMenuItem = new JMenuItem("Über");
 
 	// konstruktor
-	public JMenuBar hauptMenuUI(){
-		this.init();
-		return this.mainMenuBar;
+	public hauptMenuUI(){
+		this.pack();
 	} // hauptMenuUI
 
-	public void init(){
+	public void pack(){
+		/**
+			Die Methode setzt das HauptMenue aus den Klassenattributen zusammen.
+		*/
 		// die elemente des menues werden "rückwärts" zusammengesetzt
 		// d.h. erst setze ich das dateimenü zusammen, bevor ich es zur MenuBar adde usw.
+
+		// beginn dateiMenu
 			this.dateiMenu.add(importiereTabelleMenuItem);
 			this.dateiMenu.add(exportiereTabelleMenuItem);
 			this.dateiMenu.add(exportiereGrafikMenuItem);
@@ -52,14 +61,33 @@ class hauptMenuUI extends JMenuBar {
 			this.dateiMenu.add(beendenMenuItem);
 				this.beendenMenuItem.addActionListener(new beendenListener());
 		this.mainMenuBar.add(dateiMenu);
+		// ende dateiMenu
+
+		// beginn bearbeitenMenu
 		this.mainMenuBar.add(bearbeitenMenu);
+		// ende bearbeitenMenu
+
+		// beginn tabelleMenu
 		this.mainMenuBar.add(tabelleMenu);
+		// ende tabelleMenu
+
+		// beginn ansichtMenu
 			this.ansichtMenu.add(zeigeGitterMenuItem);
 		this.mainMenuBar.add(ansichtMenu);
+		// ende ansichtMenu
+
+		// beginn hilfeMenu
 			this.hilfeMenu.add(kurzAnleitungMenuItem);
 			this.hilfeMenu.add(dokuMenuItem);
 			this.hilfeMenu.add(aboutMenuItem);
 		this.mainMenuBar.add(hilfeMenu);
+		// ende hilfeMenu
+	} // pack()
 
-	} // init()
+
+	public JMenuBar getHauptMenu(){
+		// wird von der hauptFensterUI aufgerufen und
+		// liefert das hauptmenu zurück
+		return this.mainMenuBar;
+	}
 } // hauptMenuUI
