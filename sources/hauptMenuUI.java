@@ -32,7 +32,6 @@ class hauptMenuUI {
 			private JMenuItem druckenMenuItem = new JMenuItem("Drucken");
 			private JMenuItem beendenMenuItem = new JMenuItem("Programm beenden");
 		private JMenu bearbeitenMenu = new JMenu("Bearbeiten");
-		private JMenu tabelleMenu = new JMenu("Tabelle");
 		private JMenu ansichtMenu = new JMenu("Ansicht");
 			private JMenuItem zeigeGitterMenuItem = new JMenuItem("Gitter anzeigen");
 		private JMenu hilfeMenu = new JMenu("Hilfe");
@@ -53,36 +52,33 @@ class hauptMenuUI {
 		// d.h. erst setze ich das dateimenü zusammen, bevor ich es zur MenuBar adde usw.
 
 		// beginn dateiMenu
-			this.dateiMenu.add(importiereTabelleMenuItem);
-			this.dateiMenu.add(exportiereTabelleMenuItem);
-			this.dateiMenu.add(exportiereGrafikMenuItem);
-			this.dateiMenu.add(druckenMenuItem);
+			this.dateiMenu.add(this.importiereTabelleMenuItem);
+				this.importiereTabelleMenuItem.addActionListener(new importiereTabelleListener());
+			this.dateiMenu.add(this.exportiereTabelleMenuItem);
+			this.dateiMenu.add(this.exportiereGrafikMenuItem);
+			this.dateiMenu.add(this.druckenMenuItem);
 				this.druckenMenuItem.setEnabled(false);
-			this.dateiMenu.add(beendenMenuItem);
+			this.dateiMenu.add(this.beendenMenuItem);
 				this.beendenMenuItem.addActionListener(new beendenListener());
-		this.mainMenuBar.add(dateiMenu);
+		this.mainMenuBar.add(this.dateiMenu);
 		// ende dateiMenu
 
 		// beginn bearbeitenMenu
-		this.mainMenuBar.add(bearbeitenMenu);
+		this.mainMenuBar.add(this.bearbeitenMenu);
 		// ende bearbeitenMenu
 
-		// beginn tabelleMenu
-		this.mainMenuBar.add(tabelleMenu);
-		// ende tabelleMenu
-
 		// beginn ansichtMenu
-			this.ansichtMenu.add(zeigeGitterMenuItem);
-		this.mainMenuBar.add(ansichtMenu);
+			this.ansichtMenu.add(this.zeigeGitterMenuItem);
+		this.mainMenuBar.add(this.ansichtMenu);
 		// ende ansichtMenu
 
 		// beginn hilfeMenu
-			this.hilfeMenu.add(kurzAnleitungMenuItem);
+			this.hilfeMenu.add(this.kurzAnleitungMenuItem);
 				this.kurzAnleitungMenuItem.addActionListener(new hauptMenuKurzAnleitungListener());
-			this.hilfeMenu.add(dokuMenuItem);
+			this.hilfeMenu.add(this.dokuMenuItem);
 				this.dokuMenuItem.addActionListener(new hauptMenuDokumentationListener());
-			this.hilfeMenu.add(aboutMenuItem);
-		this.mainMenuBar.add(hilfeMenu);
+			this.hilfeMenu.add(this.aboutMenuItem);
+		this.mainMenuBar.add(this.hilfeMenu);
 		// ende hilfeMenu
 	} // pack()
 

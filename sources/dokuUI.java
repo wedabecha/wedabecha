@@ -33,7 +33,7 @@ class dokuUI extends JFrame {
 
     public dokuUI(String title) {
 		// der konstruktor soll noch zwei parameter erhalten (siehe hauptMenuListener) :
-		// die parameter sind vom Typ String und können folgende Werte enthalten:
+		// die parameter sind vom Typ String und kÃ¶nnen folgende Werte enthalten:
 		// "Kurzanleitung" und "Doku"
 	setTitle(title);
 

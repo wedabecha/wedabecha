@@ -24,6 +24,13 @@ und ActionListener-Klassen für die hauptMenuUI
 
 import java.awt.event.*;
 
+class importiereTabelleListener implements ActionListener {
+	// für den MenuPunkt [Datei]->[Tabelle importieren]
+	public void actionPerformed(ActionEvent event){
+		new importiereTabelle.importiereTabelleUI();
+	} // actionPerformed(ActionEvent event)
+} // importiereTabelleListener
+
 class hauptMenuKurzAnleitungListener implements ActionListener {
 	// für den MenuPunkt [Hilfe]->[KurzAnleitung]
 	public void actionPerformed(ActionEvent event){
