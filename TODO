@@ -1,0 +1,69 @@
+!!!!!!!!!!!!
+importiereTabelle.definiereDatumUI
+die Möglichkeit ein Datum einzugeben ist da, aber evtl. nicht die beste,
+andere Vorschläge erwünscht...
+das eingegebene Datum müsste an sich noch auf Korrektheit überprüft werden,
+dass niemand son schrott wie 30. februar eingibt und so...
+
+##############################################################################
+
+zeichneKurve:
+Aktienkurve
+DARSTELLUNG von Wochen-,Monats- und Jahresmitteln
+Zeitachse zoombar
+Veränderung des Maßstabs der Achsen
+
+##############################################################################
+
+Kalenderfunktion und konkrete Datumsbeschriftung der Zeitachse
+(Beschriftungen der x-Achse auf Tages-, Monats-, Jahresbasis)
+
+##############################################################################
+
+Hilfe, Dokumentation, Kurzanleitung
+
+##############################################################################
+
+QUALITÄTSMANAGEMENT:
+Grösse, Breite, Titel der Fenster im "Standard"-Bereich der pack()-Methoden
+durchgehen, und ggf. ändern.
+Die ganzen Texte auf Rechtschreibung und Umlaute durchsehen und Umlaute ala
+ae, oe, usw. durch den richtigen Code Ersetzen... 
+
+
+##############################################################################
+
+BUG:
+exportiereGrafik.java:43 -> wirft unter Linux eine 
+Exception in thread "AWT-EventQueue-0" java.lang.ClassCastException:
+sun.awt.image.DataBufferNative
+funktioniert auf einer win32-maschine ohne probleme,
+scheinbar unabhängig von der java-version
+
+
+##############################################################################
+
+WÜNSCHE :
+
+ - Druckfunktion direkt aus dem Softwareprodukt heraus
+ - logarithmische Darstellung der Einteilung der y-Achse
+   gleitende Mittelwerte
+ - Kombination mehrerer Eingabedateien zu einer einzigen
+   Sicherheitsabfrage, falls eingelesene Daten identisch sind
+ - Zoom durch markieren des Bereichs mit der Maus
+ - Einlesen von  Daten direkt aus einer Internetseite und Speicherung dieser
+   Daten im CSV - Format
+ - Proportionales vergrössern des HauptFensters
+ - Tooltips und Statusleiste
+ - Menupunkt [Hilfe]->[Lizenz] ?
+ - Menupunkt [Annotation] 
+ 	-> Pfeil zeichnen
+ 	-> Linie zeichnen
+ 	-> Text einfügen 
+
+##############################################################################
+
+WUNSCHKRITERIUM: 
+Speicherfunktion 
+ganzes Objekt mit darstellungsTyp und Linienart als Objekt
+mit serialize (?) abspeichern als .weda-Datei
