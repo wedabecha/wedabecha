@@ -29,6 +29,10 @@ import java.awt.*;
 
 
 public class verknuepfeTabellenUI extends JDialog{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Container verknuepfe = getContentPane();
 		private JPanel topRightPanel = new JPanel(new GridLayout(4,1));
 		private JPanel bottomPanel = new JPanel(new GridLayout(2,1));

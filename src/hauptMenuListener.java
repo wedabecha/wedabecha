@@ -34,7 +34,7 @@ import java.awt.event.*;
 class importiereTabelleListener implements ActionListener {
 	// für den MenuPunkt [Datei]->[Tabelle importieren]
 	public void actionPerformed(ActionEvent event){
-		importiereTabelleUI importDialog = new importiereTabelleUI();
+		new importiereTabelleUI();
 	} // actionPerformed(ActionEvent event)
 } // importiereTabelleListener
 
@@ -84,7 +84,7 @@ class hauptMenuDokumentationListener implements ActionListener {
 class exportiereTabelleListener implements ActionListener {
 	// für den MenuPunkt [Datei]->Tabelle Exportieren
 	public void actionPerformed(ActionEvent event){
-		exportiereTabelleUI exportiereTabelleDialog = new exportiereTabelleUI();
+		new exportiereTabelleUI();
 	} // actionPerformed(ActionEvent event)
 } // exportiereTabellenListener
 
@@ -92,14 +92,14 @@ class exportiereTabelleListener implements ActionListener {
 class exportiereGrafikListener implements ActionListener {
 	// für den MenuPunkt [Datei]->Grafik Exportieren
 	public void actionPerformed(ActionEvent event){
-		exportiereGrafikUI exportiereGrafikDialog = new exportiereGrafikUI();
+		new exportiereGrafikUI();
 	} // actionPerformed(ActionEvent event)
 } // exportiereGrafikListener
 
 class oeffnenListener implements ActionListener {
 	// für den MenuPunkt [Datei]->Öffnen
 	public void actionPerformed(ActionEvent event){
-		openWeda oeffnenDialog = new openWeda();
+		new openWeda();
 	} // actionPerformed(ActionEvent event)
 } // oeffnenListener
 

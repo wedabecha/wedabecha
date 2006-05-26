@@ -58,7 +58,7 @@ public class kurve {
 	// fünf verschiedene Kurven, jede hat eine Nummer
 	private int nummer;
 
-	public void kurve(int nummer){
+	public kurve (int nummer){
 		this.nummer = nummer;
 	} // kurve()
 
@@ -117,7 +117,7 @@ public class kurve {
 
 
 	protected String getKurvenStil(){
-		return this.kurvenStile[this.kurvenStilIndex];
+		return kurvenStile[this.kurvenStilIndex];
 	} // getKurvenStil()
 
 

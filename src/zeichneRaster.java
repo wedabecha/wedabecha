@@ -25,6 +25,10 @@ import java.awt.*;
 import javax.swing.*;
 
 public class zeichneRaster extends JComponent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int breite;
 	private int hoehe;
 

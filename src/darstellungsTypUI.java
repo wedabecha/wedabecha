@@ -31,6 +31,8 @@ import java.awt.event.*;
 import java.awt.*;
 
 class darstellungsTypUI extends JDialog {
+	final static long serialVersionUID = 1;
+	
 	// die ganzen bestandteile des dialogs
 	private Container fenster = getContentPane();
 	private FlowLayout fensterLayout = new FlowLayout();

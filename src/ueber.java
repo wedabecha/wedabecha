@@ -28,6 +28,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 class ueber extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Container dialog = getContentPane();
 	private JLabel text = new JLabel(
 		"<html>Diese Software wurde unter der <br>GNU General Public License ver\u00f6ffentlicht.<br>" +

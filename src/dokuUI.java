@@ -30,18 +30,17 @@
 import javax.swing.*; //brauche ich um die Swing Objekte darzustellen
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import javax.swing.text.html.*;
 import java.awt.*; //wird fuer das Layout benoetigt
 import java.awt.event.*;
 import java.io.*;
-import java.io.File.*;
-import java.net.URI;
 import java.net.URL;
 
 public class dokuUI extends JFrame {
+	final static long serialVersionUID = 1;
+	
     private JEditorPane doku = new JEditorPane();
     private JButton schliessenButton;
-    private String text;
+//    private String text; // wo wird diese Variable benutzt? oO
     File path;
 
     public dokuUI(String title) {

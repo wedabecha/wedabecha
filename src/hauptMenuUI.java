@@ -35,7 +35,7 @@ public class hauptMenuUI {
 		private JMenu dateiMenu = new JMenu("Datei");
 			private JMenuItem oeffneDateiItem = new JMenuItem("\u00D6ffnen");
 			private JMenuItem importiereTabelleMenuItem = new JMenuItem("Tabelle importieren");
-			private JMenuItem verknuepfeTabelleMenuItem = new JMenuItem("Tabellen verkn\u00fcpfen");
+//			private JMenuItem verknuepfeTabelleMenuItem = new JMenuItem("Tabellen verkn\u00fcpfen");
 			private JMenuItem exportiereTabelleMenuItem = new JMenuItem("Tabelle exportieren");
 			private JMenuItem exportiereGrafikMenuItem = new JMenuItem("Grafik exportieren");
 			private JMenuItem druckenMenuItem = new JMenuItem("Drucken");
@@ -57,6 +57,7 @@ public class hauptMenuUI {
 				new JMenu("Kurve 5")
 			};
 
+/*
 			private JMenuItem kurveOeffnenMenuItem[] = {
 				new JMenuItem("Oeffnen"),
 				new JMenuItem("Oeffnen"),
@@ -64,7 +65,9 @@ public class hauptMenuUI {
 				new JMenuItem("Oeffnen"),
 				new JMenuItem("Oeffnen")
 			};
+*/
 
+/*
 			private JMenuItem kurveSpeichernMenuItem[] = {
 				new JMenuItem("Speichern"),
 				new JMenuItem("Speichern"),
@@ -72,7 +75,8 @@ public class hauptMenuUI {
 				new JMenuItem("Speichern"),
 				new JMenuItem("Speichern")
 			};
-
+*/
+			
 			private JMenuItem kurveDarstellungMenuItem[] = {
 				new JMenuItem("Darstellung"),
 				new JMenuItem("Darstellung"),
@@ -91,14 +95,19 @@ public class hauptMenuUI {
 
 			private int kurveIt;
 
+/*			
 		private JMenu annotationMenu = new JMenu("Annotation");
 			private JMenuItem annotationPfeilMenuItem = new JMenuItem("Pfeil zeichnen");
 			private JMenuItem annotationLinieMenuItem = new JMenuItem("Linie zeichnen");
 			private JMenuItem annotationTextMenuItem = new JMenuItem("Text einf\u00fcgen");
-		private JMenu bearbeitenMenu = new JMenu("Bearbeiten");
+*/
+//		private JMenu bearbeitenMenu = new JMenu("Bearbeiten");
+
+/*			
 		private JMenu ansichtMenu = new JMenu("Ansicht");
 			private JCheckBoxMenuItem zeigeGitterMenuItem = new JCheckBoxMenuItem("Gitter anzeigen");
 			private JCheckBoxMenuItem zeigeToolBarItem = new JCheckBoxMenuItem("Werkzeugleiste anzeigen");
+*/
 		private JMenu hilfeMenu = new JMenu("Hilfe");
 			private JMenuItem kurzAnleitungMenuItem = new JMenuItem("Kurzanleitung");
 			private JMenuItem dokuMenuItem = new JMenuItem("Dokumentation");

@@ -58,7 +58,7 @@ public class toolBarUI /*implements ActionListener*/{
 						    new JToggleButton(" 5 ")
 		};
 
-		private int breite;
+//		private int breite;
 
 
 	// Konstruktor

@@ -27,6 +27,10 @@ import javax.swing.JComponent;
 import java.util.ArrayList;
 
 class zeichneLinienKurve extends JComponent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList werte;
 	private Color farbe;
 	private int abstand;
@@ -46,7 +50,7 @@ class zeichneLinienKurve extends JComponent {
 	public zeichneLinienKurve(ArrayList werte, Color farbe, ArrayList ausgangsWerte) {
 		this.farbe = farbe;
 		this.werte = werte;
-		this.setSize(hauptFensterUI.fensterBreite - 30, hauptFensterUI.fensterHoehe);
+		this.setSize(hauptFensterUI.getWindowWidth() - 30, hauptFensterUI.getWindowHeight());
 		this.ausgangsWerte = ausgangsWerte;
 		this.setVisible(false);
 	} // zeichneKurve()
@@ -101,6 +105,8 @@ class zeichneLinienKurve extends JComponent {
 
 
 class zeichneAktienKurve extends JComponent {
+	final static long serialVersionUID = 1;
+	
 	private ArrayList werte;
 	private Color farbe;
 
@@ -125,7 +131,7 @@ class zeichneAktienKurve extends JComponent {
 	public zeichneAktienKurve(ArrayList werte, Color farbe){
 		this.werte = werte;
 		this.farbe = farbe;
-		this.setSize(hauptFensterUI.fensterBreite,  hauptFensterUI.fensterHoehe);
+		this.setSize(hauptFensterUI.getWindowWidth(),  hauptFensterUI.getWindowHeight());
 		this.setVisible(false);
 	}// zeichneAktienKurve
 

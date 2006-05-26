@@ -35,6 +35,10 @@ class importiereTabelleUI extends JDialog  {
 
 	*/
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Container importDialog = getContentPane();
 	private JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JPanel topPanel = new JPanel(new GridLayout(5,1));
@@ -113,8 +117,8 @@ class importiereTabelleUI extends JDialog  {
 		// zeile 1
 		this.topPanel.add(this.LTzeile1);
 			this.LTzeile1.add(this.tabelle1Label);
-			this.LTzeile1.add(this.oeffneTabelle1);
-				this.oeffneTabelle1.addActionListener(new ActionListener(){
+			this.LTzeile1.add(oeffneTabelle1);
+				oeffneTabelle1.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showSubDialog(1);
 
@@ -122,9 +126,9 @@ class importiereTabelleUI extends JDialog  {
 				});
 			this.LTzeile1.add(pfadTabelle1);
 				pfadTabelle1.setEnabled(false);
-			this.LTzeile1.add(this.speicherTabelle[0]);
-			this.LTzeile1.add(this.darstellungsTypButton1);
-				this.darstellungsTypButton1.addActionListener(new ActionListener(){
+			this.LTzeile1.add(speicherTabelle[0]);
+			this.LTzeile1.add(darstellungsTypButton1);
+				darstellungsTypButton1.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showDarstellungsDialog(1);
 					}
@@ -132,20 +136,20 @@ class importiereTabelleUI extends JDialog  {
 		// zeile 2
 		this.topPanel.add(this.LTzeile2);
 			this.LTzeile2.add(this.tabelle2Label);
-			this.LTzeile2.add(this.oeffneTabelle2);
-				this.oeffneTabelle2.setEnabled(false);
-				this.oeffneTabelle2.addActionListener(new ActionListener(){
+			this.LTzeile2.add(oeffneTabelle2);
+				oeffneTabelle2.setEnabled(false);
+				oeffneTabelle2.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showSubDialog(2);
 					} // actionPerformed(ActionEvent event)
 				});
 			this.LTzeile2.add(pfadTabelle2);
 				pfadTabelle2.setEnabled(false);
-			this.LTzeile2.add(this.speicherTabelle[1]);
-				this.speicherTabelle[1].setEnabled(false);
-			this.LTzeile2.add(this.darstellungsTypButton2);
-				this.darstellungsTypButton2.setEnabled(false);
-				this.darstellungsTypButton2.addActionListener(new ActionListener(){
+			this.LTzeile2.add(speicherTabelle[1]);
+				speicherTabelle[1].setEnabled(false);
+			this.LTzeile2.add(darstellungsTypButton2);
+				darstellungsTypButton2.setEnabled(false);
+				darstellungsTypButton2.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showDarstellungsDialog(2);
 					}
@@ -153,20 +157,20 @@ class importiereTabelleUI extends JDialog  {
 		// zeile 3
 		this.topPanel.add(this.LTzeile3);
 			this.LTzeile3.add(this.tabelle3Label);
-			this.LTzeile3.add(this.oeffneTabelle3);
-				this.oeffneTabelle3.setEnabled(false);
-				this.oeffneTabelle3.addActionListener(new ActionListener(){
+			this.LTzeile3.add(oeffneTabelle3);
+				oeffneTabelle3.setEnabled(false);
+				oeffneTabelle3.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showSubDialog(3);
 					} // actionPerformed(ActionEvent event)
 				});
 			this.LTzeile3.add(pfadTabelle3);
 				pfadTabelle3.setEnabled(false);
-			this.LTzeile3.add(this.speicherTabelle[2]);
-				this.speicherTabelle[2].setEnabled(false);
-			this.LTzeile3.add(this.darstellungsTypButton3);
-				this.darstellungsTypButton3.setEnabled(false);
-				this.darstellungsTypButton3.addActionListener(new ActionListener(){
+			this.LTzeile3.add(speicherTabelle[2]);
+				speicherTabelle[2].setEnabled(false);
+			this.LTzeile3.add(darstellungsTypButton3);
+				darstellungsTypButton3.setEnabled(false);
+				darstellungsTypButton3.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showDarstellungsDialog(3);
 					}
@@ -174,20 +178,20 @@ class importiereTabelleUI extends JDialog  {
 		// zeile 4
 		this.topPanel.add(this.LTzeile4);
 			this.LTzeile4.add(this.tabelle4Label);
-			this.LTzeile4.add(this.oeffneTabelle4);
-				this.oeffneTabelle4.setEnabled(false);
-				this.oeffneTabelle4.addActionListener(new ActionListener(){
+			this.LTzeile4.add(oeffneTabelle4);
+				oeffneTabelle4.setEnabled(false);
+				oeffneTabelle4.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showSubDialog(4);
 					} // actionPerformed(ActionEvent event)
 				});
 			this.LTzeile4.add(pfadTabelle4);
 				pfadTabelle4.setEnabled(false);
-			this.LTzeile4.add(this.speicherTabelle[3]);
-				this.speicherTabelle[3].setEnabled(false);
-			this.LTzeile4.add(this.darstellungsTypButton4);
-				this.darstellungsTypButton4.setEnabled(false);
-				this.darstellungsTypButton4.addActionListener(new ActionListener(){
+			this.LTzeile4.add(speicherTabelle[3]);
+				speicherTabelle[3].setEnabled(false);
+			this.LTzeile4.add(darstellungsTypButton4);
+				darstellungsTypButton4.setEnabled(false);
+				darstellungsTypButton4.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showDarstellungsDialog(4);
 					}
@@ -195,20 +199,20 @@ class importiereTabelleUI extends JDialog  {
 		// zeile 5
 		this.topPanel.add(this.LTzeile5);
 			this.LTzeile5.add(this.tabelle5Label);
-			this.LTzeile5.add(this.oeffneTabelle5);
-				this.oeffneTabelle5.setEnabled(false);
-				this.oeffneTabelle5.addActionListener(new ActionListener(){
+			this.LTzeile5.add(oeffneTabelle5);
+				oeffneTabelle5.setEnabled(false);
+				oeffneTabelle5.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showSubDialog(5);
 					} // actionPerformed(ActionEvent event)
 				});
 			this.LTzeile5.add(pfadTabelle5);
 				pfadTabelle5.setEnabled(false);
-			this.LTzeile5.add(this.speicherTabelle[4]);
-				this.speicherTabelle[4].setEnabled(false);
-			this.LTzeile5.add(this.darstellungsTypButton5);
-				this.darstellungsTypButton5.setEnabled(false);
-				this.darstellungsTypButton5.addActionListener(new ActionListener(){
+			this.LTzeile5.add(speicherTabelle[4]);
+				speicherTabelle[4].setEnabled(false);
+			this.LTzeile5.add(darstellungsTypButton5);
+				darstellungsTypButton5.setEnabled(false);
+				darstellungsTypButton5.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						showDarstellungsDialog(5);
 					}

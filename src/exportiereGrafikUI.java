@@ -28,7 +28,6 @@
 import java.io.File;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.JOptionPane.*;
 
 
 public class exportiereGrafikUI {

@@ -36,8 +36,12 @@ import javax.swing.event.*;
 
 
 public class hauptFensterUI extends JFrame {
-	static JFrame hauptFenster = new JFrame("wedabecha");
-	// Hauptmenu initialisieren
+	/*
+	 * Deklaration von Klassenvariablen
+	 */
+	
+	final static long serialVersionUID = 1;
+	
 	protected static hauptMenuUI hauptMenu = new hauptMenuUI();
 	protected static JLayeredPane mainPane = new JLayeredPane();
 	protected static JLayeredPane layeredPane = new JLayeredPane();
@@ -49,11 +53,11 @@ public class hauptFensterUI extends JFrame {
 		auf die fensterBreite und fensterHoehe muss
 		von anderen Klassen aus zugegriffen werden können.
 	*/
-	protected static int fensterBreite = 700;
-	protected static int fensterHoehe = 500;
+	private static int windowWidth = 700;
+	private static int windowHeight = 500;
 
-	protected static toolBarUI toolBar = new toolBarUI(fensterBreite);
-	protected static zeichneRaster zeichneRaster = new zeichneRaster(fensterBreite, fensterHoehe);
+	protected static toolBarUI toolBar = new toolBarUI(getWindowWidth());
+	protected static zeichneRaster zeichneRaster = new zeichneRaster(windowWidth, windowHeight);
 	protected static Koordinatensystem koordSys = new Koordinatensystem();
 	protected kontextMenuUI kontext = new kontextMenuUI();
 
@@ -64,12 +68,34 @@ public class hauptFensterUI extends JFrame {
 	private JSpinner endDateSpinner = new JSpinner();
 
 	protected static int maxDate = 300;
+	
+	/*
+	 * Methoden - Set 'n Get
+	 */
+	protected static int getWindowWidth() {
+		return windowWidth;
+	}
+	
+	protected static int getWindowHeight() {
+		return windowHeight;
+	}
+	
+	protected static void setWindowWidth(int width) {
+		windowWidth = width;
+	}
+	
+	protected static void setWindowHeight(int height) {
+		windowHeight = height;
+	}
+	
+	/*
+	 * Methoden
+	 */
 
-
-	// konstruktor
+	// Konstruktor
 	public hauptFensterUI(int breite, int hoehe){
-	    this.fensterBreite = breite;
-	    this.fensterHoehe = hoehe;
+	    setWindowWidth(breite);
+	    setWindowHeight(hoehe);
 		mainPane.setSize(breite, hoehe);
 	    layeredPane.setSize(breite, hoehe);
 	    toolbarPane.setSize(breite, 35);
@@ -83,31 +109,30 @@ public class hauptFensterUI extends JFrame {
 	    toolbarPane.setSize(breite, 35);
 	} //setGroesse()
 
-
+	/**
+	 * setzt das Fenster als Ganzes aus den einzelnen Bestandteilen zusammen
+	 */
 	public void pack(){
-		/**
-		pack() setzt das Fenster als Ganzes aus den einzelnen
-		Bestandteilen zusammen
-		*/
+		this.setTitle("wedabecha");
 
 		// Hauptmenu in das Fenster einbinden
-		hauptFensterUI.hauptFenster.setJMenuBar(this.hauptMenu.getHauptMenu());
+		this.setJMenuBar(hauptMenu.getHauptMenu());
 
 		// Listener zum Fensterschliessen per "wegkreuzen"
-		hauptFensterUI.hauptFenster.addWindowListener(new beendenListener());
+		this.addWindowListener(new beendenListener());
 
-		int bildSchirmBreite = getToolkit().getScreenSize().width;
-		int bildSchirmHoehe = getToolkit().getScreenSize().height;
-		int Xposition = (bildSchirmBreite - this.fensterBreite) / 2;
-		int Yposition = (bildSchirmHoehe - this.fensterHoehe) / 2;
-		hauptFensterUI.hauptFenster.setSize(this.fensterBreite,this.fensterHoehe);
+		int screenWidth = getToolkit().getScreenSize().width;
+		int screenHeight = getToolkit().getScreenSize().height;
+		int Xposition = (screenWidth - windowWidth) / 2;
+		int Yposition = (screenHeight - windowHeight) / 2;
+		this.setSize(windowWidth,windowHeight);
 
-		hauptFensterUI.hauptFenster.setContentPane(mainPane);
+		this.setContentPane(mainPane);
 
 		mainPane.add(toolbarPane, JLayeredPane.PALETTE_LAYER);
 		mainPane.add(layeredPane, JLayeredPane.DEFAULT_LAYER);
 
-		mainPane.setSize(this.fensterBreite,this.fensterHoehe);
+		mainPane.setSize(windowWidth,windowHeight);
 		mainPane.setVisible(true);
 
 		// JLayeredPane wird als neue ContentPane eingesetzt
@@ -117,10 +142,10 @@ public class hauptFensterUI extends JFrame {
 
 		mainPane.add(this.startDateLabel, new Integer(510));
 			this.startDateLabel.setSize(100,20);
-			this.startDateLabel.setLocation(new Point(this.fensterBreite - 340,35));
+			this.startDateLabel.setLocation(new Point(windowWidth - 340, 35));
 		mainPane.add(this.startDateSpinner, new Integer(510));
 			this.startDateSpinner.setSize(70,20);
-			this.startDateSpinner.setLocation(new Point(this.fensterBreite-250,35));
+			this.startDateSpinner.setLocation(new Point(windowWidth - 250, 35));
 			this.startDateSpinner.setValue(new Integer(1));
 			this.startDateSpinner.addChangeListener(new ChangeListener(){
 				public void stateChanged(ChangeEvent event){
@@ -148,10 +173,10 @@ public class hauptFensterUI extends JFrame {
 			});
 		mainPane.add(this.endDateLabel,  new Integer(510));
 			this.endDateLabel.setSize(100,20);
-			this.endDateLabel.setLocation(new Point(this.fensterBreite - 170,35));
+			this.endDateLabel.setLocation(new Point(windowWidth - 170,35));
 		mainPane.add(this.endDateSpinner,  new Integer(510));
 			this.endDateSpinner.setSize(70,20);
-			this.endDateSpinner.setLocation(new Point(this.fensterBreite - 80,35));
+			this.endDateSpinner.setLocation(new Point(windowWidth - 80,35));
 			this.endDateSpinner.setValue(new Integer(300));
 
 			this.endDateSpinner.addChangeListener(new ChangeListener(){
@@ -165,7 +190,7 @@ public class hauptFensterUI extends JFrame {
 				}
 			});
 
-		layeredPane.setSize(this.fensterBreite,this.fensterHoehe);
+		layeredPane.setSize(windowWidth,windowHeight);
 		layeredPane.setVisible(true);
 
 		// Raster der neuen ContentPane adden
@@ -177,10 +202,10 @@ public class hauptFensterUI extends JFrame {
 		// Werkzeugleiste einbinden
 		hauptFensterUI.mainPane.add(toolBar.getToolBar(), JLayeredPane.PALETTE_LAYER);
 
-		hauptFensterUI.hauptFenster.setLocation(Xposition,Yposition);
-		//hauptFensterUI.hauptFenster.setMinimumSize(new Dimension(this.fensterBreite,this.fensterHoehe));
-		hauptFensterUI.hauptFenster.setResizable(false);
-		hauptFensterUI.hauptFenster.setVisible(true);
+		this.setLocation(Xposition,Yposition);
+		//this.setMinimumSize(new Dimension(this.fensterBreite,this.fensterHoehe));
+		this.setResizable(false);
+		this.setVisible(true);
 
 		/*
 			für den Fall das irgendwann mal ein Kontextmenü gebraucht wird dann is das hier schon hinzugefügt

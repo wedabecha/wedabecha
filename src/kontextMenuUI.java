@@ -25,13 +25,18 @@ import javax.swing.*;
 
 
 public class kontextMenuUI extends JComponent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// alle Menuepunkte des Popup-Menues als Klassenatrribute deklarieren
 	private JPopupMenu popup = new JPopupMenu();
 		private JMenuItem head = new JMenuItem("Wedabecha");
-		private JMenuItem undo = new JMenuItem("R\u00fcckg\u00e4ngig");
-		private JMenuItem redo = new JMenuItem("Wiederherstellen");
+//		private JMenuItem undo = new JMenuItem("R\u00fcckg\u00e4ngig");
+//		private JMenuItem redo = new JMenuItem("Wiederherstellen");
 
-		private JCheckBoxMenuItem gitteranzeigen = new JCheckBoxMenuItem("Gitter anzeigen");
+//		private JCheckBoxMenuItem gitteranzeigen = new JCheckBoxMenuItem("Gitter anzeigen");
 
 		private JMenuItem liniezeichnen = new JMenuItem("Linie zeichnen");
 		private JMenuItem schreibenItem = new JMenuItem("Text einf\u00fcgen");

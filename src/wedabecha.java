@@ -27,11 +27,11 @@
 */
 public class wedabecha {
 	private static kurve kurve[] = {
-		new kurve(),
-		new kurve(),
-		new kurve(),
-		new kurve(),
-		new kurve()
+		new kurve(1),
+		new kurve(2),
+		new kurve(3),
+		new kurve(4),
+		new kurve(5)
 	};
 
 	protected static kurve getKurve(int nummer){
@@ -43,7 +43,7 @@ public class wedabecha {
 
 	// konstruktor
 	public wedabecha(){
-		hauptFensterUI hauptFenster = new hauptFensterUI(700, 500);
+		new hauptFensterUI(700, 500);
 	} //wedabecha()
 
 	public static void main(String args[]){

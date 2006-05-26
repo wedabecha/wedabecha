@@ -110,32 +110,32 @@ public class importiereTabelle {
 	} // getDatenFormate()
 
 
-	protected static  void setDatumsPosFirstColumn(boolean bla){
+	protected static void setDatumsPosFirstColumn(boolean bla){
 		isDatumsPosFirstColumn = bla;
 	} // setDatumsPosFirstColumn(boolean bla)
 
 
-	protected  boolean isDatumsPosFirstColumn(){
+	protected boolean isDatumsPosFirstColumn(){
 		return isDatumsPosFirstColumn;
 	} // isDatumsPosFirstColumn()
 
 
-	protected  void setInkZahlRep(String blo){
+	protected void setInkZahlRep(String blo){
 		inkZahlRep = blo;
 	} // setInkZahlRep(boolean blo)
 
 
-	protected  String getInkZahlRep(){
+	protected String getInkZahlRep(){
 		return inkZahlRep;
 	} // getInkZahlRep()
 
 
-	protected  void setSpeichern(boolean speichern){
-		speichern = speichern;
+	protected void setSpeichern(boolean speichern){
+		this.speichern = speichern;
 	} // setSpeichern()
 
 
-	protected  boolean isSpeichern(){
+	protected boolean isSpeichern(){
 		return speichern;
 	} // isSpeichern()
 
@@ -152,13 +152,13 @@ public class importiereTabelle {
 	} // toString()
 
 
-	// destruktor
+	// Destruktor
 	protected  void zerstoeren(){
 		importPfad = "";
 	} // finalize()
 
 
-	public static  ArrayList getWerte(){
+	public static ArrayList getWerte(){
 
 		// liefert ausschliesslich die zu verarbeitenden Daten zurück.
 		// das Datum für die jeweilige Zeile kann über die Methode getDates() aufgerufen werden

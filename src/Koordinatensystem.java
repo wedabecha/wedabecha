@@ -31,6 +31,11 @@ import java.util.ArrayList;
 
 public class Koordinatensystem extends JComponent {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/*
 		auf geht's. heute zeichnen wir ein koordinatensystem.
 		dazu brauchen wir erstmal die start- und endpunkte
@@ -43,24 +48,22 @@ public class Koordinatensystem extends JComponent {
 		maxWert für die Y-Achse
 		maxDate für die x-Achse
 	*/
-	private double maxWert, maxDate;
+	private double maxWert;
+//	private double maxDate;
 
 	private int dx, dy; // Länge der Achsen in px
-	private int ddx, ddy; // Abstand der Achsen von Nullpunkt bis Maximalwert in px
+//	private int ddx, ddy; // Abstand der Achsen von Nullpunkt bis Maximalwert in px
 	private int abstandx = 25; // Abstand der einzelnen Achseneinteilungsstriche
-	private int abstandy = 25; // Abstand der einzelnen Achseneinteilungsstriche
-
-	private int zeichenBreite, zeichenHoehe; // Zeichenbereich in Pixelkoordinaten
+//	private int abstandy = 25; // Abstand der einzelnen Achseneinteilungsstriche
 
 	private int yBeschriftung;
-	private double multiplikator;
 	private int startDateIndex = 0; // Startwert für den horizontalen Zeichenbereich
 	private int endDateIndex = 299; // Endwert für den horizontalen Zeichenbereich
 
-	//Konstruktor
-	Koordinatensystem(){
+	// Konstruktor
+	public Koordinatensystem(){
+	
 	}
-
 
 	protected void setGroesse(int breite, int hoehe){
 		/**
@@ -72,8 +75,7 @@ public class Koordinatensystem extends JComponent {
 			Die Werte, die wir für das System benötigen, können wir erst anhand
 			der Fenstergrösse berechnen...
 		*/
-		this.zeichenBreite = breite;
-		this.zeichenHoehe = hoehe;
+		
 		// Start- und Endpunkt der Y-Achse in vertikaler Richtung
 		this.startY = hoehe - 25; // 25 px vom unteren Rand
 		this.endY = 60; // 60 px vom oberen Rand des layeredPane (35 px für die toolBar, 25 px ab toolBar)
@@ -84,8 +86,6 @@ public class Koordinatensystem extends JComponent {
 		this.dx = this.endX - this.startX; // Breite
    		this.dy = this.endY - this.startY; // Hoehe
 		this.setSize(breite, hoehe);
-		this.multiplikator =	(hauptFensterUI.layeredPane.getHeight() - 100) /
-								this.maxWert;
 	} // setGroesse()
 
 
@@ -122,8 +122,6 @@ public class Koordinatensystem extends JComponent {
 		this.berechneMaxima();
 
 		this.yBeschriftung = (int)((Math.round(this.maxWert / 10)) * 10);
-		this.multiplikator =	(hauptFensterUI.layeredPane.getHeight() - 100) /
-								this.maxWert;
 		this.setGroesse(690,452);
 		this.setVisible(true); // sichtbar machen
 	} // zeichneKoordinatensystem
@@ -197,13 +195,10 @@ public class Koordinatensystem extends JComponent {
 			die brauchen wir für die Einteilung der Achsen.
 		*/
 
-		double maximalWert;
 		ArrayList werte;
-		ArrayList daten;
 		double wertZeile[];
 		double maxZeilenWerte[];
 		double maxKurvenWerte[] = new double[5];
-		String datenZeile[];
 
 		/*
 			Maximalwerte der Kurven bestimmen
@@ -214,7 +209,6 @@ public class Koordinatensystem extends JComponent {
 		for (int i = 1; i < 6;i++){
 			if (wedabecha.getKurve(i).isset()){
 				werte = wedabecha.getKurve(i).getWerte();
-				daten = wedabecha.getKurve(i).getDaten();
 				maxZeilenWerte = new double[werte.size()];
 
 				for (int j = 0; j < werte.size(); j++){
