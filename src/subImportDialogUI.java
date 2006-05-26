@@ -27,6 +27,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class subImportDialogUI extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/*
 		bestandteile des dialogs erzeugen
 	*/

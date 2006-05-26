@@ -29,6 +29,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 class definiereDatumUI extends JDialog {
+	final static long serialVersionUID = 1;
+	
 	/*
 		die Bestandteile des Dialogs erzeugen
 	*/
@@ -70,7 +72,7 @@ class definiereDatumUI extends JDialog {
 	private JButton okKnopf = new JButton("OK");
 	private JButton abbrechenKnopf = new JButton("Abbrechen");
 
-	private String datumsFormat;
+//	private String datumsFormat; // Variable wird scheinbar nicht genutzt
 
 	/*
 		wichtige Variablen, an denen die Tabellen identifiziert werden

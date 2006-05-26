@@ -29,12 +29,21 @@ import java.lang.Math;
 
 public class zeichneAnnotation extends JComponent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }// zeichneAnnotation
 
 // Diese Klasse dient zum zeichnen einer Linie
 
 class zeichneLinie extends JComponent{
-    private int startX;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int startX;
     private int startY;
     private int endX;
 	private int endY;
@@ -62,6 +71,10 @@ class zeichneLinie extends JComponent{
 // Diese Klasse dient zum zeichnen eines Pfeils
 
 class zeichnePfeil extends JComponent{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int startX;
 	private int startY;
 	private int endX;
@@ -125,7 +138,11 @@ class zeichnePfeil extends JComponent{
 
 class zeichneText extends JComponent{
 
-    private int startX;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int startX;
     private int startY;
     private String text;
 
