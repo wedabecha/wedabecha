@@ -1,6 +1,10 @@
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
+/**
+ * @author dmaphy
+ * Klasse um die messages.properties auszulesen
+ */
 public class Messages {
     private static final String BUNDLE_NAME = "messages"; //$NON-NLS-1$
 
@@ -27,5 +31,5 @@ public class Messages {
         } catch (MissingResourceException e) {
             return '!' + key + '!';
         }
-    }
-}
+    } // getString(String key)
+} // public class Messages
