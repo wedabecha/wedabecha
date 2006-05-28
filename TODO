@@ -28,7 +28,10 @@ QUALITÄTSMANAGEMENT:
 Grösse, Breite, Titel der Fenster im "Standard"-Bereich der pack()-Methoden
 durchgehen, und ggf. ändern.
 Die ganzen Texte auf Rechtschreibung und Umlaute durchsehen und Umlaute ala
-ae, oe, usw. durch den richtigen Code Ersetzen... 
+ae, oe, usw. durch den richtigen Code Ersetzen...
+
+Namensgebung:
+englische Namen für Variablen und Funktionen 
 
 
 ##############################################################################
