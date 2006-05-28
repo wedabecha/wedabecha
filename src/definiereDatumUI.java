@@ -28,148 +28,159 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * 
+ * @author dmaphy
+ * Dialog to get the Dateformat from the User
+ * TODO: externalize Strings
+ */
 class definiereDatumUI extends JDialog {
 	final static long serialVersionUID = 1;
 	
-	/*
-		die Bestandteile des Dialogs erzeugen
-	*/
-	private Container dialog = getContentPane();
-	private JPanel	topPanel = new JPanel(new GridLayout(4,1));
-		private JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		private JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		private JPanel panel3 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		private JPanel panel4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	private JPanel buttonPanel = new JPanel(new FlowLayout());
-
-	private ButtonGroup gruppeRB = new ButtonGroup();
-
-	// code für die erste zeile
-	private JLabel spaltePreLabel = new JLabel("Datum steht in der ");
-	private String spalten[] = {"ersten","letzten"};
-	private JComboBox spalteCombo = new JComboBox(this.spalten);
-	private JLabel spalteSufLabel = new JLabel(" Spalte der Datei in Form");
-
-	// code für zweite zeile
-	private JRadioButton inkRB = new JRadioButton("einer inkrementierenden Zahl, welche",true);
-	private String inkRepraesentiert[] = {"einen Tag","eine Woche","einen Monat","ein Jahr"};
-	private JComboBox inkZahlCombo = new JComboBox(this.inkRepraesentiert);
-	private JLabel repraesentLabel = new JLabel("repr\u00e4sentiert.");
-
-	// code für dritte Zeile
-	private JLabel startDatumLabel = new JLabel("Das Startdatum ist (YYYY-MM-DD)");
-	private JTextField startYearField = new JTextField(3);
-	private JTextField startMonthField = new JTextField(2);
-	private JTextField startDayField = new JTextField(2);
-	private JLabel startTrennStrich1 = new JLabel("-");
-	private JLabel startTrennStrich2 = new JLabel("-");
-
-	// code für vierte zeile
-	private JRadioButton konkretRB = new JRadioButton("eines anderen konkreten Datumsformates :");
-
-	private JComboBox datumCombo = new JComboBox(importiereTabelle.getDatenFormate());
-
-	private JButton okKnopf = new JButton("OK");
-	private JButton abbrechenKnopf = new JButton("Abbrechen");
-
-//	private String datumsFormat; // Variable wird scheinbar nicht genutzt
-
-	/*
-		wichtige Variablen, an denen die Tabellen identifiziert werden
-	*/
+	// anhand der Tabellennummer wird die Tabelle identifiziert, für welche hier das Datumsformat festgelegt wird.
 	private int tabellenNummer;
 
-
-	// konstruktor
-	public definiereDatumUI(int tabellenNummer){
-		this.tabellenNummer = tabellenNummer;
+	// Konstruktor
+	/**
+	 * @param tableNumber die Tabellennummer
+	 */
+	public definiereDatumUI(int tableNumber){
+		this.tabellenNummer = tableNumber;
 		this.pack();
 	} // definiereDatumUI
-
-
+	
+	private int getTableNumber() {
+		return this.tabellenNummer;
+	}
+	
+	
+	/**
+	 * setzt das Dialogfeld zusammen
+	 */
+	@Override
 	public void pack(){
 		/**
 			pack() setzt das Dialogfeld aus den Bestandteilen zusammen
 		*/
-		this.dialog.setLayout(new FlowLayout());
+		this.getContentPane().setLayout(new FlowLayout());
 
-		// radiobuttons in einer gruppe
-		this.gruppeRB.add(this.inkRB);
-		this.gruppeRB.add(this.konkretRB);
+		//	Elemente für die erste zeile
+		final JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-		this.dialog.add(this.topPanel);
-			this.topPanel.add(this.panel1);
-			this.topPanel.add(this.panel2);
-			this.topPanel.add(this.panel3);
-			this.topPanel.add(this.panel4);
-		this.dialog.add(this.buttonPanel);
-
+		final JLabel spaltePreLabel = new JLabel("Datum steht in der ");
+		final String spalten[] = {"ersten","letzten"};
+		final JComboBox spalteCombo = new JComboBox(spalten);
+		final JLabel spalteSufLabel = new JLabel(" Spalte der Datei in Form");
+		
 		// zeile1 zusammensetzen
-		this.panel1.add(this.spaltePreLabel);
-		this.panel1.add(this.spalteCombo);
-		this.panel1.add(this.spalteSufLabel);
+		panel1.add(spaltePreLabel);
+		panel1.add(spalteCombo);
+		panel1.add(spalteSufLabel);
+		
+		// Elemente für zweite zeile
+		final JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+		final JRadioButton inkRB = new JRadioButton("einer inkrementierenden Zahl, welche",true);
+		final String inkRepraesentiert[] = {"einen Tag","eine Woche","einen Monat","ein Jahr"};
+		final JComboBox inkZahlCombo = new JComboBox(inkRepraesentiert);
+		final JLabel repraesentLabel = new JLabel("repr\u00e4sentiert.");
 
 		// zeile2 zusammensetzen
-		this.panel2.add(this.inkRB);
-		this.panel2.add(this.inkZahlCombo);
-			this.inkZahlCombo.addActionListener(new ActionListener(){
+		panel2.add(inkRB);
+		panel2.add(inkZahlCombo);
+			inkZahlCombo.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					inkRB.setSelected(true);
 				}
 			});
-		this.panel2.add(this.repraesentLabel);
+		panel2.add(repraesentLabel);
+		
+		// Elemente für Zeile 3
+		final JPanel panel3 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		final JLabel startDatumLabel = new JLabel("Das Startdatum ist (YYYY-MM-DD)");
+		final JTextField startYearField = new JTextField(3);
+		final JTextField startMonthField = new JTextField(2);
+		final JTextField startDayField = new JTextField(2);
+		final JLabel startTrennStrich1 = new JLabel("-");
+		final JLabel startTrennStrich2 = new JLabel("-");
 
-		// zeile3 zusammensetzen
-		this.panel3.add(this.startDatumLabel);
-		this.panel3.add(this.startYearField);
-		this.panel3.add(this.startTrennStrich1);
-		this.panel3.add(this.startMonthField);
-		this.panel3.add(this.startTrennStrich2);
-		this.panel3.add(this.startDayField);
-
-		// zeile4 zusammensetzen
-		this.panel4.add(this.konkretRB);
-		this.panel4.add(this.datumCombo);
-			this.datumCombo.addActionListener(new ActionListener(){
+		// Zeile 3 zusammensetzen
+		panel3.add(startDatumLabel);
+		panel3.add(startYearField);
+		panel3.add(startTrennStrich1);
+		panel3.add(startMonthField);
+		panel3.add(startTrennStrich2);
+		panel3.add(startDayField);
+		
+		// Elemente für Zeile 4
+		final JPanel panel4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		final JPanel buttonPanel = new JPanel(new FlowLayout());
+		final JRadioButton konkretRB = new JRadioButton("eines anderen konkreten Datumsformates :");
+		final JComboBox datumCombo = new JComboBox(importiereTabelle.getDatenFormate());
+		
+		// Zeile 4 zusammensetzen
+		panel4.add(konkretRB);
+		panel4.add(datumCombo);
+			datumCombo.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					konkretRB.setSelected(true);
 				}
 			});
 
+		
+		final JPanel topPanel = new JPanel(new GridLayout(4,1));
+		topPanel.add(panel1);
+		topPanel.add(panel2);
+		topPanel.add(panel3);
+		topPanel.add(panel4);
+		
+		this.getContentPane().add(topPanel);
+
+		// radiobuttons in einer gruppe
+		final ButtonGroup gruppeRB = new ButtonGroup();
+		gruppeRB.add(inkRB);
+		gruppeRB.add(konkretRB);
+			
+		this.getContentPane().add(buttonPanel);		
 
 		// buttons für den dialog
+		
+		JButton okayButton = new JButton("OK");
+		okayButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				if (spalteCombo.getSelectedIndex() == 0){
+					// wenn das datum in der ersten spalte der ascii-datei steht
+					importiereTabelleUI.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(true);
+				} else {
+					//wenn das datum in der letzten spalte der ascii-datei steht
+					importiereTabelleUI.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(false);
+				} // if() else
 
-			this.buttonPanel.add(this.okKnopf);
-				this.okKnopf.addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent event){
-						if(spalteCombo.getSelectedIndex() == 0){
-							// wenn das datum in der ersten spalte der ascii-datei steht
-							importiereTabelleUI.tabellen[tabellenNummer - 1].setDatumsPosFirstColumn(true);
-						} else {
-							//wenn das datum in der letzten spalte der ascii-datei steht
-							importiereTabelleUI.tabellen[tabellenNummer - 1].setDatumsPosFirstColumn(false);
-						} // if() else
+				if(inkRB.isSelected()){
+					importiereTabelleUI.tabellen[getTableNumber() - 1].setInkZahlRep(
+						inkZahlCombo.getSelectedItem().toString()
+					);
+				} else if (konkretRB.isSelected())  {
+					importiereTabelleUI.tabellen[getTableNumber() - 1].setDatumsFormatIndex(
+						datumCombo.getSelectedIndex()
+					);
+				} // if() else
 
-						if(inkRB.isSelected()){
-							importiereTabelleUI.tabellen[tabellenNummer - 1].setInkZahlRep(
-								inkZahlCombo.getSelectedItem().toString()
-							);
-						} else if (konkretRB.isSelected())  {
-							importiereTabelleUI.tabellen[tabellenNummer - 1].setDatumsFormatIndex(
-								datumCombo.getSelectedIndex()
-							);
-						} // if() else
+				setVisible(false);
+			} // actionPerformed()
+		});
 
-						setVisible(false);
-					} // actionPerformed()
-				});
-
-			this.buttonPanel.add(this.abbrechenKnopf);
-				this.abbrechenKnopf.addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent event){
-						setVisible(false);
-					}
-				});
+		buttonPanel.add(okayButton);
+		
+		JButton cancelButton = new JButton("Abbrechen");
+		cancelButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				setVisible(false);
+			}
+		});
+				
+		buttonPanel.add(cancelButton);
+				
 		/*
 			standard zum erzeugen und positionieren des dialogs
 		*/
