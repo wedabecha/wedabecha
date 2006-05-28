@@ -31,7 +31,7 @@ import java.awt.event.*;
 import java.awt.*;
 
 class darstellungsTypUI extends JDialog {
-	final static long serialVersionUID = 1;
+	final static long serialVersionUID = 1L;
 	
 	// die ganzen bestandteile des dialogs
 	private Container fenster = getContentPane();
@@ -45,31 +45,62 @@ class darstellungsTypUI extends JDialog {
 
 	private JPanel bottomPanel = new JPanel( new FlowLayout() );
 
-	private JLabel stilLabel = new JLabel("Kurvenstil:");
+	private JLabel stilLabel = new JLabel("Kurvenstil:"); //$NON-NLS-1$
 
-	private JComboBox stilCombo = new JComboBox(kurve.getKurvenStile());
+	protected JComboBox stilCombo = new JComboBox(kurve.getKurvenStile());
 
-	JLabel farbeLabel = new JLabel("Farbe:");
-	JButton farbeButton = new JButton("w\u00e4hlen...");
+	JLabel farbeLabel = new JLabel(Messages.getString("darstellungsTypUI.0")); //$NON-NLS-1$
+	JButton farbeButton = new JButton(Messages.getString("darstellungsTypUI.1")); //$NON-NLS-1$
 
-	JButton okKnopf = new JButton("OK");
+	JButton okKnopf = new JButton(Messages.getString("darstellungsTypUI.2")); //$NON-NLS-1$
 
 	// die nummer der Tabelle bzw. Kurve
 	private int tabellenNummer;
+	
 	// Farbe, welche im JColorChooser ausgewählt wurde
-	Color farbe;
-
+	private static Color color;
+	
+    protected static Color getColor() {
+        return color;
+    }
+  
+    protected static void setColor(Color col) {
+        color = col;
+    }
+    
+    protected int getTableNumber() {
+    	return this.tabellenNummer;
+    }
+    
+    protected void setTableNumber(int number) {
+    	this.tabellenNummer = number;
+    }
+    
+    protected JButton getColorButton() {
+    	return this.farbeButton;
+    }
+    
+    protected JComboBox getStyleComboBox(){
+    	return this.stilCombo;
+    }
+    
 
 	// Konstruktor
-	public darstellungsTypUI(int tabellenNummer){
+    /**
+     * @param number Tabellennummer für welche der Darstellungstype festgelegt werden soll.
+     */
+	public darstellungsTypUI(int number){
 		// erzeugen eines neuen Dialogs speziell für jede kurve...
-		this.tabellenNummer = tabellenNummer;
-		System.out.println(tabellenNummer);
+		this.setTableNumber(number);
+		System.out.println(number); // debug
 		this.pack();
 	}
 
-
-	public void pack(){
+	/**
+	 * Setzt die Elemente des Dialogs zum Ganzen zusammen
+	 */
+	@Override
+    public void pack(){
 		// zusammenpacken der ganzen Dialogbestandteile
 		this.fenster.setLayout(this.fensterLayout);
 		this.fenster.add(this.topPanel);
@@ -81,27 +112,29 @@ class darstellungsTypUI extends JDialog {
 				this.bottomLeftPanel.add(this.farbeLabel);
 			this.topPanel.add(this.bottomRightPanel);
 				this.bottomRightPanel.add(this.farbeButton);
-				this.farbeButton.setBackground(farbe);
+				this.farbeButton.setBackground(getColor());
 					this.farbeButton.addActionListener( new ActionListener(){
 						public void actionPerformed( ActionEvent event ){
-							farbe = JColorChooser.showDialog(
+							Color farbe = JColorChooser.showDialog (
 								/*
 									farbe auswählen, und den Hintergrund des buttons verändern
 								*/
-								null, "Darstellungsfarbe der Kurve", farbeButton.getBackground() );
-							farbeButton.setBackground(farbe);
+								null, Messages.getString("darstellungsTypUI.3"), getColorButton().getBackground() //$NON-NLS-1$
+                            ); 
+							getColorButton().setBackground(farbe);
+							darstellungsTypUI.setColor(farbe);
 						}
 					} );
 		this.fenster.add(this.bottomPanel);
 			this.bottomPanel.add(this.okKnopf);
 				this.okKnopf.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
-						if (wedabecha.getKurve(tabellenNummer).isset()){
-							wedabecha.getKurve(tabellenNummer).setKurvenStilIndex(
-								stilCombo.getSelectedIndex()
+						if (wedabecha.getKurve(getTableNumber()).isset()){
+							wedabecha.getKurve(getTableNumber()).setKurvenStilIndex(
+								getStyleComboBox().getSelectedIndex()
 							);
 
- 							wedabecha.getKurve(tabellenNummer).setFarbe(farbe);
+ 							wedabecha.getKurve(getTableNumber()).setFarbe(getColor());
 
 							setVisible(false);
 						} // if
@@ -119,7 +152,7 @@ class darstellungsTypUI extends JDialog {
 		setLocation(Xposition,Yposition);
 		setResizable(false);
 		setModal(true);
-		setTitle("Darstellungstyp - wedabecha");
+		setTitle(Messages.getString("darstellungsTypUI.4"));  //$NON-NLS-1$
 		setVisible(true);
 
 	} // pack()
