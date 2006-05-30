@@ -1,3 +1,11 @@
+Namensgebung:
+englische Namen für Variablen und Funktionen 
+
+##############################################################################
+
+Berechnungen sollten während des Imports bzw. als Folge des Imports geschehen,
+das entlastet die CPU beim Scrollen.
+
 !!!!!!!!!!!!
 importiereTabelle.definiereDatumUI
 die Möglichkeit ein Datum einzugeben ist da, aber evtl. nicht die beste,
@@ -29,10 +37,6 @@ Grösse, Breite, Titel der Fenster im "Standard"-Bereich der pack()-Methoden
 durchgehen, und ggf. ändern.
 Die ganzen Texte auf Rechtschreibung und Umlaute durchsehen und Umlaute ala
 ae, oe, usw. durch den richtigen Code Ersetzen...
-
-Namensgebung:
-englische Namen für Variablen und Funktionen 
-
 
 ##############################################################################
 
