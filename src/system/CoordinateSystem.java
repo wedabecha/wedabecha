@@ -1,3 +1,4 @@
+package system;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -25,11 +26,13 @@
 
 */
 
+import wedabecha;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Koordinatensystem extends JComponent {
+public class CoordinateSystem extends JComponent {
 
 	/**
 	 * 
@@ -61,7 +64,7 @@ public class Koordinatensystem extends JComponent {
 	private int endDateIndex = 299; // Endwert für den horizontalen Zeichenbereich
 
 	// Konstruktor
-	public Koordinatensystem(){
+	public CoordinateSystem(){
 	
 	}
 

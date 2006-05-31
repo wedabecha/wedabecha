@@ -1,3 +1,4 @@
+package ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -26,12 +27,15 @@
 //Diese Klasse dient zum Aufruf des "Speichern"-Dialoges
 
 
+
 import java.io.File;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
-public class exportiereTabelleUI {
-	public exportiereTabelleUI () {
+import system.toWeda;
+
+public class DataExport {
+	public DataExport () {
 
 			//Tabellennummer abfragen
 			String input = JOptionPane.showInputDialog("Welche Tabelle exportieren (1-5) ?" );

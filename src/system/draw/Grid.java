@@ -1,3 +1,4 @@
+package system.draw;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -24,7 +25,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class zeichneRaster extends JComponent {
+public class Grid extends JComponent {
 	/**
 	 * 
 	 */
@@ -42,7 +43,7 @@ public class zeichneRaster extends JComponent {
 		this.setVisible(sichtbar);
 	}// setVisibility();
 
-	public zeichneRaster(int breite, int hoehe){
+	public Grid(int breite, int hoehe){
 		this.hoehe = hoehe;
 		this.breite = breite;
 		this.setSize(breite, hoehe);

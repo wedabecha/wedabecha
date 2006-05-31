@@ -1,3 +1,4 @@
+package ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -17,20 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de)
-
-*/
 
 import javax.swing.*;
+
+import system.DataImport;
+
 import java.awt.*;
 import java.awt.event.*;
 
 /**
  * 
- * @author dmaphy
+ * 	@author
+ * 		Dominic Hopf (dmaphy at users.berlios.de),
+ * 		Robert Exner (ashrak at users.berlios.de)
+ * 
  * Dialog to get the Dateformat from the User
  * TODO: externalize Strings
  */
@@ -116,7 +117,7 @@ class definiereDatumUI extends JDialog {
 		final JPanel panel4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		final JPanel buttonPanel = new JPanel(new FlowLayout());
 		final JRadioButton konkretRB = new JRadioButton("eines anderen konkreten Datumsformates :");
-		final JComboBox datumCombo = new JComboBox(importiereTabelle.getDatenFormate());
+		final JComboBox datumCombo = new JComboBox(DataImport.getDatenFormate());
 		
 		// Zeile 4 zusammensetzen
 		panel4.add(konkretRB);
@@ -150,18 +151,18 @@ class definiereDatumUI extends JDialog {
 			public void actionPerformed(ActionEvent event){
 				if (spalteCombo.getSelectedIndex() == 0){
 					// wenn das datum in der ersten spalte der ascii-datei steht
-					importiereTabelleUI.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(true);
+					DataImport.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(true);
 				} else {
 					//wenn das datum in der letzten spalte der ascii-datei steht
-					importiereTabelleUI.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(false);
+					DataImport.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(false);
 				} // if() else
 
 				if(inkRB.isSelected()){
-					importiereTabelleUI.tabellen[getTableNumber() - 1].setInkZahlRep(
+					DataImport.tabellen[getTableNumber() - 1].setInkZahlRep(
 						inkZahlCombo.getSelectedItem().toString()
 					);
 				} else if (konkretRB.isSelected())  {
-					importiereTabelleUI.tabellen[getTableNumber() - 1].setDatumsFormatIndex(
+					DataImport.tabellen[getTableNumber() - 1].setDatumsFormatIndex(
 						datumCombo.getSelectedIndex()
 					);
 				} // if() else

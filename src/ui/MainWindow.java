@@ -1,3 +1,4 @@
+package ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -29,20 +30,25 @@
 	dies ist das hauptFenster des Programms
 */
 
+import wedabecha;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import system.CoordinateSystem;
+import system.draw.Grid;
 
-public class hauptFensterUI extends JFrame {
+
+public class MainWindow extends JFrame {
 	/*
 	 * Deklaration von Klassenvariablen
 	 */
 	
 	final static long serialVersionUID = 1;
 	
-	protected static hauptMenuUI hauptMenu = new hauptMenuUI();
+	protected static MenuBar hauptMenu = new MenuBar();
 	protected static JLayeredPane mainPane = new JLayeredPane();
 	protected static JLayeredPane layeredPane = new JLayeredPane();
 	protected static JLayeredPane toolbarPane = new JLayeredPane();
@@ -56,10 +62,10 @@ public class hauptFensterUI extends JFrame {
 	private static int windowWidth = 700;
 	private static int windowHeight = 500;
 
-	protected static toolBarUI toolBar = new toolBarUI(getWindowWidth());
-	protected static zeichneRaster zeichneRaster = new zeichneRaster(windowWidth, windowHeight);
-	protected static Koordinatensystem koordSys = new Koordinatensystem();
-	protected kontextMenuUI kontext = new kontextMenuUI();
+	protected static MainToolBar toolBar = new MainToolBar(getWindowWidth());
+	protected static Grid zeichneRaster = new Grid(windowWidth, windowHeight);
+	protected static CoordinateSystem koordSys = new CoordinateSystem();
+	protected PopupMenu kontext = new PopupMenu();
 
 	// Elemente der GUI um den horizontalen Zeichenbereich festzulegen
 	private JLabel startDateLabel = new JLabel("Start-Datum ");
@@ -93,7 +99,7 @@ public class hauptFensterUI extends JFrame {
 	 */
 
 	// Konstruktor
-	public hauptFensterUI(int breite, int hoehe){
+	public MainWindow(int breite, int hoehe){
 	    setWindowWidth(breite);
 	    setWindowHeight(hoehe);
 		mainPane.setSize(breite, hoehe);
@@ -194,13 +200,13 @@ public class hauptFensterUI extends JFrame {
 		layeredPane.setVisible(true);
 
 		// Raster der neuen ContentPane adden
-		hauptFensterUI.layeredPane.add(zeichneRaster, new Integer(0));
+		MainWindow.layeredPane.add(zeichneRaster, new Integer(0));
 
 		// Koordinatensystem der neuen ContentPane adden
-		hauptFensterUI.layeredPane.add(koordSys, new Integer(1));
+		MainWindow.layeredPane.add(koordSys, new Integer(1));
 
 		// Werkzeugleiste einbinden
-		hauptFensterUI.mainPane.add(toolBar.getToolBar(), JLayeredPane.PALETTE_LAYER);
+		MainWindow.mainPane.add(toolBar.getToolBar(), JLayeredPane.PALETTE_LAYER);
 
 		this.setLocation(Xposition,Yposition);
 		//this.setMinimumSize(new Dimension(this.fensterBreite,this.fensterHoehe));
@@ -224,7 +230,7 @@ public class hauptFensterUI extends JFrame {
 
 
 		// dieser MouseListener sorgt dafür, dass die Textfelder dem Hauptfenster hinzugefügt werden können
-		hauptFensterUI.layeredPane.addMouseListener(new MouseAdapter(){
+		MainWindow.layeredPane.addMouseListener(new MouseAdapter(){
 			public void mouseReleased(MouseEvent me) {
 			    // wenn der ToggleButton in der Toolbar aktiviert ist...
 			    if(toolBar.textGewaehlt()){
@@ -247,7 +253,7 @@ public class hauptFensterUI extends JFrame {
 
 
 		//dieser MouseListener sorgt dafür, dass die Linien im Hauptfenster gezeichnet werden können
-		hauptFensterUI.layeredPane.addMouseListener(new MouseAdapter(){
+		MainWindow.layeredPane.addMouseListener(new MouseAdapter(){
 			private int startX;
 			private int endX;
 			private int startY;
@@ -293,7 +299,7 @@ public class hauptFensterUI extends JFrame {
 
 
 		// dieser MouseListener sorgt dafür, dass die Pfeile im Hauptfenster gezeichnet werden können
-		hauptFensterUI.layeredPane.addMouseListener(new MouseAdapter(){
+		MainWindow.layeredPane.addMouseListener(new MouseAdapter(){
 			private int startX = 0;
 			private int endX = 0;
 			private int startY = 0;
@@ -336,14 +342,14 @@ public class hauptFensterUI extends JFrame {
 
 
 		// Klasse zur dynamischen Größenbestimmung des Frames
-		hauptFensterUI.mainPane.addComponentListener(new ComponentAdapter(){
+		MainWindow.mainPane.addComponentListener(new ComponentAdapter(){
 			public void componentResized(ComponentEvent event){
 
 				if(event.getID() == ComponentEvent.COMPONENT_RESIZED){
 					JLayeredPane layeredPane = (JLayeredPane) event.getComponent();
 					d = layeredPane.getSize();
 					zeichneRaster.setGroesse(d.width, d.height);
-					hauptFensterUI.setGroesse(d.width, d.height);
+					MainWindow.setGroesse(d.width, d.height);
 					koordSys.setGroesse(d.width, d.height);
 					startDateSpinner.setLocation(new Point(d.width - 250,35));
 					startDateLabel.setLocation(new Point(d.width - 340,35));

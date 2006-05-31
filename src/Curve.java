@@ -17,25 +17,30 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Martin Müller (mrtnmueller at users.berlios.de),
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de),
-		Matthias Tylkowski (micron at users.berlios.de)
-
-	Dies ist eine der "Basisklassen" für wedabecha.
-	Hier werden alle Eigenschaften und Informationen einer Kurve gespeichert.
-	Die meisten UI's verändern diese Eigenschaften.
-	Damit können dann weitere Berechnungen angestellt werden,
-	um die letztendliche grafische Darstellung zu berechnen und auf dem Bildschirm
-	auszugeben...
-*/
-
 import java.util.ArrayList;
 import java.awt.*;
 
-public class kurve {
+import system.CalculateAverages;
+import system.draw.zeichneAktienKurve;
+import system.draw.zeichneLinienKurve;
+import ui.MainWindow;
+
+/**
+ * @author
+ * Martin Müller (mrtnmueller at users.berlios.de),
+ * Dominic Hopf (dmaphy at users.berlios.de),
+ * Robert Exner (ashrak at users.berlios.de),
+ * Matthias Tylkowski (micron at users.berlios.de)
+ * 
+ * Dies ist eine der "Basisklassen" für wedabecha.
+ * Hier werden alle Eigenschaften und Informationen einer Kurve gespeichert.
+ * Die meisten UI's verändern diese Eigenschaften.
+ * Damit können dann weitere Berechnungen angestellt werden,
+ * um die letztendliche grafische Darstellung zu berechnen und auf dem Bildschirm
+ * auszugeben...
+ * */
+
+public class Curve {
 	// Klassenvariablen
 
 	// Diese Liste wird von der DarstellungsTypUI für die JComboBox benötigt
@@ -57,9 +62,13 @@ public class kurve {
 	// Objekt-Variablen
 	// fünf verschiedene Kurven, jede hat eine Nummer
 	private int nummer;
-
-	public kurve (int nummer){
-		this.nummer = nummer;
+	
+	/**
+	 * Konstruktor
+	 * @param id die ID der Kurve.
+	 */
+	public Curve (int id) {
+		this.nummer = id;
 	} // kurve()
 
 	/*
@@ -225,10 +234,10 @@ public class kurve {
 
 
 	protected void zeichneKurve(){
-		berechneMittelwerte berechneMittelwerte = new berechneMittelwerte(this.getWerte(), this.getDaten());
+		CalculateAverages berechneMittelwerte = new CalculateAverages(this.getWerte(), this.getDaten());
 		switch(this.getKurvenStilIndex()){
 		    case 0:
-				hauptFensterUI.layeredPane.add(
+				MainWindow.layeredPane.add(
 					zeichneAktienKurve = new zeichneAktienKurve(
 						this.getWerte(),
 						this.getFarbe()
@@ -237,7 +246,7 @@ public class kurve {
 				);
 			    break;
 		    case 1:
-				hauptFensterUI.layeredPane.add(
+				MainWindow.layeredPane.add(
 					zeichneLinienKurve = new zeichneLinienKurve(
 						berechneMittelwerte.berechneTagesMittel(),
 						this.getFarbe(),
@@ -247,7 +256,7 @@ public class kurve {
 				);
 			    break;
 		    case 2:
-				hauptFensterUI.layeredPane.add(
+				MainWindow.layeredPane.add(
 					zeichneLinienKurve = new zeichneLinienKurve(
 						berechneMittelwerte.berechneWochenMittel(),
 						this.getFarbe(),
@@ -257,7 +266,7 @@ public class kurve {
 				);
 			    break;
 		    case 3:
-				hauptFensterUI.layeredPane.add(
+				MainWindow.layeredPane.add(
 					zeichneLinienKurve = new zeichneLinienKurve(
 						berechneMittelwerte.berechneMonatsMittel(),
 						this.getFarbe(),
@@ -267,7 +276,7 @@ public class kurve {
 				);
 			    break;
 		    case 4:
-				hauptFensterUI.layeredPane.add(
+				MainWindow.layeredPane.add(
 					zeichneLinienKurve = new zeichneLinienKurve(
 						berechneMittelwerte.berechneJahresMittel(),
 						this.getFarbe(),

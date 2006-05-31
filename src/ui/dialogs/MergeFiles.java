@@ -1,3 +1,4 @@
+package ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -28,7 +29,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class verknuepfeTabellenUI extends JDialog{
+public class MergeFiles extends JDialog{
 	/**
 	 * 
 	 */
@@ -63,7 +64,7 @@ public class verknuepfeTabellenUI extends JDialog{
 		private JTextField speicherpfad = new JTextField(20);
 
 
-	public verknuepfeTabellenUI(){
+	public MergeFiles(){
 		this.pack();
 	} // verknuepfeTabellenUI()
 

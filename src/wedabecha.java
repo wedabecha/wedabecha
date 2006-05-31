@@ -17,37 +17,59 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+import java.util.Arrays;
+
+import ui.hauptFensterUI;
 /**
-	@author Dominic Hopf (dmaphy at users.berlios.de)
-*/
+ * 	@author Dominic Hopf (dmaphy at users.berlios.de)
+ *  TODO: curve zu einer dynamisch anpassbaren Liste (Array) machen.
+ */
 
 /*
-	hauptklasse die als programm aufgerufen wird.
-	das programm soll fünf kurven zeichnen können.
+	Hauptklasse die als Programm aufgerufen wird.
+	Das Programm soll fünf Kurven zeichnen können.
 */
 public class wedabecha {
-	private static kurve kurve[] = {
-		new kurve(1),
-		new kurve(2),
-		new kurve(3),
-		new kurve(4),
-		new kurve(5)
-	};
-
-	protected static kurve getKurve(int nummer){
-		/**
-			parameter nummer muss zahl von 1 bis 5 sein
-		*/
-		return kurve[nummer - 1];
+	private kurve curve[];
+	
+	/**
+	 * @param number Die Nummer der abzurufenden Kurve
+	 * @return Die Kurve
+	 */
+	protected kurve getCurve(int number){
+		return this.curve[number - 1];
 	} // getKurve()
+	
+	/**
+	 * @return Die ID der Kurve
+	 */
+	protected int addCurve() {
+		this.curve[this.curve.length] = new kurve(this.curve.length);
+		return this.curve.length;
+	} // addCurve
+	
+	/**
+	 * TODO: Methode mit Funktion hinterlegen
+	 * @param id die ID der Kurve, die gelöscht werden soll.
+	 */
+	protected void removeCurve(int id) {
+		true;
+	}
 
-	// konstruktor
+	// Konstruktor
+	/**
+	 * Konstruktor, erwartet keine weiteren Parameter
+	 */
 	public wedabecha(){
 		new hauptFensterUI(700, 500);
-	} //wedabecha()
-
+	} // wedabecha()
+	
+	/**
+	 * Einstiegspunkt zum Starten des Programms.
+	 * @param args
+	 */
 	public static void main(String args[]){
-		//einstiegspunkt für das programm
+		// Einstiegspunkt für das Programm
 		new wedabecha();
 	} // main(String args[])
 } // wedabecha

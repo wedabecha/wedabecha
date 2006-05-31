@@ -1,3 +1,4 @@
+package ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -23,11 +24,13 @@
 		Matthias Tylkowski (micron at users.berlios.de)
 */
 
+import wedabecha;
+
 import java.awt.event.*;
 import javax.swing.*;
 
 
-public class toolBarUI /*implements ActionListener*/{
+public class MainToolBar{
 	protected JToolBar toolBar = new JToolBar("Werkzeugleiste");
 		private ImageIcon oeffnen = new ImageIcon("Images/oeffnen.gif");
 			private JButton oeffnenbutton = new JButton(oeffnen);
@@ -62,7 +65,7 @@ public class toolBarUI /*implements ActionListener*/{
 
 
 	// Konstruktor
-	public toolBarUI(int breite){
+	public MainToolBar(int breite){
 		this.pack();
 		this.toolBar.setSize(breite, 35);
 	} // toolBarUI()

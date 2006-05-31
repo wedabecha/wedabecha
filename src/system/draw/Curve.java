@@ -1,3 +1,4 @@
+package system.draw;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -21,9 +22,11 @@
 		Matthias Tylkowski (micron at users.berlios.de)
 */
 
-import java.awt.Graphics;
 import java.awt.*;
 import javax.swing.JComponent;
+
+import ui.MainWindow;
+
 import java.util.ArrayList;
 
 class zeichneLinienKurve extends JComponent {
@@ -50,7 +53,7 @@ class zeichneLinienKurve extends JComponent {
 	public zeichneLinienKurve(ArrayList werte, Color farbe, ArrayList ausgangsWerte) {
 		this.farbe = farbe;
 		this.werte = werte;
-		this.setSize(hauptFensterUI.getWindowWidth() - 30, hauptFensterUI.getWindowHeight());
+		this.setSize(MainWindow.getWindowWidth() - 30, MainWindow.getWindowHeight());
 		this.ausgangsWerte = ausgangsWerte;
 		this.setVisible(false);
 	} // zeichneKurve()
@@ -75,7 +78,7 @@ class zeichneLinienKurve extends JComponent {
 			double tempArray = ((Double)this.werte.get(i)).doubleValue();
 			this.max = Math.max(this.max, tempArray);
  		} // for
-		this.multiplikator =	(hauptFensterUI.layeredPane.getHeight() - 100) /
+		this.multiplikator =	(MainWindow.layeredPane.getHeight() - 100) /
 								this.max;
 	} // getMax()
 
@@ -89,11 +92,11 @@ class zeichneLinienKurve extends JComponent {
 		for(int i = dateBeginIndex / (this.abstand / 2); i < dateEndIndex / (this.abstand / 2); i ++){
 			kurve.setColor(this.farbe);
 			kurve.drawLine(	zaehler,
-							(hauptFensterUI.layeredPane.getHeight() -
+							(MainWindow.layeredPane.getHeight() -
 							25) - (int)(this.multiplikator *
 								((Double)this.werte.get(i)).doubleValue()),
 							zaehler += this.abstand,
-							(hauptFensterUI.layeredPane.getHeight() -
+							(MainWindow.layeredPane.getHeight() -
 							25) - (int)(this.multiplikator *
 								((Double)this.werte.get(i+1)).doubleValue())
 			); // drawLine
@@ -131,7 +134,7 @@ class zeichneAktienKurve extends JComponent {
 	public zeichneAktienKurve(ArrayList werte, Color farbe){
 		this.werte = werte;
 		this.farbe = farbe;
-		this.setSize(hauptFensterUI.getWindowWidth(),  hauptFensterUI.getWindowHeight());
+		this.setSize(MainWindow.getWindowWidth(),  MainWindow.getWindowHeight());
 		this.setVisible(false);
 	}// zeichneAktienKurve
 
@@ -159,7 +162,7 @@ class zeichneAktienKurve extends JComponent {
 				this.max = Math.max(this.max, tempArray[j]);
 			} // for
  		} // for
-		this.multiplikator =	(hauptFensterUI.layeredPane.getHeight() - 100) /
+		this.multiplikator =	(MainWindow.layeredPane.getHeight() - 100) /
 								this.max;
 	} // getMax
 
@@ -180,31 +183,31 @@ class zeichneAktienKurve extends JComponent {
 			this.tief = (int)this.kurse[3];
 
 			kurve.drawLine(zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.start),
 				zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.hoch)
 			);
 			kurve.drawLine(zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.hoch),
 				zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.tief)
 			);
 			kurve.drawLine(zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.tief),
 				zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.ende)
 			);
 			kurve.drawLine(zaehler,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.ende),
 				zaehler + this.abstand,
-				hauptFensterUI.layeredPane.getHeight() - 25 -
+				MainWindow.layeredPane.getHeight() - 25 -
 				(int)(this.multiplikator * this.ende)
 			);
 			zaehler += this.abstand;

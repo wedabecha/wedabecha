@@ -1,3 +1,4 @@
+package ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -25,17 +26,20 @@
 // Diese Klasse dient zum Aufruf des "Speichern"-Dialoges
 
 
+
 import java.io.File;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
+import system.GraphicExport;
 
-public class exportiereGrafikUI {
+
+public class GraphicExport {
 	//Konstruktor
-	private exportiereGrafik export = new exportiereGrafik();
+	private GraphicExport export = new GraphicExport();
 
 
-	public exportiereGrafikUI () {
+	public GraphicExport () {
 
 		try{
 			// erzeugen eines neuen Objekts "fc"

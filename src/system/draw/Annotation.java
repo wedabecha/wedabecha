@@ -1,3 +1,4 @@
+package system.draw;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -24,10 +25,13 @@
 */
 
 import javax.swing.*;
+
+import ui.MainWindow;
+
 import java.awt.*;
 import java.lang.Math;
 
-public class zeichneAnnotation extends JComponent{
+public class Annotation extends JComponent{
 
 	/**
 	 * 
@@ -54,7 +58,7 @@ class zeichneLinie extends JComponent{
 		startY = startYP;
 		endX = endXP;
 		endY = endYP;
-		this.setSize(hauptFensterUI.layeredPane.getWidth(), hauptFensterUI.layeredPane.getHeight());
+		this.setSize(MainWindow.layeredPane.getWidth(), MainWindow.layeredPane.getHeight());
 	}// zeichneLinie()
 
 	protected void setGroesse(int breite, int hoehe){
@@ -88,7 +92,7 @@ class zeichnePfeil extends JComponent{
 		startY = startYP;
 		endX = endXP;
 		endY = endYP;
-		this.setSize(hauptFensterUI.layeredPane.getWidth(), hauptFensterUI.layeredPane.getHeight());
+		this.setSize(MainWindow.layeredPane.getWidth(), MainWindow.layeredPane.getHeight());
 	}// zeichnePfeil()
 
 
@@ -151,7 +155,7 @@ class zeichneText extends JComponent{
 		text = textP;
 		startX = startXP;
 		startY = startYP;
-		this.setSize(hauptFensterUI.layeredPane.getWidth(), hauptFensterUI.layeredPane.getHeight());
+		this.setSize(MainWindow.layeredPane.getWidth(), MainWindow.layeredPane.getHeight());
     }// zeichneText()
 
 

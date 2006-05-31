@@ -1,3 +1,4 @@
+package ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -25,11 +26,17 @@
 
 // in dieser Klasse brauchen wir nur Swing, da sie
 // von der hauptFensterUI aus weiterverwendet wird
+import wedabecha;
+
 import javax.swing.*;
+
+import ui.dialogs.CurveType;
+import ui.dialogs.About;
+
 import java.awt.event.*;
 
 
-public class hauptMenuUI {
+public class MenuBar {
 	// alle Bestandteile des Menüs als Klassenatrribute deklarieren
 	private JMenuBar mainMenuBar = new JMenuBar();
 		private JMenu dateiMenu = new JMenu("Datei");
@@ -114,7 +121,7 @@ public class hauptMenuUI {
 			private JMenuItem aboutMenuItem = new JMenuItem("\u00dcber");
 
 	// konstruktor
-	public hauptMenuUI(){
+	public MenuBar(){
 		this.pack();
 	} // hauptMenuUI
 
@@ -167,16 +174,16 @@ public class hauptMenuUI {
 										if(wedabecha.getKurve(i).isset()){
 
 											try{
-												hauptFensterUI.layeredPane.remove(
-													hauptFensterUI.layeredPane.getIndexOf(
+												MainWindow.layeredPane.remove(
+													MainWindow.layeredPane.getIndexOf(
 														wedabecha.getKurve(i).zeichneAktienKurve
 													)
 												);
 
 											} catch (ArrayIndexOutOfBoundsException except){
 												try{
-													hauptFensterUI.layeredPane.remove(
-														hauptFensterUI.layeredPane.getIndexOf(
+													MainWindow.layeredPane.remove(
+														MainWindow.layeredPane.getIndexOf(
 															wedabecha.getKurve(i).zeichneLinienKurve
 														)
 													);
@@ -188,31 +195,31 @@ public class hauptMenuUI {
 											} // try
 
 
-											hauptFensterUI.layeredPane.repaint();
+											MainWindow.layeredPane.repaint();
 
 											if(wedabecha.getKurve(1).isset()){
 												wedabecha.getKurve(1).zeichneKurve();
-												hauptFensterUI.toolBar.setKurve1Button();
+												MainWindow.toolBar.setKurve1Button();
 											}//if
 
 											if(wedabecha.getKurve(2).isset()){
 												wedabecha.getKurve(2).zeichneKurve();
-												hauptFensterUI.toolBar.setKurve2Button();
+												MainWindow.toolBar.setKurve2Button();
 											}//if
 
 											if(wedabecha.getKurve(3).isset()){
 												wedabecha.getKurve(3).zeichneKurve();
-												hauptFensterUI.toolBar.setKurve3Button();
+												MainWindow.toolBar.setKurve3Button();
 											}//if
 
 											if(wedabecha.getKurve(4).isset()){
 												wedabecha.getKurve(4).zeichneKurve();
-												hauptFensterUI.toolBar.setKurve4Button();
+												MainWindow.toolBar.setKurve4Button();
 											}//if
 
 											if(wedabecha.getKurve(5).isset()){
 												wedabecha.getKurve(5).zeichneKurve();
-												hauptFensterUI.toolBar.setKurve5Button();
+												MainWindow.toolBar.setKurve5Button();
 											}//if
 
 											datenLaengen[i] = wedabecha.getKurve(i).getDaten().size();
@@ -220,10 +227,10 @@ public class hauptMenuUI {
 										} // if
 
 										java.util.Arrays.sort(datenLaengen);
-										hauptFensterUI.maxDate = datenLaengen[4];
+										MainWindow.maxDate = datenLaengen[4];
 									} // for
 
-									hauptFensterUI.layeredPane.repaint();
+									MainWindow.layeredPane.repaint();
 								} // actionPerformed()
 							} // ActionListener()
 						);
@@ -232,31 +239,31 @@ public class hauptMenuUI {
 
 			this.kurveDarstellungMenuItem[0].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					new darstellungsTypUI(1);
+					new CurveType(1);
 				}
 			});
 
 			this.kurveDarstellungMenuItem[1].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					new darstellungsTypUI(2);
+					new CurveType(2);
 				}
 			});
 
 			this.kurveDarstellungMenuItem[2].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					new darstellungsTypUI(3);
+					new CurveType(3);
 				}
 			});
 
 			this.kurveDarstellungMenuItem[3].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					new darstellungsTypUI(4);
+					new CurveType(4);
 				}
 			});
 
 			this.kurveDarstellungMenuItem[4].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					new darstellungsTypUI(5);
+					new CurveType(5);
 				}
 			});
 
@@ -296,7 +303,7 @@ public class hauptMenuUI {
 			this.hilfeMenu.add(this.aboutMenuItem);
 				this.aboutMenuItem.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
-						new ueber();
+						new About();
 					}
 				});
 		this.mainMenuBar.add(this.hilfeMenu);

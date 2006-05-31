@@ -1,3 +1,4 @@
+package system;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -17,19 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de)
-
-	Diese Datei enthält die Hintergrundfunktionen für importiereTabelle
-*/
-
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
 
-public class importiereTabelle {
+/**
+ * @author
+ * 		Dominic Hopf (dmaphy at users.berlios.de),
+ * 		Robert Exner (ashrak at users.berlios.de)
+ * 
+ * Diese Datei enthält die Hintergrundfunktionen für importiereTabelle
+ */
+public class DataImport {
 
 	// enthält nur den Namen der Datei
 	private  String importName;
@@ -51,11 +51,11 @@ public class importiereTabelle {
 	private static String datenFormate[] = {"YYYY-MM-DD","DD.MM.YYYY","MM.DD.YYYY","DD/MM/YYYY","MM/DD/YYYY"};
 
 	// wird von definiereDatumUI bei klick auf [OK] gesetzt
-	private static  int datumsFormatIndex;
+	private static int datumsFormatIndex;
 
 	// erstellt ein Array mit dem Datum
 	private static  ArrayList datumAL = new ArrayList();
-	//private  ListIterator datumALIt = datumAL.listIterator();
+	// private ListIterator datumALIt = datumAL.listIterator();
 
 
 	// falls das datum nur eine inkrementierende Zahl ist,
@@ -66,17 +66,16 @@ public class importiereTabelle {
 	private  boolean speichern;
 
 
-
 	/*
 		im folgenden alle nötigen get-und set-methoden, um die variabeln zu verändern
 	*/
 	protected  void setImportName(String name){
-		importName = name;
+		this.importName = name;
 	} // setImportName(String name)
 
 
 	protected  String getImportName(){
-		return importName;
+		return this.importName;
 	} // getImportName()
 
 
@@ -121,31 +120,34 @@ public class importiereTabelle {
 
 
 	protected void setInkZahlRep(String blo){
-		inkZahlRep = blo;
+		this.inkZahlRep = blo;
 	} // setInkZahlRep(boolean blo)
 
 
 	protected String getInkZahlRep(){
-		return inkZahlRep;
+		return this.inkZahlRep;
 	} // getInkZahlRep()
 
 
-	protected void setSpeichern(boolean speichern){
-		this.speichern = speichern;
+	protected void setSpeichern(boolean save){
+		this.speichern = save;
 	} // setSpeichern()
 
 
 	protected boolean isSpeichern(){
-		return speichern;
+		return this.speichern;
 	} // isSpeichern()
 
-
-	public  String zurZeichenKette(){
+	
+	/**
+	 * @return Daten zum importieren der Tabelle als Zeichenkette
+	 */
+	public String zurZeichenKette(){
 		String toString = new String(
-			"importName: \t\t\t" + importName +
+			"importName: \t\t\t" + getImportName() +
 			",\n importPfad: \t\t\t" + importPfad +
 			",\n isDatumsPosFirstColumn: \t" + isDatumsPosFirstColumn +
-			",\n inkZahlRep \t\t\t" + inkZahlRep
+			",\n inkZahlRep \t\t\t" + getInkZahlRep()
 		);
 
 		return toString;
@@ -153,11 +155,14 @@ public class importiereTabelle {
 
 
 	// Destruktor
-	protected  void zerstoeren(){
+	protected void zerstoeren(){
 		importPfad = "";
 	} // finalize()
 
-
+	/**
+	 * 
+	 * @return Daten aus der importierten Datei als ArrayList
+	 */
 	public static ArrayList getWerte(){
 
 		// liefert ausschliesslich die zu verarbeitenden Daten zurück.
@@ -192,7 +197,7 @@ public class importiereTabelle {
 				//debug = "";
 
 				zeileL = zeile.split( Character.toString(
-						importiereTabelle.trennzeichenStr[trennzeichenIndex].charAt(0)
+						DataImport.trennzeichenStr[trennzeichenIndex].charAt(0)
 					)
 				);
 
@@ -243,13 +248,12 @@ public class importiereTabelle {
 
 	} // getDaten()
 
-
-	public static  ArrayList getDaten(){
-		/**
-		liefert eine Liste von Strings mit dem Datum für die jeweilige Zeile zurück.
-		Die Liste ist genauso lang wie die, die getDaten zurückliefert
-		*/
-
+	
+	/**
+	 * 	@return eine Liste von Strings mit dem Datum für die jeweilige Zeile zurück.
+	 * Die Liste ist genauso lang wie die, die getDaten zurückliefert
+	 */
+	public static ArrayList getDaten(){
 		String splittedDate[];
 		String tempDatum = "";
 		ArrayList ergebnis =  new ArrayList();

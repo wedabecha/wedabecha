@@ -1,3 +1,5 @@
+
+
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -11,11 +13,7 @@ public class Messages {
     private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
             .getBundle(BUNDLE_NAME);
     
-    /**
-     * Konstruktor, hat bisher noch keine Aufgaben
-     *
-     */
-    private Messages() {
+    private Messages() { /** Konstruktor, hat bisher noch keine Aufgaben */
     
     }
     

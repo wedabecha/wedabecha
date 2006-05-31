@@ -1,3 +1,4 @@
+package system;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -26,7 +27,7 @@
 
 import java.util.*;
 
-public class berechneMittelwerte {
+public class CalculateAverages {
 
     private ArrayList werte;
     private ArrayList datum;
@@ -46,7 +47,7 @@ public class berechneMittelwerte {
 	private double[] statArray;
 	private double zeilenSumme = 0;
 
-    public berechneMittelwerte(ArrayList werte, ArrayList datum){
+    public CalculateAverages(ArrayList werte, ArrayList datum){
 
 	this.datum = datum;
 	this.werte = werte;

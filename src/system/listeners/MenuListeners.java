@@ -1,3 +1,4 @@
+package system.listeners;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -30,11 +31,18 @@
 
 import java.awt.event.*;
 
+import system.WedaFile;
+import ui.MainWindow;
+import ui.dialogs.Documentation;
+import ui.dialogs.GraphicExport;
+import ui.dialogs.DataExport;
+import ui.dialogs.DataImport;
+
 
 class importiereTabelleListener implements ActionListener {
 	// für den MenuPunkt [Datei]->[Tabelle importieren]
 	public void actionPerformed(ActionEvent event){
-		new importiereTabelleUI();
+		new DataImport();
 	} // actionPerformed(ActionEvent event)
 } // importiereTabelleListener
 
@@ -42,7 +50,7 @@ class importiereTabelleListener implements ActionListener {
 class hauptMenuKurzAnleitungListener implements ActionListener {
 	// für den MenuPunkt [Hilfe]->[KurzAnleitung]
 	public void actionPerformed(ActionEvent event){
-		new dokuUI("Kurzanleitung");
+		new Documentation("Kurzanleitung");
 	} // actionPerformed(ActionEvent event)
 } // hauptMenuKurzAnleitungListener
 
@@ -50,7 +58,7 @@ class hauptMenuKurzAnleitungListener implements ActionListener {
 class hauptMenuDokumentationListener implements ActionListener {
 	// für den MenuPunkt [Hilfe]->Dokumentation
 	public void actionPerformed(ActionEvent event){
-		new dokuUI("Dokumentation");
+		new Documentation("Dokumentation");
 	} // actionPerformed(ActionEvent event)
 } // hauptMenuDokumentationListener
 
@@ -84,7 +92,7 @@ class hauptMenuDokumentationListener implements ActionListener {
 class exportiereTabelleListener implements ActionListener {
 	// für den MenuPunkt [Datei]->Tabelle Exportieren
 	public void actionPerformed(ActionEvent event){
-		new exportiereTabelleUI();
+		new DataExport();
 	} // actionPerformed(ActionEvent event)
 } // exportiereTabellenListener
 
@@ -92,24 +100,24 @@ class exportiereTabelleListener implements ActionListener {
 class exportiereGrafikListener implements ActionListener {
 	// für den MenuPunkt [Datei]->Grafik Exportieren
 	public void actionPerformed(ActionEvent event){
-		new exportiereGrafikUI();
+		new GraphicExport();
 	} // actionPerformed(ActionEvent event)
 } // exportiereGrafikListener
 
 class oeffnenListener implements ActionListener {
 	// für den MenuPunkt [Datei]->Öffnen
 	public void actionPerformed(ActionEvent event){
-		new openWeda();
+		new WedaFile();
 	} // actionPerformed(ActionEvent event)
 } // oeffnenListener
 
 
 class gitterButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-		if(hauptFensterUI.toolBar.gitterGewaehlt()){
-		    hauptFensterUI.zeichneRaster.setVisibility(true);
+		if(MainWindow.toolBar.gitterGewaehlt()){
+		    MainWindow.zeichneRaster.setVisibility(true);
 		} else {
-		    hauptFensterUI.zeichneRaster.setVisibility(false);
+		    MainWindow.zeichneRaster.setVisibility(false);
 		}// if
 	}// actionPerformed
 }// gitterButtonListener

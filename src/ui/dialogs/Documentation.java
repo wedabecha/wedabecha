@@ -1,3 +1,4 @@
+package ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1			            *
  *                                                                          *
@@ -35,7 +36,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.URL;
 
-public class dokuUI extends JFrame {
+public class Documentation extends JFrame {
 	final static long serialVersionUID = 1;
 	
     private JEditorPane doku = new JEditorPane();
@@ -43,7 +44,7 @@ public class dokuUI extends JFrame {
 //    private String text; // wo wird diese Variable benutzt? oO
     File path;
 
-    public dokuUI(String title) {
+    public Documentation(String title) {
 		/*
 			Der Konstruktor bekommt entweder "Dokumentation" oder "Kurz-
 			anleitung" als String übergeben und setzt den jeweiligen Pfad

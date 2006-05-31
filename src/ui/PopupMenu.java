@@ -1,3 +1,4 @@
+package ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -24,7 +25,7 @@
 import javax.swing.*;
 
 
-public class kontextMenuUI extends JComponent {
+public class PopupMenu extends JComponent {
 	/**
 	 * 
 	 */
@@ -44,7 +45,7 @@ public class kontextMenuUI extends JComponent {
 
 
 	// konstruktor
-	public kontextMenuUI(){
+	public PopupMenu(){
 		this.pack();
 	} // kontextMenuUI()
 

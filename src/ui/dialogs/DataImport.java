@@ -17,29 +17,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de)
-*/
+package ui.dialogs;
+
+// Imports
+import .Messages;
+import .wedabecha;
 
 import javax.swing.*;
+
+import system.DataImport;
+import system.toWeda;
+import ui.MainWindow;
+
 import java.awt.*;
 import java.awt.event.*;
 
-class importiereTabelleUI extends JDialog  {
+/**
+ * @author
+ * Dominic Hopf (dmaphy at users.berlios.de),
+ * Robert Exner (ashrak at users.berlios.de)
+ */
+public class DataImport extends JDialog  {
 	/*
 		die bestandteile des dialogs erzeugen
 		ACHTUNG!!! anschauen des Codes kann zu epileptischen Anfällen führen!!!
 		daher nicht zu schnell durch den Code scrollen!!!
-
 	*/
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private Container importDialog = getContentPane();
+
 	private JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JPanel topPanel = new JPanel(new GridLayout(5,1));
 	private JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -51,17 +57,17 @@ class importiereTabelleUI extends JDialog  {
 	private JPanel LTzeile4 = new JPanel(new FlowLayout());
 	private JPanel LTzeile5 = new JPanel(new FlowLayout());
 
-	private JLabel tabelle1Label = new JLabel("Tabelle 1 :");
-	private JLabel tabelle2Label = new JLabel("Tabelle 2 :");
-	private JLabel tabelle3Label = new JLabel("Tabelle 3 :");
-	private JLabel tabelle4Label = new JLabel("Tabelle 4 :");
-	private JLabel tabelle5Label = new JLabel("Tabelle 5 :");
+	private JLabel tabelle1Label = new JLabel(Messages.getString("importiereTabelleUI.0")); //$NON-NLS-1$
+	private JLabel tabelle2Label = new JLabel(Messages.getString("importiereTabelleUI.1")); //$NON-NLS-1$
+	private JLabel tabelle3Label = new JLabel(Messages.getString("importiereTabelleUI.2")); //$NON-NLS-1$
+	private JLabel tabelle4Label = new JLabel(Messages.getString("importiereTabelleUI.3")); //$NON-NLS-1$
+	private JLabel tabelle5Label = new JLabel(Messages.getString("importiereTabelleUI.4")); //$NON-NLS-1$
 
-	protected static JButton oeffneTabelle1 = new JButton("\u00D6ffnen");
-	protected static JButton oeffneTabelle2 = new JButton("\u00D6ffnen");
-	protected static JButton oeffneTabelle3 = new JButton("\u00D6ffnen");
-	protected static JButton oeffneTabelle4 = new JButton("\u00D6ffnen");
-	protected static JButton oeffneTabelle5 = new JButton("\u00D6ffnen");
+	protected static JButton oeffneTabelle1 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
+	protected static JButton oeffneTabelle2 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
+	protected static JButton oeffneTabelle3 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
+	protected static JButton oeffneTabelle4 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
+	protected static JButton oeffneTabelle5 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
 
 	private static JTextField pfadTabelle1 = new JTextField(20);
 	private static JTextField pfadTabelle2 = new JTextField(20);
@@ -72,46 +78,53 @@ class importiereTabelleUI extends JDialog  {
 	// mit einer Liste von Checkboxen kann leichter per schleife abgefragt werden
 	// welche nun gesetzt is und welche nich
 	protected static JCheckBox speicherTabelle[] = {
-		new JCheckBox("Speichern"),
-		new JCheckBox("Speichern"),
-		new JCheckBox("Speichern"),
-		new JCheckBox("Speichern"),
-		new JCheckBox("Speichern")
+		new JCheckBox(Messages.getString("importiereTabelleUI.6")), //$NON-NLS-1$
+		new JCheckBox(Messages.getString("importiereTabelleUI.6")), //$NON-NLS-1$
+		new JCheckBox(Messages.getString("importiereTabelleUI.6")), //$NON-NLS-1$
+		new JCheckBox(Messages.getString("importiereTabelleUI.6")), //$NON-NLS-1$
+		new JCheckBox(Messages.getString("importiereTabelleUI.6")) //$NON-NLS-1$
 	};
 
-	protected static JButton darstellungsTypButton1 = new JButton("Darstellung");
-	protected static JButton darstellungsTypButton2 = new JButton("Darstellung");
-	protected static JButton darstellungsTypButton3 = new JButton("Darstellung");
-	protected static JButton darstellungsTypButton4 = new JButton("Darstellung");
-	protected static JButton darstellungsTypButton5 = new JButton("Darstellung");
+	protected static JButton darstellungsTypButton1 = new JButton(Messages.getString("importiereTabelleUI.7")); //$NON-NLS-1$
+	protected static JButton darstellungsTypButton2 = new JButton(Messages.getString("importiereTabelleUI.7")); //$NON-NLS-1$
+	protected static JButton darstellungsTypButton3 = new JButton(Messages.getString("importiereTabelleUI.7")); //$NON-NLS-1$
+	protected static JButton darstellungsTypButton4 = new JButton(Messages.getString("importiereTabelleUI.7")); //$NON-NLS-1$
+	protected static JButton darstellungsTypButton5 = new JButton(Messages.getString("importiereTabelleUI.7")); //$NON-NLS-1$
 
 	// für fünf verschiedene Kurven brauchen wir fünf verschiedene Tabellen
-	protected static importiereTabelle tabellen[] = {
-		new importiereTabelle(),
-		new importiereTabelle(),
-		new importiereTabelle(),
-		new importiereTabelle(),
-		new importiereTabelle()
+	protected static DataImport tabellen[] = {
+		new DataImport(),
+		new DataImport(),
+		new DataImport(),
+		new DataImport(),
+		new DataImport()
 	};
 
 
 	// objekte unten
-	private JButton okKnopf = new JButton("OK");
-	private JButton abbrechenKnopf = new JButton("Abbrechen");
+	private JButton okKnopf = new JButton(Messages.getString("importiereTabelleUI.8")); //$NON-NLS-1$
+	private JButton abbrechenKnopf = new JButton(Messages.getString("importiereTabelleUI.9")); //$NON-NLS-1$
 
 
 	// konstruktor
-	public importiereTabelleUI(){
+	/**
+	 * Konstruktor, erwartet zur Zeit keine Parameter
+	 */
+	public DataImport(){
 		this.pack();
 	} // importiereTabelleUI()
 
-
+	
+	/**
+	 * Setzt den Dialog zusammen.
+	 */
+	@Override
 	public void pack(){
 		// pack() setzt das dialogfeld zusammen
 		// zuerst die grundstruktur
 		this.mainPanel.add(this.topPanel);
 		this.mainPanel.add(this.bottomPanel);
-		this.importDialog.add(this.mainPanel);
+		this.getContentPane().add(this.mainPanel);
 
 		// das Panel links oben, enthaelt die meisten Objekte
 		// zeile 1
@@ -230,21 +243,21 @@ class importiereTabelleUI extends JDialog  {
 
 						if(wedabecha.getKurve(i).isset()){
 							wedabecha.getKurve(i).zeichneKurve();
-							hauptFensterUI.toolBar.setKurve1Button();
+							MainWindow.toolBar.setKurve1Button();
 							datenLaengen[i] = wedabecha.getKurve(i).getDaten().size();
 						} // if
 
 						if (speicherTabelle[i - 1].isSelected()){
-							String name[] = tabellen[i - 1].getImportName().split("\\.");
-							toWeda.writeFile("../daten/" + name[0] + ".weda",i);
+							String name[] = tabellen[i - 1].getImportName().split("\\."); //$NON-NLS-1$
+							toWeda.writeFile("../daten/" + name[0] + ".weda",i); //$NON-NLS-1$ //$NON-NLS-2$
 						} // if
 					} // for
 
 					java.util.Arrays.sort(datenLaengen);
-					hauptFensterUI.maxDate = datenLaengen[4];
+					MainWindow.maxDate = datenLaengen[4];
 
 					// hier muss das Koordinatensystem aufgerufen und gezeichnet werden
-					hauptFensterUI.koordSys.zeichnen();
+					MainWindow.koordSys.zeichnen();
 					setVisible(false);
 				} //  actionPerformed(ActionEvent event)
 			});
@@ -268,7 +281,7 @@ class importiereTabelleUI extends JDialog  {
 		setLocation(Xposition,Yposition);
 		setResizable(false);
 		setModal(true);
-		setTitle("Tabellen importieren - wedabecha");
+		setTitle(Messages.getString("importiereTabelleUI.10")); //$NON-NLS-1$
 		setVisible(true);
 	} // pack()
 
@@ -279,23 +292,25 @@ class importiereTabelleUI extends JDialog  {
 
 
 	private void showDarstellungsDialog(int tabellenNummer){
-		new darstellungsTypUI(tabellenNummer);
+		new CurveType(tabellenNummer);
 	}
 
-
-	public static void setPfad(String pfad, int nr){
-		/**
-			setPfad setzt den Text der Textfelder im mainImportDialogUI,
-			die Funktion wird von subImportDialogUI aufgerufen,
-			sobald dieser mit OK geschlossen wurde
-		*/
+	/**
+	 * setzt den Text der Textfelder im Dialog DataImport.
+	 * Die Funktion wird von subImportDialogUI aufgerufen,
+	 * sobald dieser mit OK geschlossen wurde.
+	 * 
+	 * @param path Der Pfad, der in das Textfeld geschrieben werden soll.
+	 * @param nr Die Nummer des Textfeldes, entspricht der ID der Kurve/Tabelle.   
+	 */
+	public static void setPath(String path, int nr){
 		switch (nr){
-			case 1: pfadTabelle1.setText(pfad);break;
-			case 2: pfadTabelle2.setText(pfad);break;
-			case 3: pfadTabelle3.setText(pfad);break;
-			case 4: pfadTabelle4.setText(pfad);break;
-			case 5: pfadTabelle5.setText(pfad);break;
-		}
+			case 1: pfadTabelle1.setText(path); break;
+			case 2: pfadTabelle2.setText(path); break;
+			case 3: pfadTabelle3.setText(path); break;
+			case 4: pfadTabelle4.setText(path); break;
+			case 5: pfadTabelle5.setText(path); break;
+		} // switch
 	} // setPfad()
 
-} // importiereTabelleUI
+} // class DataImport

@@ -1,3 +1,4 @@
+package debug;
 /****************************************************************************
  *   Copyright (C) 2005 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -26,6 +27,8 @@
 	Testklasse zum auslesen der Daten,
 	kann evtl. in zeichneKurve übernommen und bearbeitet werden.
 */
+
+import wedabecha;
 
 import java.util.ArrayList;
 
