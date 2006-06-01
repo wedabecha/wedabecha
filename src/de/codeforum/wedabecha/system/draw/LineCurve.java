@@ -72,7 +72,7 @@ public class LineCurve extends JComponent {
 	} // setGroesse()
 
 
-	protected void setVisibility(boolean sichtbar){
+	public void setVisibility(boolean sichtbar){
 		this.setVisible(sichtbar);
 	} // setVisibility()
 
