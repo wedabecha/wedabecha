@@ -20,33 +20,32 @@ package de.codeforum.wedabecha;
 
 import java.util.Arrays;
 
-import ui.hauptFensterUI;
+import de.codeforum.wedabecha.ui.MainWindow;
+
 /**
  * 	@author Dominic Hopf (dmaphy at users.berlios.de)
  *  TODO: curve zu einer dynamisch anpassbaren Liste (Array) machen.
+ *  
+ *  Hauptklasse die als Programm aufgerufen wird.
+ *  Das Programm soll fünf Kurven zeichnen können.
  */
-
-/*
-	Hauptklasse die als Programm aufgerufen wird.
-	Das Programm soll fünf Kurven zeichnen können.
-*/
 public class wedabecha {
-	private kurve curve[];
+	private static Curve curve[];
 	
 	/**
 	 * @param number Die Nummer der abzurufenden Kurve
 	 * @return Die Kurve
 	 */
-	protected kurve getCurve(int number){
-		return this.curve[number - 1];
+	public static Curve getCurve(int number){
+		return curve[number - 1];
 	} // getKurve()
 	
 	/**
 	 * @return Die ID der Kurve
 	 */
-	protected int addCurve() {
-		this.curve[this.curve.length] = new kurve(this.curve.length);
-		return this.curve.length;
+	public static int addCurve() {
+		curve[curve.length] = new Curve(curve.length);
+		return curve.length;
 	} // addCurve
 	
 	/**
@@ -54,7 +53,7 @@ public class wedabecha {
 	 * @param id die ID der Kurve, die gelöscht werden soll.
 	 */
 	protected void removeCurve(int id) {
-		true;
+		//true;
 	}
 
 	// Konstruktor
@@ -62,7 +61,7 @@ public class wedabecha {
 	 * Konstruktor, erwartet keine weiteren Parameter
 	 */
 	public wedabecha(){
-		new hauptFensterUI(700, 500);
+		new MainWindow(700, 500);
 	} // wedabecha()
 	
 	/**
