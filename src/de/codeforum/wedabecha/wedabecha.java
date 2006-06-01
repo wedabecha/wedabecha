@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha;
 /***************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                            *
  *                                                                         *
@@ -18,7 +17,9 @@ package de.codeforum.wedabecha;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-import java.util.Arrays;
+package de.codeforum.wedabecha;
+
+// import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
@@ -34,6 +35,7 @@ import de.codeforum.wedabecha.ui.MainWindow;
 public class wedabecha {
 	private static Curve curve[];
 	
+	
 	/**
 	 * @param number Die Nummer der abzurufenden Kurve
 	 * @return Die Kurve
@@ -41,6 +43,7 @@ public class wedabecha {
 	public static Curve getCurve(int number){
 		return curve[number - 1];
 	} // getKurve()
+	
 	
 	/**
 	 * @return Die ID der Kurve
@@ -50,6 +53,7 @@ public class wedabecha {
 		return curve.length;
 	} // addCurve
 	
+	
 	/**
 	 * TODO: Methode mit Funktion hinterlegen
 	 * @param id die ID der Kurve, die gelöscht werden soll.
@@ -57,6 +61,15 @@ public class wedabecha {
 	public void removeCurve(int id) {
 		//true;
 	}
+	
+	
+	/**
+	 * exits the Program
+	 */
+	public static void QuitProgram() {
+		System.exit(0);
+	}
+	
 	
 	public static void notImplementedError() {
 		JOptionPane.showMessageDialog(null,
