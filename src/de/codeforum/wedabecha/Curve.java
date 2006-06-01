@@ -24,8 +24,7 @@ import java.util.ArrayList;
 import java.awt.*;
 
 import de.codeforum.wedabecha.system.CalculateAverages;
-import de.codeforum.wedabecha.system.draw.zeichneAktienKurve;
-import de.codeforum.wedabecha.system.draw.zeichneLinienKurve;
+import de.codeforum.wedabecha.system.draw.*;
 import de.codeforum.wedabecha.ui.MainWindow;
 
 
@@ -58,8 +57,12 @@ public class Curve {
 		"Balkendiagramm",
 		"gleitende Kurve"*/
 	};
-
-	protected static String[] getKurvenStile(){
+	
+	/**
+	 * liefert die Stile zurück, in denen eine Kurve gezeichnet werden kann.
+	 * @return Stile
+	 */
+	public static String[] getKurvenStile(){
 		return kurvenStile;
 	}
 
@@ -100,61 +103,61 @@ public class Curve {
 //	private ArrayList datumJahresMittel = new ArrayList(1);
 //	private ArrayList datumWochenMittel = new ArrayList(1);
 
-	protected zeichneLinienKurve zeichneLinienKurve;
-	protected zeichneAktienKurve zeichneAktienKurve;
+	public LineCurve zeichneLinienKurve;
+	public ShareCurve zeichneAktienKurve;
 
 	// set- und get-Methoden für die Attribute der Kurve
-	protected void setExists(boolean exists){
+	public void setExists(boolean exists){
 		this.exists = exists;
 	} // setExists()
 
 
-	protected boolean isset(){
+	public boolean isset(){
 		return this.exists;
 	} // isset()
 
 
-	protected Color getFarbe(){
+	public Color getFarbe(){
 		return this.farbe;
 	} // getFarbe()
 
 
-	protected void setFarbe(Color farbe){
+	public void setFarbe(Color farbe){
 		this.farbe = farbe;
 	} // setFarbe()
 
 
-	protected int getKurvenStilIndex(){
+	public int getKurvenStilIndex(){
 		return this.kurvenStilIndex;
 	} // getKurvenStilIndex()
 
 
-	protected String getKurvenStil(){
+	public String getKurvenStil(){
 		return kurvenStile[this.kurvenStilIndex];
 	} // getKurvenStil()
 
 
-	protected void setKurvenStilIndex(int index){
+	public void setKurvenStilIndex(int index){
 		this.kurvenStilIndex = index;
 	} // setKurvenStilIndex()
 
 
-	protected ArrayList getWerte(){
+	public ArrayList getWerte(){
 		return this.werte;
 	} // getWerte()
 
 
-	protected void setWerte(ArrayList werte){
+	public void setWerte(ArrayList werte){
 		this.werte = werte;
 	} // setWerte()
 
 
-	protected ArrayList getDaten(){
+	public ArrayList getDaten(){
 		return this.daten; // mehrzahl von datum
 	} // getDaten()
 
 
-	protected void setDaten(ArrayList daten){
+	public void setDaten(ArrayList daten){
 		this.daten = daten; // mehrzahl von datum
 	} // setDaten()
 
@@ -237,56 +240,56 @@ public class Curve {
 //	} // setDatumJahresMittel()
 
 
-	protected void zeichneKurve(){
+	public void zeichneKurve(){
 		CalculateAverages berechneMittelwerte = new CalculateAverages(this.getWerte(), this.getDaten());
 		switch(this.getKurvenStilIndex()){
 		    case 0:
 				MainWindow.layeredPane.add(
-					zeichneAktienKurve = new zeichneAktienKurve(
+					zeichneAktienKurve = new ShareCurve (
 						this.getWerte(),
 						this.getFarbe()
 					),
-					new Integer(nummer+2)
+					new Integer(nummer + 2)
 				);
 			    break;
 		    case 1:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new zeichneLinienKurve(
+					zeichneLinienKurve = new LineCurve (
 						berechneMittelwerte.berechneTagesMittel(),
 						this.getFarbe(),
 						this.getWerte()
 					),
-					new Integer(nummer+2)
+					new Integer(nummer + 2)
 				);
 			    break;
 		    case 2:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new zeichneLinienKurve(
+					zeichneLinienKurve = new LineCurve (
 						berechneMittelwerte.berechneWochenMittel(),
 						this.getFarbe(),
 						this.getWerte()
 					),
-					new Integer(nummer+2)
+					new Integer(nummer + 2)
 				);
 			    break;
 		    case 3:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new zeichneLinienKurve(
+					zeichneLinienKurve = new LineCurve (
 						berechneMittelwerte.berechneMonatsMittel(),
 						this.getFarbe(),
 						this.getWerte()
 					),
-					new Integer(nummer+2)
+					new Integer(nummer + 2)
 				);
 			    break;
 		    case 4:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new zeichneLinienKurve(
+					zeichneLinienKurve = new LineCurve (
 						berechneMittelwerte.berechneJahresMittel(),
 						this.getFarbe(),
 						this.getWerte()
 					),
-					new Integer(nummer+2)
+					new Integer(nummer + 2)
 				);
 			    break;
 		}// switch()
@@ -294,4 +297,4 @@ public class Curve {
 	} // zeichneKurve()
 
 
-} // kurve
+} // class Curve
