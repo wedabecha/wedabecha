@@ -39,8 +39,8 @@ public class LineCurve extends JComponent {
 	private Color farbe;
 	private int abstand;
 
-	protected int dateBeginIndex = 0;
-	protected int dateEndIndex = 299;
+	public int dateBeginIndex = 0;
+	public int dateEndIndex = 299;
 
 	// zur Berechnung der neuen Werte bei Grösseenänderung des Fensters
 	private double multiplikator;

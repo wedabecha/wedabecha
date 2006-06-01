@@ -30,8 +30,8 @@ public class ShareCurve extends JComponent {
 	private int start; // Tageseingangswert
 	private int ende; // Tagesendwert
 
-	protected int dateBeginIndex = 0;
-	protected int dateEndIndex = 299;
+	public int dateBeginIndex = 0;
+	public int dateEndIndex = 299;
 
 	private int breite = 700;
 
