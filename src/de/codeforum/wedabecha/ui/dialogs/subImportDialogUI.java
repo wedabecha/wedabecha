@@ -107,20 +107,20 @@ public class subImportDialogUI extends JDialog {
 					trennzeichenBox.getSelectedIndex()
 				);
 
-				wedabecha.getKurve(getTableNumber()).setWerte(
+				wedabecha.getCurve(getTableNumber()).setWerte(
 					DataImport.tabellen[getTableNumber() - 1].getWerte()
 				);
 
-				wedabecha.getKurve(getTableNumber()).setDaten(
+				wedabecha.getCurve(getTableNumber()).setDaten(
 					DataImport.tabellen[getTableNumber() - 1].getDaten()
 				);
 
-				wedabecha.getKurve(getTableNumber()).setExists(true);
+				wedabecha.getCurve(getTableNumber()).setExists(true);
 				// Button zur jeweiligen eingelesenen Kurve anzeigen
 				MainWindow.toolBar.kurveWaehlen(getTableNumber(), true);
 				MainWindow.hauptMenu.setKurveEditable(getTableNumber(), true);
 
-				if (wedabecha.getKurve(getTableNumber()).isset()){
+				if (wedabecha.getCurve(getTableNumber()).isset()){
 					switch(getTableNumber()){
 						case 1:	DataImport.oeffneTabelle2.setEnabled(true);
 								DataImport.speicherTabelle[1].setEnabled(true);
@@ -155,7 +155,7 @@ public class subImportDialogUI extends JDialog {
 		final JButton cancelButton = new JButton("Abbrechen");
 		cancelButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
-				wedabecha.getKurve(getTableNumber()).setExists(false);
+				wedabecha.getCurve(getTableNumber()).setExists(false);
 				MainWindow.hauptMenu.setKurveEditable(getTableNumber(), false);
 				setVisible(false);
 			}
