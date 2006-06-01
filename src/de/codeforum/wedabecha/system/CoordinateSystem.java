@@ -1,4 +1,4 @@
-package system;
+package de.codeforum.wedabecha.system;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -26,10 +26,13 @@ package system;
 
 */
 
-import wedabecha;
 
 import java.awt.*;
 import javax.swing.*;
+
+import de.codeforum.wedabecha.wedabecha;
+
+
 import java.util.ArrayList;
 
 public class CoordinateSystem extends JComponent {

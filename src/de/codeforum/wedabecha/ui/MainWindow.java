@@ -1,4 +1,4 @@
-package ui;
+package de.codeforum.wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -30,15 +30,17 @@ package ui;
 	dies ist das hauptFenster des Programms
 */
 
-import wedabecha;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-import system.CoordinateSystem;
-import system.draw.Grid;
+
+import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.system.CoordinateSystem;
+import de.codeforum.wedabecha.system.draw.Grid;
+
 
 
 public class MainWindow extends JFrame {

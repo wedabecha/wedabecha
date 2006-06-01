@@ -1,4 +1,4 @@
-package ui;
+package de.codeforum.wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *

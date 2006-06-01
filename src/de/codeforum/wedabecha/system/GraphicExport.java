@@ -1,4 +1,4 @@
-package system;
+package de.codeforum.wedabecha.system;
 
 
 /**
@@ -10,12 +10,13 @@ package system;
 
 
 import com.sun.image.codec.jpeg.JPEGCodec;
+
+import de.codeforum.wedabecha.ui.MainWindow;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 
-import ui.MainWindow;
-import ui.dialogs.GraphicExport;
 
 
 public class GraphicExport {

@@ -17,13 +17,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
+package de.codeforum.wedabecha;
+
+
 import java.util.ArrayList;
 import java.awt.*;
 
-import system.CalculateAverages;
-import system.draw.zeichneAktienKurve;
-import system.draw.zeichneLinienKurve;
-import ui.MainWindow;
+import de.codeforum.wedabecha.system.CalculateAverages;
+import de.codeforum.wedabecha.system.draw.zeichneAktienKurve;
+import de.codeforum.wedabecha.system.draw.zeichneLinienKurve;
+import de.codeforum.wedabecha.ui.MainWindow;
+
 
 /**
  * @author

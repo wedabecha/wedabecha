@@ -17,13 +17,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-package system;
+package wedabecha.system;
 
 // programminterne Imports
-import wedabecha;
 
-import ui.MainWindow;
-import ui.dialogs.DataImport;
 
 // Import von Dateien aus Java-Libs
 import java.io.File;
@@ -36,6 +33,10 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
+
+import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.ui.MainWindow;
+import de.codeforum.wedabecha.ui.dialogs.DataImport;
 
 /**
  * @author

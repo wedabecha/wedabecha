@@ -1,4 +1,4 @@
-package ui;
+package de.codeforum.wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -24,10 +24,12 @@ package ui;
 		Matthias Tylkowski (micron at users.berlios.de)
 */
 
-import wedabecha;
 
 import java.awt.event.*;
 import javax.swing.*;
+
+import de.codeforum.wedabecha.wedabecha;
+
 
 
 public class MainToolBar{

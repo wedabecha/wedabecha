@@ -1,4 +1,4 @@
-package ui;
+package wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -26,12 +26,13 @@ package ui;
 
 // in dieser Klasse brauchen wir nur Swing, da sie
 // von der hauptFensterUI aus weiterverwendet wird
-import wedabecha;
 
 import javax.swing.*;
 
-import ui.dialogs.CurveType;
-import ui.dialogs.About;
+import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.ui.dialogs.About;
+import de.codeforum.wedabecha.ui.dialogs.CurveType;
+
 
 import java.awt.event.*;
 
