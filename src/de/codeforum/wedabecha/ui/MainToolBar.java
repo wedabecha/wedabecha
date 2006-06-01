@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,21 +17,19 @@ package de.codeforum.wedabecha.ui;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Robert Exner (ashrak at users.berlios.de),
-		Matthias Tylkowski (micron at users.berlios.de)
-*/
-
+package de.codeforum.wedabecha.ui;
 
 import java.awt.event.*;
 import javax.swing.*;
 
 import de.codeforum.wedabecha.wedabecha;
 
-
-
-public class MainToolBar{
+/**
+ * @author
+ * Robert Exner (ashrak at users.berlios.de),
+ * Matthias Tylkowski (micron at users.berlios.de)
+ */
+public class MainToolBar {
 	protected JToolBar toolBar = new JToolBar("Werkzeugleiste");
 		private ImageIcon oeffnen = new ImageIcon("Images/oeffnen.gif");
 			private JButton oeffnenbutton = new JButton(oeffnen);
@@ -140,18 +137,18 @@ public class MainToolBar{
 	    public void actionPerformed(ActionEvent e) {
 			try{
 				for(int i = 0; i < 5; i++){
-					if(wedabecha.getKurve(i + 1).isset()){
+					if(wedabecha.getCurve(i + 1).isset()){
 						if(kurveButton[i].isSelected()){
-							if(wedabecha.getKurve(i + 1).getKurvenStilIndex() == 0){
-								wedabecha.getKurve(i + 1).zeichneAktienKurve.setVisibility(true);
+							if(wedabecha.getCurve(i + 1).getKurvenStilIndex() == 0){
+								wedabecha.getCurve(i + 1).zeichneAktienKurve.setVisibility(true);
 							}else{
-								wedabecha.getKurve(i + 1).zeichneLinienKurve.setVisibility(true);
+								wedabecha.getCurve(i + 1).zeichneLinienKurve.setVisibility(true);
 							} // if()-else
 						}else{
-							if(wedabecha.getKurve(i + 1).getKurvenStilIndex() == 0){
-								wedabecha.getKurve(i + 1).zeichneAktienKurve.setVisibility(false);
+							if(wedabecha.getCurve(i + 1).getKurvenStilIndex() == 0){
+								wedabecha.getCurve(i + 1).zeichneAktienKurve.setVisibility(false);
 							}else{
-								wedabecha.getKurve(i + 1).zeichneLinienKurve.setVisibility(false);
+								wedabecha.getCurve(i + 1).zeichneLinienKurve.setVisibility(false);
 							} // if()-else
 						} // if()-else
 					} // if()
@@ -244,50 +241,50 @@ public class MainToolBar{
 
 	public void setKurve1Button(){
 		this.kurveButton[0].setSelected(true);
-		if(wedabecha.getKurve(1).getKurvenStilIndex() == 0){
-			wedabecha.getKurve(1).zeichneAktienKurve.setVisibility(true);
+		if(wedabecha.getCurve(1).getKurvenStilIndex() == 0){
+			wedabecha.getCurve(1).zeichneAktienKurve.setVisibility(true);
 		}else{
-			wedabecha.getKurve(1).zeichneLinienKurve.setVisibility(true);
+			wedabecha.getCurve(1).zeichneLinienKurve.setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve2Button(){
 		this.kurveButton[1].setSelected(true);
-		if(wedabecha.getKurve(2).getKurvenStilIndex() == 0){
-			wedabecha.getKurve(2).zeichneAktienKurve.setVisibility(true);
+		if(wedabecha.getCurve(2).getKurvenStilIndex() == 0){
+			wedabecha.getCurve(2).zeichneAktienKurve.setVisibility(true);
 		}else{
-			wedabecha.getKurve(2).zeichneLinienKurve.setVisibility(true);
+			wedabecha.getCurve(2).zeichneLinienKurve.setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve3Button(){
 		this.kurveButton[2].setSelected(true);
-		if(wedabecha.getKurve(3).getKurvenStilIndex() == 0){
-			wedabecha.getKurve(3).zeichneAktienKurve.setVisibility(true);
+		if(wedabecha.getCurve(3).getKurvenStilIndex() == 0){
+			wedabecha.getCurve(3).zeichneAktienKurve.setVisibility(true);
 		}else{
-			wedabecha.getKurve(3).zeichneLinienKurve.setVisibility(true);
+			wedabecha.getCurve(3).zeichneLinienKurve.setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve4Button(){
 		this.kurveButton[3].setSelected(true);
-		if(wedabecha.getKurve(4).getKurvenStilIndex() == 0){
-			wedabecha.getKurve(4).zeichneAktienKurve.setVisibility(true);
+		if(wedabecha.getCurve(4).getKurvenStilIndex() == 0){
+			wedabecha.getCurve(4).zeichneAktienKurve.setVisibility(true);
 		}else{
-			wedabecha.getKurve(4).zeichneLinienKurve.setVisibility(true);
+			wedabecha.getCurve(4).zeichneLinienKurve.setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve5Button(){
 		this.kurveButton[4].setSelected(true);
-		if(wedabecha.getKurve(5).getKurvenStilIndex() == 0){
-			wedabecha.getKurve(5).zeichneAktienKurve.setVisibility(true);
+		if(wedabecha.getCurve(5).getKurvenStilIndex() == 0){
+			wedabecha.getCurve(5).zeichneAktienKurve.setVisibility(true);
 		}else{
-			wedabecha.getKurve(5).zeichneLinienKurve.setVisibility(true);
+			wedabecha.getCurve(5).zeichneLinienKurve.setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
