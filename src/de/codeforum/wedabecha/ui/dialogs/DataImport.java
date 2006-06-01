@@ -20,14 +20,12 @@
 package de.codeforum.wedabecha.ui.dialogs;
 
 // Imports
-import .Messages;
-import .wedabecha;
+import de.codeforum.wedabecha.*;
 
 import javax.swing.*;
 
-import system.DataImport;
-import system.toWeda;
-import ui.MainWindow;
+import de.codeforum.wedabecha.system.*;
+import de.codeforum.wedabecha.ui.MainWindow;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -241,15 +239,15 @@ public class DataImport extends JDialog  {
 						 * Kurve zeichnen und die erste Kurve sichtbar machen
 						 */
 
-						if(wedabecha.getKurve(i).isset()){
-							wedabecha.getKurve(i).zeichneKurve();
+						if(wedabecha.getCurve(i).isset()){
+							wedabecha.getCurve(i).zeichneKurve();
 							MainWindow.toolBar.setKurve1Button();
-							datenLaengen[i] = wedabecha.getKurve(i).getDaten().size();
+							datenLaengen[i] = wedabecha.getCurve(i).getDaten().size();
 						} // if
 
 						if (speicherTabelle[i - 1].isSelected()){
 							String name[] = tabellen[i - 1].getImportName().split("\\."); //$NON-NLS-1$
-							toWeda.writeFile("../daten/" + name[0] + ".weda",i); //$NON-NLS-1$ //$NON-NLS-2$
+							WedaFile.writeFile("../daten/" + name[0] + ".weda",i); //$NON-NLS-1$ //$NON-NLS-2$
 						} // if
 					} // for
 
