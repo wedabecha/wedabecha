@@ -20,6 +20,8 @@ package de.codeforum.wedabecha;
 
 import java.util.Arrays;
 
+import javax.swing.JOptionPane;
+
 import de.codeforum.wedabecha.ui.MainWindow;
 
 /**
@@ -52,8 +54,15 @@ public class wedabecha {
 	 * TODO: Methode mit Funktion hinterlegen
 	 * @param id die ID der Kurve, die gelöscht werden soll.
 	 */
-	protected void removeCurve(int id) {
+	public void removeCurve(int id) {
 		//true;
+	}
+	
+	public static void notImplementedError() {
+		JOptionPane.showMessageDialog(null,
+			"Die Funktion ist in dieser Version noch nicht implementiert.","Nicht Implementiert",
+			JOptionPane.ERROR_MESSAGE
+		);
 	}
 
 	// Konstruktor
