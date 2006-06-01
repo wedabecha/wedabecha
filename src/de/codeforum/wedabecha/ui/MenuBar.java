@@ -1,4 +1,3 @@
-package wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,11 +17,8 @@ package wedabecha.ui;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de)
-*/
+package de.codeforum.wedabecha.ui;
+
 
 // in dieser Klasse brauchen wir nur Swing, da sie
 // von der hauptFensterUI aus weiterverwendet wird
@@ -36,7 +32,12 @@ import de.codeforum.wedabecha.ui.dialogs.CurveType;
 
 import java.awt.event.*;
 
-
+/**
+ * @author
+ * Dominic Hopf (dmaphy at users.berlios.de),
+ * Robert Exner (ashrak at users.berlios.de)
+ * 
+ */
 public class MenuBar {
 	// alle Bestandteile des Menüs als Klassenatrribute deklarieren
 	private JMenuBar mainMenuBar = new JMenuBar();
@@ -172,12 +173,12 @@ public class MenuBar {
 
 									for(int i = 1; i <= 5; i++){
 							    		// alle importierten Tabellen als Kurve zeichnen
-										if(wedabecha.getKurve(i).isset()){
+										if(wedabecha.getCurve(i).isset()){
 
 											try{
 												MainWindow.layeredPane.remove(
 													MainWindow.layeredPane.getIndexOf(
-														wedabecha.getKurve(i).zeichneAktienKurve
+														wedabecha.getCurve(i).zeichneAktienKurve
 													)
 												);
 
@@ -185,7 +186,7 @@ public class MenuBar {
 												try{
 													MainWindow.layeredPane.remove(
 														MainWindow.layeredPane.getIndexOf(
-															wedabecha.getKurve(i).zeichneLinienKurve
+															wedabecha.getCurve(i).zeichneLinienKurve
 														)
 													);
 
@@ -198,32 +199,32 @@ public class MenuBar {
 
 											MainWindow.layeredPane.repaint();
 
-											if(wedabecha.getKurve(1).isset()){
-												wedabecha.getKurve(1).zeichneKurve();
+											if(wedabecha.getCurve(1).isset()){
+												wedabecha.getCurve(1).zeichneKurve();
 												MainWindow.toolBar.setKurve1Button();
 											}//if
 
-											if(wedabecha.getKurve(2).isset()){
-												wedabecha.getKurve(2).zeichneKurve();
+											if(wedabecha.getCurve(2).isset()){
+												wedabecha.getCurve(2).zeichneKurve();
 												MainWindow.toolBar.setKurve2Button();
 											}//if
 
-											if(wedabecha.getKurve(3).isset()){
-												wedabecha.getKurve(3).zeichneKurve();
+											if(wedabecha.getCurve(3).isset()){
+												wedabecha.getCurve(3).zeichneKurve();
 												MainWindow.toolBar.setKurve3Button();
 											}//if
 
-											if(wedabecha.getKurve(4).isset()){
-												wedabecha.getKurve(4).zeichneKurve();
+											if(wedabecha.getCurve(4).isset()){
+												wedabecha.getCurve(4).zeichneKurve();
 												MainWindow.toolBar.setKurve4Button();
 											}//if
 
-											if(wedabecha.getKurve(5).isset()){
-												wedabecha.getKurve(5).zeichneKurve();
+											if(wedabecha.getCurve(5).isset()){
+												wedabecha.getCurve(5).zeichneKurve();
 												MainWindow.toolBar.setKurve5Button();
 											}//if
 
-											datenLaengen[i] = wedabecha.getKurve(i).getDaten().size();
+											datenLaengen[i] = wedabecha.getCurve(i).getDaten().size();
 
 										} // if
 
