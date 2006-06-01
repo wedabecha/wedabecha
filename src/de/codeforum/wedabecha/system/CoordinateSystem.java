@@ -70,17 +70,19 @@ public class CoordinateSystem extends JComponent {
 	public CoordinateSystem(){
 	
 	}
-
-	protected void setGroesse(int breite, int hoehe){
-		/**
-			setGroesse legt die Grösse für das Koordinatensystem
-			fest. Diese Methode wird von verschiedenen Punkten aufgerufen.
-			Einmal vom Konstruktor, beim erzeugen,
-			und einmal von dem ActionListener der hauptFensterUI,
-			welcher für die Grössenänderung des Fensters verantwortlich ist.
-			Die Werte, die wir für das System benötigen, können wir erst anhand
-			der Fenstergrösse berechnen...
-		*/
+	
+	
+	/**
+	 * setGroesse legt die Grösse für das Koordinatensystem
+	 * fest. Diese Methode wird von verschiedenen Punkten aufgerufen.
+	 * Einmal vom Konstruktor, beim erzeugen,
+	 * und einmal von dem ActionListener der hauptFensterUI,
+	 * welcher für die Grössenänderung des Fensters verantwortlich ist.
+	 * Die Werte, die wir für das System benötigen, können wir erst anhand
+	 * der Fenstergrösse berechnen...
+	 */
+	public void setGroesse(int breite, int hoehe){
+		
 		
 		// Start- und Endpunkt der Y-Achse in vertikaler Richtung
 		this.startY = hoehe - 25; // 25 px vom unteren Rand
@@ -95,22 +97,22 @@ public class CoordinateSystem extends JComponent {
 	} // setGroesse()
 
 
-	protected void setStartDateIndex(int index){
+	public void setStartDateIndex(int index){
 		this.startDateIndex = index;
 	}
 
 
-	protected int getStartDateIndex(){
+	public int getStartDateIndex(){
 		return this.startDateIndex;
 	}
 
 
-	protected void setEndDateIndex(int index){
+	public void setEndDateIndex(int index){
 		this.endDateIndex = index;
 	}
 
 
-	protected int getEndDateIndex(){
+	public int getEndDateIndex(){
 		return this.endDateIndex;
 	}
 
@@ -182,7 +184,7 @@ public class CoordinateSystem extends JComponent {
 
 		ArrayList daten; // mehrzahl von datum
 		int xTextPos = 0; // horizontale position der beschriftung
-		daten = wedabecha.getKurve(1).getDaten();
+		daten = wedabecha.getCurve(1).getDaten();
 		
 		for (int i = startDateIndex; i < endDateIndex; i+= abstandx){
 			g.setColor(Color.BLACK);
@@ -213,8 +215,8 @@ public class CoordinateSystem extends JComponent {
 		*/
 
 		for (int i = 1; i < 6;i++){
-			if (wedabecha.getKurve(i).isset()){
-				werte = wedabecha.getKurve(i).getWerte();
+			if (wedabecha.getCurve(i).isset()){
+				werte = wedabecha.getCurve(i).getWerte();
 				maxZeilenWerte = new double[werte.size()];
 
 				for (int j = 0; j < werte.size(); j++){
