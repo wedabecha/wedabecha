@@ -33,13 +33,13 @@ public class Grid extends JComponent {
 	private int breite;
 	private int hoehe;
 
-	protected void setGroesse(int breite, int hoehe){
+	public void setGroesse(int breite, int hoehe){
 		this.breite = breite;
 		this.hoehe = hoehe;
 		this.setSize(breite, hoehe);
 	} // setGroesse()
 
-	protected void setVisibility(boolean sichtbar){
+	public void setVisibility(boolean sichtbar){
 		this.setVisible(sichtbar);
 	}// setVisibility();
 
