@@ -89,7 +89,15 @@ public class MainToolBar {
 		this.toolBar.addSeparator();
 		this.toolBar.add(gitterbutton);
 			this.gitterbutton.setContentAreaFilled(true);
-			this.gitterbutton.addActionListener(new gitterButtonListener());
+			this.gitterbutton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					if (gitterGewaehlt()) {
+						MainWindow.setGridVisibility(false);
+					} else {
+						MainWindow.setGridVisibility(true);
+					}
+				}
+			});
 			this.gitterbutton.setToolTipText("Raster anzeigen");
 		this.toolBar.addSeparator();
 		this.toolBar.add(liniezeichnenbutton);

@@ -40,15 +40,10 @@ import de.codeforum.wedabecha.ui.dialogs.GraphicExport;
 
 
 
-class importiereTabelleListener implements ActionListener {
-	// für den MenuPunkt [Datei]->[Tabelle importieren]
-	public void actionPerformed(ActionEvent event){
-		new DataImport();
-	} // actionPerformed(ActionEvent event)
-} // importiereTabelleListener
 
 
-class hauptMenuKurzAnleitungListener implements ActionListener {
+
+public class hauptMenuKurzAnleitungListener implements ActionListener {
 	// für den MenuPunkt [Hilfe]->[KurzAnleitung]
 	public void actionPerformed(ActionEvent event){
 		new Documentation("Kurzanleitung");
@@ -56,7 +51,7 @@ class hauptMenuKurzAnleitungListener implements ActionListener {
 } // hauptMenuKurzAnleitungListener
 
 
-class hauptMenuDokumentationListener implements ActionListener {
+public class hauptMenuDokumentationListener implements ActionListener {
 	// für den MenuPunkt [Hilfe]->Dokumentation
 	public void actionPerformed(ActionEvent event){
 		new Documentation("Dokumentation");
@@ -68,7 +63,7 @@ class hauptMenuDokumentationListener implements ActionListener {
 	wird gebraucht um später die Toolbar ausblendbar zu machen
 */
 
-// class zeigeToolBarListener implements ActionListener {
+// public class zeigeToolBarListener implements ActionListener {
 // 	// für den MenuPunkt [Ansicht]->Werkzeugleiste anzeigen
 // 	public void actionPerformed(ActionEvent event){
 // 		//toolBarUI toolBar = new toolBarUI();
@@ -82,7 +77,7 @@ class hauptMenuDokumentationListener implements ActionListener {
 	Wird gebraucht um später den Dialog zum verknüpfen von Tabellen aufzurufen
 */
 
-// class verknuepfeTabelleListener implements ActionListener {
+// public class verknuepfeTabelleListener implements ActionListener {
 // 	// für den MenuPunkt [Datei]->Tabellen verknuepfen
 // 	public void actionPerformed(ActionEvent event){
 // 		verknuepfeTabellenUI verknuepfe = new verknuepfeTabellenUI();
@@ -90,69 +85,8 @@ class hauptMenuDokumentationListener implements ActionListener {
 // } // verknuepfeTabellenListener
 
 
-class exportiereTabelleListener implements ActionListener {
-	// für den MenuPunkt [Datei]->Tabelle Exportieren
-	public void actionPerformed(ActionEvent event){
-		new DataExport();
-	} // actionPerformed(ActionEvent event)
-} // exportiereTabellenListener
-
-
-class exportiereGrafikListener implements ActionListener {
-	// für den MenuPunkt [Datei]->Grafik Exportieren
-	public void actionPerformed(ActionEvent event){
-		new GraphicExport();
-	} // actionPerformed(ActionEvent event)
-} // exportiereGrafikListener
-
-class oeffnenListener implements ActionListener {
-	// für den MenuPunkt [Datei]->Öffnen
-	public void actionPerformed(ActionEvent event){
-		new WedaFile();
-	} // actionPerformed(ActionEvent event)
-} // oeffnenListener
-
-
-class gitterButtonListener implements ActionListener{
+public class gitterButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-		if(MainWindow.toolBar.gitterGewaehlt()){
-		    MainWindow.zeichneRaster.setVisibility(true);
-		} else {
-		    MainWindow.zeichneRaster.setVisibility(false);
-		}// if
+	
 	}// actionPerformed
 }// gitterButtonListener
-
-
-class beendenListener extends WindowAdapter implements ActionListener {
-	// Die Klasse ist der Listener für den Menüpunkt [Datei]->[Programm beenden]
-	// kann ggf. noch für andere Einsatzmöglichkeiten verwendet werden.
-	public void actionPerformed(ActionEvent event){
-		endProgram.end();
-	} // actionPerformed(ActionEvent event)
-
-	public void windowClosing(WindowEvent event) {
-		endProgram.end();
-	} // windowClosing(WindowEvent event)
-} // beendenListener
-
-
-class endProgram {
-	/*
-	Die Klasse enthaelt den Code, der zum beenden des Programms erforderlich ist.
-	Solange es sich nur um einen einfachen System.exit(0);-Befehl handelt,
-	scheint das etwas unnütz,
-	aber falls später mal Sicherheitsabfragen hinzukommen, wie z.B.
-	"Möchten Sie das Dokument vor dem Beenden speichern" - oder ähnlich,
-	ist diese Klasse der richtige Anlaufpunkt, da man sonst den ganzen Code
-	für die Sicherheitsabfrage kopieren und einfügen müsste,
-	denn es gibt ja mehrere Möglichkeiten um das Programm zu beenden.
-	*/
-	public static void end(){
-		// end_program() enthält code, der zum beenden des programms erforderlich ist
-		// macht sich ganz gut, weil der punkt ja von mehreren stellen aufgerufen werden kann
-// 		new DReadData(); // debug-klasse, überprüft eingelesene tabellen (import)
-// 		new berechneMittelwerte(); // zum debuggen der Käfer
-		System.exit(0);
-	}
-} // endProgram

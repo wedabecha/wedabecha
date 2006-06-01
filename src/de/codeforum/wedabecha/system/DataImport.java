@@ -69,72 +69,72 @@ public class DataImport {
 	/*
 		im folgenden alle nötigen get-und set-methoden, um die variabeln zu verändern
 	*/
-	protected  void setImportName(String name){
+	public void setImportName(String name){
 		this.importName = name;
 	} // setImportName(String name)
 
 
-	protected  String getImportName(){
+	public String getImportName(){
 		return this.importName;
 	} // getImportName()
 
 
-	protected static  void setImportPfad(String pfad){
+	public static void setImportPfad(String pfad){
 		importPfad = pfad;
 	} // setImportPfad(String pfad)
 
 
-	protected  String getImportPfad(){
+	public String getImportPfad(){
 		return importPfad;
 	} // getImportPfad()
 
 
-	protected static  void setTrennzeichenIndex(int zahl){
+	public static void setTrennzeichenIndex(int zahl){
 		trennzeichenIndex = zahl;
 	} // setTrennzeichenIndex()
 
 
-	protected static String[] getTrennzeichenStr(){
+	public static String[] getTrennzeichenStr(){
 		return trennzeichenStr;
 	}
 
 
-	protected static  void setDatumsFormatIndex(int zahl){
+	public static void setDatumsFormatIndex(int zahl){
 		datumsFormatIndex = zahl;
 	} // setDatum(Datum datum)
 
 
-	protected static String[] getDatenFormate(){
+	public static String[] getDatenFormate(){
 		return datenFormate;
 	} // getDatenFormate()
 
 
-	protected static void setDatumsPosFirstColumn(boolean bla){
+	public static void setDatumsPosFirstColumn(boolean bla){
 		isDatumsPosFirstColumn = bla;
 	} // setDatumsPosFirstColumn(boolean bla)
 
 
-	protected boolean isDatumsPosFirstColumn(){
+	public boolean isDatumsPosFirstColumn(){
 		return isDatumsPosFirstColumn;
 	} // isDatumsPosFirstColumn()
 
 
-	protected void setInkZahlRep(String blo){
+	public void setInkZahlRep(String blo){
 		this.inkZahlRep = blo;
 	} // setInkZahlRep(boolean blo)
 
 
-	protected String getInkZahlRep(){
+	public String getInkZahlRep(){
 		return this.inkZahlRep;
 	} // getInkZahlRep()
 
 
-	protected void setSpeichern(boolean save){
+	public void setSpeichern(boolean save){
 		this.speichern = save;
 	} // setSpeichern()
 
 
-	protected boolean isSpeichern(){
+	public boolean isSpeichern(){
 		return this.speichern;
 	} // isSpeichern()
 

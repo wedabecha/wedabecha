@@ -17,7 +17,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-package wedabecha.system;
+package de.codeforum.wedabecha.system;
 
 // programminterne Imports
 
@@ -104,13 +104,13 @@ public class WedaFile {
 						ArrayList ergebnis = DataImport.getDaten();
 
 						//Werte auf Eingelesene setzen
-						wedabecha.getKurve(kurvennummer).setWerte(resAL);
+						wedabecha.getCurve(kurvennummer).setWerte(resAL);
 
 						//Daten auf Eingelesene setzen
-						wedabecha.getKurve(kurvennummer).setDaten(ergebnis);
+						wedabecha.getCurve(kurvennummer).setDaten(ergebnis);
 
 						//Kurve auf "existent" setzten
-						wedabecha.getKurve(kurvennummer).setExists(true);
+						wedabecha.getCurve(kurvennummer).setExists(true);
 
 						// Button zur jeweiligen eingelesenen Kurve anzeigen
 						MainWindow.toolBar.kurveWaehlen(kurvennummer, true);
@@ -123,10 +123,10 @@ public class WedaFile {
 
 						for(int i = 1; i <= 5; i++){
 						    // alle importierten Tabellen als Kurve zeichnen
-							if(wedabecha.getKurve(i).isset()){
-								wedabecha.getKurve(i).zeichneKurve();
+							if(wedabecha.getCurve(i).isset()){
+								wedabecha.getCurve(i).zeichneKurve();
 
-								datenLaengen[i] = wedabecha.getKurve(i).getDaten().size();
+								datenLaengen[i] = wedabecha.getCurve(i).getDaten().size();
 							} // if
 
 							java.util.Arrays.sort(datenLaengen);

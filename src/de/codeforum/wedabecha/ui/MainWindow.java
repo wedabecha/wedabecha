@@ -33,13 +33,15 @@ package de.codeforum.wedabecha.ui;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
 
 
 import de.codeforum.wedabecha.wedabecha;
 import de.codeforum.wedabecha.system.CoordinateSystem;
-import de.codeforum.wedabecha.system.draw.Grid;
+import de.codeforum.wedabecha.system.draw.*;
+import de.codeforum.wedabecha.system.listeners.*;
 
 
 
@@ -52,7 +54,7 @@ public class MainWindow extends JFrame {
 	
 	protected static MenuBar hauptMenu = new MenuBar();
 	protected static JLayeredPane mainPane = new JLayeredPane();
-	protected static JLayeredPane layeredPane = new JLayeredPane();
+	public static JLayeredPane layeredPane = new JLayeredPane();
 	protected static JLayeredPane toolbarPane = new JLayeredPane();
 
 	Dimension d;
@@ -80,25 +82,25 @@ public class MainWindow extends JFrame {
 	/*
 	 * Methoden - Set 'n Get
 	 */
-	protected static int getWindowWidth() {
+	public static int getWindowWidth() {
 		return windowWidth;
 	}
 	
-	protected static int getWindowHeight() {
+	public static int getWindowHeight() {
 		return windowHeight;
 	}
 	
-	protected static void setWindowWidth(int width) {
+	public static void setWindowWidth(int width) {
 		windowWidth = width;
 	}
 	
-	protected static void setWindowHeight(int height) {
+	public static void setWindowHeight(int height) {
 		windowHeight = height;
 	}
 	
-	/*
-	 * Methoden
-	 */
+	public void setGridVisibility(boolean visibility) {
+		    this.zeichneRaster.setVisibility(visibility);
+	}
 
 	// Konstruktor
 	public MainWindow(int breite, int hoehe){
@@ -111,11 +113,11 @@ public class MainWindow extends JFrame {
 	} // hauptFensterUI()
 
 
-	public static void setGroesse(int breite, int hoehe){
+	public static void setGroesse (int breite, int hoehe){
 	    mainPane.setSize(breite, hoehe);
 	    layeredPane.setSize(breite, hoehe);
 	    toolbarPane.setSize(breite, 35);
-	} //setGroesse()
+	} // setGroesse()
 
 	/**
 	 * setzt das Fenster als Ganzes aus den einzelnen Bestandteilen zusammen
@@ -127,7 +129,41 @@ public class MainWindow extends JFrame {
 		this.setJMenuBar(hauptMenu.getHauptMenu());
 
 		// Listener zum Fensterschliessen per "wegkreuzen"
-		this.addWindowListener(new beendenListener());
+		this.addWindowListener(new WindowListener() {
+			public void windowClosing(WindowEvent event) {
+				wedabecha.QuitProgram();
+			} // windowClosing(WindowEvent event)
+
+			public void windowOpened(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowClosed(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowActivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		}); // beendenListener
 
 		int screenWidth = getToolkit().getScreenSize().width;
 		int screenHeight = getToolkit().getScreenSize().height;
@@ -164,13 +200,13 @@ public class MainWindow extends JFrame {
 					endDateSpinner.setValue(new Integer( ((Integer)startDateSpinner.getValue()).intValue() + 299));
 
 					for (int i = 1; i < 6; i++){
-						if (wedabecha.getKurve(i).isset()){
-							if (wedabecha.getKurve(i).getKurvenStilIndex() == 0){
-								wedabecha.getKurve(i).zeichneAktienKurve.dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getKurve(i).zeichneAktienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+						if (wedabecha.getCurve(i).isset()){
+							if (wedabecha.getCurve(i).getKurvenStilIndex() == 0){
+								wedabecha.getCurve(i).zeichneAktienKurve.dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								wedabecha.getCurve(i).zeichneAktienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} else {
-								wedabecha.getKurve(i).zeichneLinienKurve.dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getKurve(i).zeichneLinienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+								wedabecha.getCurve(i).zeichneLinienKurve.dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								wedabecha.getCurve(i).zeichneLinienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} // if
 
 							koordSys.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
@@ -243,7 +279,7 @@ public class MainWindow extends JFrame {
 								"neues Textfeld erstellen.",
 								JOptionPane.QUESTION_MESSAGE);
 				    if(text != null){
-					zeichneText zeichneText = new zeichneText(text, me.getX(), me.getY());
+					Line zeichneText = new Line(text, me.getX(), me.getY());
 					layeredPane.add(zeichneText, new Integer(9));
 // 					System.out.println(text);
 				    }// if
@@ -288,7 +324,7 @@ public class MainWindow extends JFrame {
 							und der leyeredPane geadded
 						*/
 
-					    zeichneLinie zeichneLinie = new zeichneLinie(startX, startY, endX, endY);
+					    Line zeichneLinie = new Line (startX, startY, endX, endY);
 					    layeredPane.add(zeichneLinie, new Integer(8));
 					    startX = startY = endX = endY = 0;
 					    break;
@@ -332,7 +368,7 @@ public class MainWindow extends JFrame {
 								/* mit den so gewonnenen werten wird dann die linie gezeichnet
 								und der leyeredPane geadded */
 
-								zeichnePfeil zeichnePfeil = new zeichnePfeil(startX, startY, endX, endY);
+								Arrow zeichnePfeil = new Arrow(startX, startY, endX, endY);
 								layeredPane.add(zeichnePfeil, new Integer(7));
 								break;
 						}// switch(zaehler)
@@ -359,11 +395,11 @@ public class MainWindow extends JFrame {
 					endDateSpinner.setLocation(new Point(d.width - 80,35));
 
 					for(int i = 1; i <= 5; i++){
-						if(wedabecha.getKurve(i).isset()){
-							if(wedabecha.getKurve(i).getKurvenStilIndex() == 0){
-								wedabecha.getKurve(i).zeichneAktienKurve.setGroesse(d.width, d.height);
+						if(wedabecha.getCurve(i).isset()){
+							if(wedabecha.getCurve(i).getKurvenStilIndex() == 0){
+								wedabecha.getCurve(i).zeichneAktienKurve.setGroesse(d.width, d.height);
 							}else{
-								wedabecha.getKurve(i).zeichneLinienKurve.setGroesse(d.width, d.height);
+								wedabecha.getCurve(i).zeichneLinienKurve.setGroesse(d.width, d.height);
 							}// if-else()
 						} // if()
 					} // for

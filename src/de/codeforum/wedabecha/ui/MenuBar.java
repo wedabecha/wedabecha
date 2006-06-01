@@ -26,9 +26,8 @@ package de.codeforum.wedabecha.ui;
 import javax.swing.*;
 
 import de.codeforum.wedabecha.wedabecha;
-import de.codeforum.wedabecha.ui.dialogs.About;
-import de.codeforum.wedabecha.ui.dialogs.CurveType;
-
+import de.codeforum.wedabecha.system.WedaFile;
+import de.codeforum.wedabecha.ui.dialogs.*;
 
 import java.awt.event.*;
 
@@ -38,17 +37,75 @@ import java.awt.event.*;
  * Robert Exner (ashrak at users.berlios.de)
  * 
  */
-public class MenuBar {
+public class MenuBar extends JMenuBar {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// alle Bestandteile des Menüs als Klassenatrribute deklarieren
-	private JMenuBar mainMenuBar = new JMenuBar();
-		private JMenu dateiMenu = new JMenu("Datei");
-			private JMenuItem oeffneDateiItem = new JMenuItem("\u00D6ffnen");
-			private JMenuItem importiereTabelleMenuItem = new JMenuItem("Tabelle importieren");
-//			private JMenuItem verknuepfeTabelleMenuItem = new JMenuItem("Tabellen verkn\u00fcpfen");
-			private JMenuItem exportiereTabelleMenuItem = new JMenuItem("Tabelle exportieren");
-			private JMenuItem exportiereGrafikMenuItem = new JMenuItem("Grafik exportieren");
-			private JMenuItem druckenMenuItem = new JMenuItem("Drucken");
-			private JMenuItem beendenMenuItem = new JMenuItem("Programm beenden");
+	
+	// konstruktor
+	public MenuBar(){
+		this.pack();
+	} // hauptMenuUI
+
+	public void pack(){
+		final JMenu fileMenu = new JMenu("Datei");
+		
+		// Items for fileMenu
+		final JMenuItem I_openFile = new JMenuItem("\u00D6ffnen");
+		I_openFile.addActionListener(new ActionListener() {
+			// für den MenuPunkt [Datei]->Öffnen
+			public void actionPerformed(ActionEvent event){
+				new WedaFile();
+			} // actionPerformed(ActionEvent event)
+		} ); // oeffnenListener
+		
+		final JMenuItem I_DataImport = new JMenuItem("Daten importieren");
+		I_DataImport.addActionListener(new ActionListener() {
+			// für den MenuPunkt [Datei]->[Tabelle importieren]
+			public void actionPerformed(ActionEvent event){
+				new DataImport();
+			} // actionPerformed(ActionEvent event)
+		} ); // importiereTabelleListener
+		
+		final JMenuItem I_MergeFiles = new JMenuItem("Daten verkn\u00fcpfen");
+		I_MergeFiles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				wedabecha.notImplementedError();
+			}
+		});
+		I_MergeFiles.setEnabled(false);
+		
+		final JMenuItem I_DataExport = new JMenuItem("Daten exportieren");
+		I_DataExport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				new DataExport();
+			}
+		});
+		
+		final JMenuItem I_GraphicExport = new JMenuItem("Grafik exportieren");
+		I_GraphicExport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				new GraphicExport();
+			}
+		});
+		
+		final JMenuItem I_Print = new JMenuItem("Drucken");
+		I_Print.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				wedabecha.notImplementedError();
+			}
+		});
+		I_Print.setEnabled(false);
+		
+		final JMenuItem I_QuitProgram = new JMenuItem("Programm beenden");
+		I_QuitProgram.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				wedabecha.QuitProgram();
+			}
+		});
 
 		/*
 			Menu [Kurve] : hat fünf einträge, für maximal fünf kurven,
@@ -57,8 +114,8 @@ public class MenuBar {
 			und eine methode einfacher schreiben, mit denen wir die
 			Menueinträge schneller umd mit weniger code aktiveren und deaktivieren können...
 		*/
-		private JMenu kurveMenu = new JMenu("Kurve");
-			private JMenu kurveMenuList[] = {
+		final JMenu kurveMenu = new JMenu("Kurve");
+			final JMenu kurveMenuList[] = {
 				new JMenu("Kurve 1"),
 				new JMenu("Kurve 2"),
 				new JMenu("Kurve 3"),
@@ -67,7 +124,7 @@ public class MenuBar {
 			};
 
 /*
-			private JMenuItem kurveOeffnenMenuItem[] = {
+			final JMenuItem kurveOeffnenMenuItem[] = {
 				new JMenuItem("Oeffnen"),
 				new JMenuItem("Oeffnen"),
 				new JMenuItem("Oeffnen"),
@@ -77,7 +134,7 @@ public class MenuBar {
 */
 
 /*
-			private JMenuItem kurveSpeichernMenuItem[] = {
+			final JMenuItem kurveSpeichernMenuItem[] = {
 				new JMenuItem("Speichern"),
 				new JMenuItem("Speichern"),
 				new JMenuItem("Speichern"),
@@ -86,7 +143,7 @@ public class MenuBar {
 			};
 */
 			
-			private JMenuItem kurveDarstellungMenuItem[] = {
+			final JMenuItem kurveDarstellungMenuItem[] = {
 				new JMenuItem("Darstellung"),
 				new JMenuItem("Darstellung"),
 				new JMenuItem("Darstellung"),
@@ -94,7 +151,7 @@ public class MenuBar {
 				new JMenuItem("Darstellung")
 			};
 
-			private JMenuItem kurveNeuZeichnenMenuItem[] = {
+			final JMenuItem kurveNeuZeichnenMenuItem[] = {
 				new JMenuItem("Neu Zeichnen"),
 				new JMenuItem("Neu Zeichnen"),
 				new JMenuItem("Neu Zeichnen"),
@@ -102,71 +159,58 @@ public class MenuBar {
 				new JMenuItem("Neu Zeichnen")
 			};
 
-			private int kurveIt;
+			final int kurveIt;
 
 /*			
-		private JMenu annotationMenu = new JMenu("Annotation");
-			private JMenuItem annotationPfeilMenuItem = new JMenuItem("Pfeil zeichnen");
-			private JMenuItem annotationLinieMenuItem = new JMenuItem("Linie zeichnen");
-			private JMenuItem annotationTextMenuItem = new JMenuItem("Text einf\u00fcgen");
+		final JMenu annotationMenu = new JMenu("Annotation");
+			final JMenuItem annotationPfeilMenuItem = new JMenuItem("Pfeil zeichnen");
+			final JMenuItem annotationLinieMenuItem = new JMenuItem("Linie zeichnen");
+			final JMenuItem annotationTextMenuItem = new JMenuItem("Text einf\u00fcgen");
 */
-//		private JMenu bearbeitenMenu = new JMenu("Bearbeiten");
+//		final JMenu bearbeitenMenu = new JMenu("Bearbeiten");
 
 /*			
-		private JMenu ansichtMenu = new JMenu("Ansicht");
-			private JCheckBoxMenuItem zeigeGitterMenuItem = new JCheckBoxMenuItem("Gitter anzeigen");
-			private JCheckBoxMenuItem zeigeToolBarItem = new JCheckBoxMenuItem("Werkzeugleiste anzeigen");
+		final JMenu ansichtMenu = new JMenu("Ansicht");
+			final JCheckBoxMenuItem zeigeGitterMenuItem = new JCheckBoxMenuItem("Gitter anzeigen");
+			final JCheckBoxMenuItem zeigeToolBarItem = new JCheckBoxMenuItem("Werkzeugleiste anzeigen");
 */
-		private JMenu hilfeMenu = new JMenu("Hilfe");
-			private JMenuItem kurzAnleitungMenuItem = new JMenuItem("Kurzanleitung");
-			private JMenuItem dokuMenuItem = new JMenuItem("Dokumentation");
-			private JMenuItem aboutMenuItem = new JMenuItem("\u00dcber");
+		final JMenu hilfeMenu = new JMenu("Hilfe");
+			final JMenuItem kurzAnleitungMenuItem = new JMenuItem("Kurzanleitung");
+			final JMenuItem dokuMenuItem = new JMenuItem("Dokumentation");
+			final JMenuItem aboutMenuItem = new JMenuItem("\u00dcber");
 
-	// konstruktor
-	public MenuBar(){
-		this.pack();
-	} // hauptMenuUI
-
-	public void pack(){
 		/**
 			Die Methode setzt das HauptMenue aus den Klassenattributen zusammen.
 		*/
 		// die elemente des menues werden "rückwärts" zusammengesetzt
 		// d.h. erst setze ich das dateimenü zusammen, bevor ich es zur MenuBar adde usw.
 
-		// beginn dateiMenu
-			this.dateiMenu.add(this.oeffneDateiItem);
-				this.oeffneDateiItem.addActionListener(new oeffnenListener());
-			this.dateiMenu.addSeparator();
-			this.dateiMenu.add(this.importiereTabelleMenuItem);
-				this.importiereTabelleMenuItem.addActionListener(new importiereTabelleListener());
-// 			this.dateiMenu.add(this.verknuepfeTabelleMenuItem);
-// 				this.verknuepfeTabelleMenuItem.addActionListener(new verknuepfeTabelleListener());
-			this.dateiMenu.add(this.exportiereTabelleMenuItem);
-				this.exportiereTabelleMenuItem.addActionListener(new exportiereTabelleListener());
-			this.dateiMenu.addSeparator();
-			this.dateiMenu.add(this.exportiereGrafikMenuItem);
-				this.exportiereGrafikMenuItem.addActionListener(new exportiereGrafikListener());
-			this.dateiMenu.add(this.druckenMenuItem);
-				this.druckenMenuItem.setEnabled(false);
-			this.dateiMenu.addSeparator();
-			this.dateiMenu.add(this.beendenMenuItem);
-				this.beendenMenuItem.addActionListener(new beendenListener());
-		this.mainMenuBar.add(this.dateiMenu);
-		// ende dateiMenu
+		// begin fileMenu
+		fileMenu.add(I_openFile);
+		fileMenu.addSeparator();
+		fileMenu.add(I_DataImport);
+		fileMenu.add(I_MergeFiles);
+		fileMenu.add(I_DataExport);
+		fileMenu.addSeparator();
+		fileMenu.add(I_GraphicExport);
+		fileMenu.add(I_Print);
+		fileMenu.addSeparator();
+		fileMenu.add(I_QuitProgram);
+		this.add(fileMenu);
+		// end fileMenu
 
 		// beginn kurve-menues
 			for (kurveIt = 0; kurveIt < 5; kurveIt++){
-				this.kurveMenu.add(this.kurveMenuList[kurveIt]);
-// 					this.kurveMenuList[kurveIt].add(this.kurveOeffnenMenuItem[kurveIt]);
-// 						this.kurveOeffnenMenuItem[kurveIt].setEnabled(false);
-// 					this.kurveMenuList[kurveIt].add(this.kurveSpeichernMenuItem[kurveIt]);
-// 						this.kurveSpeichernMenuItem[kurveIt].setEnabled(false);
-					this.kurveMenuList[kurveIt].add(this.kurveDarstellungMenuItem[kurveIt]);
-						this.kurveDarstellungMenuItem[kurveIt].setEnabled(false);
-					this.kurveMenuList[kurveIt].add(this.kurveNeuZeichnenMenuItem[kurveIt]);
-						this.kurveNeuZeichnenMenuItem[kurveIt].setEnabled(false);
-						this.kurveNeuZeichnenMenuItem[kurveIt].addActionListener(
+				kurveMenu.add(kurveMenuList[kurveIt]);
+// 					kurveMenuList[kurveIt].add(kurveOeffnenMenuItem[kurveIt]);
+// 						kurveOeffnenMenuItem[kurveIt].setEnabled(false);
+// 					kurveMenuList[kurveIt].add(kurveSpeichernMenuItem[kurveIt]);
+// 						kurveSpeichernMenuItem[kurveIt].setEnabled(false);
+					kurveMenuList[kurveIt].add(kurveDarstellungMenuItem[kurveIt]);
+						kurveDarstellungMenuItem[kurveIt].setEnabled(false);
+					kurveMenuList[kurveIt].add(kurveNeuZeichnenMenuItem[kurveIt]);
+						kurveNeuZeichnenMenuItem[kurveIt].setEnabled(false);
+						kurveNeuZeichnenMenuItem[kurveIt].addActionListener(
 							new ActionListener(){
 								public void actionPerformed(ActionEvent event){
 									int datenLaengen[] = new int[5];
@@ -239,49 +283,49 @@ public class MenuBar {
 
 			} // for
 
-			this.kurveDarstellungMenuItem[0].addActionListener(new ActionListener(){
+			kurveDarstellungMenuItem[0].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					new CurveType(1);
 				}
 			});
 
-			this.kurveDarstellungMenuItem[1].addActionListener(new ActionListener(){
+			kurveDarstellungMenuItem[1].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					new CurveType(2);
 				}
 			});
 
-			this.kurveDarstellungMenuItem[2].addActionListener(new ActionListener(){
+			kurveDarstellungMenuItem[2].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					new CurveType(3);
 				}
 			});
 
-			this.kurveDarstellungMenuItem[3].addActionListener(new ActionListener(){
+			kurveDarstellungMenuItem[3].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					new CurveType(4);
 				}
 			});
 
-			this.kurveDarstellungMenuItem[4].addActionListener(new ActionListener(){
+			kurveDarstellungMenuItem[4].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
 					new CurveType(5);
 				}
 			});
 
-		this.mainMenuBar.add(this.kurveMenu);
+		this.add(kurveMenu);
 		// ende kurve-menues
 
 
 		// beginn annotationMenu
-// 			this.annotationMenu.add(this.annotationPfeilMenuItem);
-// 			this.annotationMenu.add(this.annotationLinieMenuItem);
-// 			this.annotationMenu.add(this.annotationTextMenuItem);
-// 		this.mainMenuBar.add(annotationMenu);
+// 			annotationMenu.add(annotationPfeilMenuItem);
+// 			annotationMenu.add(annotationLinieMenuItem);
+// 			annotationMenu.add(annotationTextMenuItem);
+// 		mainMenuBar.add(annotationMenu);
 		// ende annotationMenu
 
 		// beginn bearbeitenMenu
-// 		this.mainMenuBar.add(this.bearbeitenMenu);
+// 		mainMenuBar.add(bearbeitenMenu);
 		// ende bearbeitenMenu
 
 		/*
@@ -289,26 +333,34 @@ public class MenuBar {
 		*/
 
 		// beginn ansichtMenu
-// 		this.ansichtMenu.add(this.zeigeGitterMenuItem);
-// 			this.zeigeGitterMenuItem.addActionListener(new zeichneRasterListener());
-// 		this.ansichtMenu.add(this.zeigeToolBarItem);
-// 			this.zeigeToolBarItem.addActionListener(new zeigeToolBarListener());
-// 		this.mainMenuBar.add(this.ansichtMenu);
+// 		ansichtMenu.add(zeigeGitterMenuItem);
+// 			zeigeGitterMenuItem.addActionListener(new zeichneRasterListener());
+// 		ansichtMenu.add(zeigeToolBarItem);
+// 			zeigeToolBarItem.addActionListener(new zeigeToolBarListener());
+// 		mainMenuBar.add(ansichtMenu);
 		// ende ansichtMenu
 
 		// beginn hilfeMenu
-			this.hilfeMenu.add(this.kurzAnleitungMenuItem);
-				this.kurzAnleitungMenuItem.addActionListener(new hauptMenuKurzAnleitungListener());
-			this.hilfeMenu.add(this.dokuMenuItem);
-				this.dokuMenuItem.addActionListener(new hauptMenuDokumentationListener());
-			this.hilfeMenu.addSeparator();
-			this.hilfeMenu.add(this.aboutMenuItem);
-				this.aboutMenuItem.addActionListener(new ActionListener(){
+			hilfeMenu.add(kurzAnleitungMenuItem);
+				kurzAnleitungMenuItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						new Documentation("Kurzanleitung");
+					}
+				});
+			hilfeMenu.add(dokuMenuItem);
+				dokuMenuItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						new Documentation("Dokumentation");
+					}
+				});
+			hilfeMenu.addSeparator();
+			hilfeMenu.add(aboutMenuItem);
+				aboutMenuItem.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent event){
 						new About();
 					}
 				});
-		this.mainMenuBar.add(this.hilfeMenu);
+		this.add(hilfeMenu);
 		// ende hilfeMenu
 	} // pack()
 
@@ -321,11 +373,4 @@ public class MenuBar {
 		this.kurveDarstellungMenuItem[kurvenNummer - 1].setEnabled(wasnjetz);
 		this.kurveNeuZeichnenMenuItem[kurvenNummer - 1].setEnabled(wasnjetz);
 	}
-
-
-	public JMenuBar getHauptMenu(){
-		// wird von der hauptFensterUI aufgerufen und
-		// liefert das hauptmenu zurück
-		return this.mainMenuBar;
-	}
-} // hauptMenuUI
+} // public class MenuBar
