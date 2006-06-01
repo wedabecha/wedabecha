@@ -27,6 +27,8 @@ package de.codeforum.wedabecha.ui.dialogs;
 	verändert die Darstellungseigenschaften der Kurve
 */
 
+import de.codeforum.wedabecha.*;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -109,7 +111,7 @@ class CurveType extends JDialog {
 						styleComboBox.getSelectedIndex()
 					);
 
-						wedabecha.getKurve(getTableNumber()).setFarbe(getColor());
+						wedabecha.getCurve(getID()).setFarbe(getColor());
 
 					setVisible(false);
 				} // if
