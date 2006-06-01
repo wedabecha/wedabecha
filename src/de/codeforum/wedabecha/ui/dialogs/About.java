@@ -27,7 +27,7 @@ import java.awt.event.*;
  * 
  * Die Klasse wird vom Menupunkt [Hilfe] -> [Über] aufgerufen
  */
-class About extends JDialog {
+public class About extends JDialog {
 	/**
 	 * 
 	 */

@@ -18,22 +18,21 @@ package de.codeforum.wedabecha.ui.dialogs;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de),
-		Matthias Tylkowski (micron at users.berlios.de)
-
-	verändert die Darstellungseigenschaften der Kurve
-*/
-
 import de.codeforum.wedabecha.*;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-class CurveType extends JDialog {
+/**
+ * @author
+ * Dominic Hopf (dmaphy at users.berlios.de),
+ * Robert Exner (ashrak at users.berlios.de),
+ * Matthias Tylkowski (micron at users.berlios.de)
+ * 
+ * verändert die Darstellungseigenschaften der Kurve
+ */
+public class CurveType extends JDialog {
 	final static long serialVersionUID = 1L;
 
 	// Die nummer der Tabelle bzw. Kurve
