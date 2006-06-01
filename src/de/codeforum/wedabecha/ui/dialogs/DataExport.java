@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,10 +17,9 @@ package de.codeforum.wedabecha.ui.dialogs;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Martin Müller (mrtnmueller at users.berlios.de)
-*/
+package de.codeforum.wedabecha.ui.dialogs;
+
+
 
 
 //Diese Klasse dient zum Aufruf des "Speichern"-Dialoges
@@ -32,9 +30,12 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
-import de.codeforum.wedabecha.wedabecha.system.toWeda;
+import de.codeforum.wedabecha.system.WedaFile;
 
-
+/**
+ * @author
+ * Martin Müller (mrtnmueller at users.berlios.de)
+ */
 public class DataExport {
 	public DataExport () {
 
@@ -80,7 +81,7 @@ public class DataExport {
 					//ruft writeFile in toWeda mit dem ausgewählten
 					//Dateinamen- u. Pfad sowie der abgefragten
 					//Tabellennummer auf
-					toWeda.writeFile(file.getAbsolutePath(), tablenumber);
+					WedaFile.writeFile(file.getAbsolutePath(), tablenumber);
 				}
 
 				//falls auf Abbrechen geklickt wurde...
@@ -96,7 +97,7 @@ public class DataExport {
 				JOptionPane.showMessageDialog( null, "Die Tabellennummer war falsch !" );
 			}//if
 
-		}catch
+		} catch
 				//fängt die Exeption ab, wenn auf abbrechen gedrückt wurde
 				(NumberFormatException except){
 				JOptionPane.showMessageDialog
