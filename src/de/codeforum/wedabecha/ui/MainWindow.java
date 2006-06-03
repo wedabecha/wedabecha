@@ -95,8 +95,8 @@ public class MainWindow extends JFrame {
 		windowHeight = height;
 	}
 	
-	public void setGridVisibility(boolean visibility) {
-		    this.zeichneRaster.setVisibility(visibility);
+	public static void setGridVisibility(boolean visibility) {
+		    zeichneRaster.setVisibility(visibility);
 	}
 
 	// Konstruktor
