@@ -1,1 +1,14 @@
- 
+2006-06-03 Dominic Hopf <dh@dmaphy.de>
+- Umstrukturierung des Projekts
+	- Hierbei wurde das Projekt in mehrere Pakete aufgeteilt, die Namensgebung
+	  für die Pakete erfolgt hier "wie bei den" Grossen.
+	- Variablen und Methoden werden jetzt nur noch englisch benannt. Kommentare
+	  sind englisch oder deutsch. Das dient der besseren Übersicht für die
+	  Entwickler.
+	- Mit dieser Umstrukturierung sind eine Menge Fehler aufgetreten, die im
+	  Moment alle behoben sind.
+	- Ich habe meine Eclipse-Entwicklungsumgebung extrem empfindlich eingestellt,
+	  so dass mir alle möglichen Warnungen und Hinweise angezeigt werden,
+	  auch von diesen habe ich schon einige behoben.
+	- Neu für den Benutzer ist, dass allgemeine Fehlermeldungen angezeigt
+	  werden (sollen), wenn eine Exception auftritt.
