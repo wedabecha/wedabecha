@@ -117,7 +117,7 @@ public class CoordinateSystem extends JComponent {
 	}
 
 
-	protected void zeichnen() {
+	public void zeichnen() {
 		/**
 			die Methode zeichnen() rufen wir vom ActionListener für den
 			[OK] - Button in importiereTabelleUI auf.
