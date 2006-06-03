@@ -19,9 +19,6 @@
 
 package de.codeforum.wedabecha.system;
 
-// programminterne Imports
-
-
 // Import von Dateien aus Java-Libs
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,9 +31,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
+// programminterne Imports
 import de.codeforum.wedabecha.wedabecha;
 import de.codeforum.wedabecha.ui.MainWindow;
-import de.codeforum.wedabecha.ui.dialogs.DataImport;
+import de.codeforum.wedabecha.ui.dialogs.DataImportUI;
+import de.codeforum.wedabecha.system.DataImport;
 
 /**
  * @author
@@ -61,7 +60,7 @@ public class WedaFile {
 	 * @param filename Der vollständige Dateiname (also inklusive Pfad) der .weda-Datei.
 	 * @return Eine zweidimensionale ArrayList mit den Daten.
 	 */
-	public ArrayList openFile (String filename) {
+	public void openFile (String filename) {
 
 		// Tabellennummer abfragen
 		String input = JOptionPane.showInputDialog("Bitte die darzustellende Kurvennummer angeben:" );
@@ -113,11 +112,11 @@ public class WedaFile {
 						wedabecha.getCurve(kurvennummer).setExists(true);
 
 						// Button zur jeweiligen eingelesenen Kurve anzeigen
-						MainWindow.toolBar.kurveWaehlen(kurvennummer, true);
-						MainWindow.hauptMenu.setKurveEditable(kurvennummer, true);
+						MainWindow.getToolBar().kurveWaehlen(kurvennummer, true);
+						MainWindow.getMainMenuBar().setCurveEditable(kurvennummer, true);
 
 						//im Importdialog soll noch der Pfad erscheinen
-						DataImport.setPfad(auswahlDialog.getSelectedFile().getPath(),kurvennummer);
+						DataImportUI.setPath(auswahlDialog.getSelectedFile().getPath(),kurvennummer);
 
 						int datenLaengen[] = new int[5];
 
@@ -130,12 +129,12 @@ public class WedaFile {
 							} // if
 
 							java.util.Arrays.sort(datenLaengen);
-							MainWindow.maxDate = datenLaengen[4];
+							MainWindow.setMaxDate(datenLaengen[4]);
 
 						} // for
 
 						// Koordinatensystem zeichnen
-						MainWindow.koordSys.zeichnen();
+						MainWindow.getCoords().zeichnen();
 
 			    	}//if [JFileChooser.APPROVE_OPTION() ist nicht null]
 
@@ -150,7 +149,7 @@ public class WedaFile {
 		} // try
 	} // openFile(String filename)
 	
-	public void writeFile(ArrayList data, String filename) {
+	public static void writeFile(String filename, int id) {
 		ArrayList werteAL;
 		ArrayList datenAL;
 
@@ -161,8 +160,8 @@ public class WedaFile {
 
 		//holt die Werte und Daten aus der übergebenen tabellennummer
 		//und speichert sie in die jeweilige ArrayList
-		werteAL = wedabecha.getKurve(tabellenNummer).getWerte();
-		datenAL = wedabecha.getKurve(tabellenNummer).getDaten();
+		werteAL = wedabecha.getCurve(id).getWerte();
+		datenAL = wedabecha.getCurve(id).getDaten();
 
 
 		//erzeugt eine leere Datei mit dem übergebenen Dateinamen
@@ -211,25 +210,25 @@ public class WedaFile {
 
 		} // falls beim Anhängen etwas fehlschlägt
 			catch (IOException except){
-			this.showAppendError(filename);
+			showAppendError(filename);
 		} // try
 	} // writeFile(ArrayList data, String filename)
 	
-	protected void showWriteError(String fileName){
+	protected static void showWriteError(String fileName){
 		JOptionPane.showMessageDialog(null,
 		"Datei" + fileName + "konnte nicht geschrieben werden.","Dateifehler",
 		JOptionPane.ERROR_MESSAGE );
 	} // showWriteError()
 
 
-	protected void showAppendError(String fileName){
+	protected static void showAppendError(String fileName){
 		JOptionPane.showMessageDialog(null,
 		"Datei " + fileName + "konnte nicht verändert werden","Dateifehler",
 		JOptionPane.ERROR_MESSAGE );
 	} // showAppendError()
 
 
-	protected void showFNFE(String fileName){
+	protected static void showFNFE(String fileName){
 		JOptionPane.showMessageDialog(null,
 		"Datei" + fileName + "konnte nicht gefunden werden.","Dateifehler",
 		JOptionPane.ERROR_MESSAGE );
