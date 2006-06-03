@@ -74,7 +74,7 @@ public class MenuBar extends JMenuBar {
 		I_DataImport.addActionListener(new ActionListener() {
 			// für den MenuPunkt [Datei]->[Tabelle importieren]
 			public void actionPerformed(ActionEvent event){
-				new DataImport();
+				new DataImportUI();
 			} // actionPerformed(ActionEvent event)
 		} ); // importiereTabelleListener
 		
@@ -96,7 +96,7 @@ public class MenuBar extends JMenuBar {
 		final JMenuItem I_GraphicExport = new JMenuItem("Grafik exportieren");
 		I_GraphicExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				new GraphicExport();
+				new GraphicExportUI();
 			}
 		});
 		
