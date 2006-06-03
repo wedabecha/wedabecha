@@ -152,18 +152,18 @@ class definiereDatumUI extends JDialog {
 			public void actionPerformed(ActionEvent event){
 				if (spalteCombo.getSelectedIndex() == 0){
 					// wenn das datum in der ersten spalte der ascii-datei steht
-					DataImport.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(true);
+					DataImportUI.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(true);
 				} else {
 					//wenn das datum in der letzten spalte der ascii-datei steht
-					DataImport.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(false);
+					DataImportUI.tabellen[getTableNumber() - 1].setDatumsPosFirstColumn(false);
 				} // if() else
 
 				if(inkRB.isSelected()){
-					DataImport.tabellen[getTableNumber() - 1].setInkZahlRep(
+					DataImportUI.tabellen[getTableNumber() - 1].setInkZahlRep(
 						inkZahlCombo.getSelectedItem().toString()
 					);
 				} else if (konkretRB.isSelected())  {
-					DataImport.tabellen[getTableNumber() - 1].setDatumsFormatIndex(
+					DataImportUI.tabellen[getTableNumber() - 1].setDatumsFormatIndex(
 						datumCombo.getSelectedIndex()
 					);
 				} // if() else
