@@ -45,7 +45,7 @@ public class MainWindow extends JFrame {
 	
 	final static long serialVersionUID = 1;
 	
-	protected static MenuBar hauptMenu = new MenuBar();
+	protected static MenuBar mainMenuBar = new MenuBar();
 	protected static JLayeredPane mainPane = new JLayeredPane();
 	
 	/**
@@ -105,6 +105,10 @@ public class MainWindow extends JFrame {
 	
 	public static CoordinateSystem getCoords() {
 		return coords;
+	}
+	
+	public static MenuBar getMainMenuBar() {
+		return mainMenuBar;
 	}
 	
 	public static void setGridVisibility(boolean visibility) {
