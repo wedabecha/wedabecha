@@ -65,7 +65,7 @@ public class MainWindow extends JFrame {
 
 	protected static MainToolBar toolBar = new MainToolBar(getWindowWidth());
 	protected static Grid zeichneRaster = new Grid(windowWidth, windowHeight);
-	protected static CoordinateSystem koordSys = new CoordinateSystem();
+	protected static CoordinateSystem coords = new CoordinateSystem();
 	protected PopupMenu kontext = new PopupMenu();
 
 	// Elemente der GUI um den horizontalen Zeichenbereich festzulegen
@@ -93,6 +93,18 @@ public class MainWindow extends JFrame {
 	
 	public static void setWindowHeight(int height) {
 		windowHeight = height;
+	}
+	
+	public static MainToolBar getToolBar() {
+		return toolBar;
+	}
+	
+	public static void setMaxDate(int date) {
+		maxDate = date;
+	}
+	
+	public static CoordinateSystem getCoords() {
+		return coords;
 	}
 	
 	public static void setGridVisibility(boolean visibility) {
@@ -206,8 +218,8 @@ public class MainWindow extends JFrame {
 								wedabecha.getCurve(i).zeichneLinienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} // if
 
-							koordSys.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
-							koordSys.setEndDateIndex( ((Integer)endDateSpinner.getValue()).intValue() );
+							coords.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
+							coords.setEndDateIndex( ((Integer)endDateSpinner.getValue()).intValue() );
 						} // if
 					} // for
 				}
@@ -238,7 +250,7 @@ public class MainWindow extends JFrame {
 		MainWindow.layeredPane.add(zeichneRaster, new Integer(0));
 
 		// Koordinatensystem der neuen ContentPane adden
-		MainWindow.layeredPane.add(koordSys, new Integer(1));
+		MainWindow.layeredPane.add(coords, new Integer(1));
 
 		// Werkzeugleiste einbinden
 		MainWindow.mainPane.add(toolBar.getToolBar(), JLayeredPane.PALETTE_LAYER);
@@ -385,7 +397,7 @@ public class MainWindow extends JFrame {
 					d = layeredPane.getSize();
 					zeichneRaster.setGroesse(d.width, d.height);
 					MainWindow.setGroesse(d.width, d.height);
-					koordSys.setGroesse(d.width, d.height);
+					coords.setGroesse(d.width, d.height);
 					startDateSpinner.setLocation(new Point(d.width - 250,35));
 					startDateLabel.setLocation(new Point(d.width - 340,35));
 					endDateLabel.setLocation(new Point(d.width - 170,35));
