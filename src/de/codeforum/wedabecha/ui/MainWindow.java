@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.ui;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,18 +17,7 @@ package de.codeforum.wedabecha.ui;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Martin Müller (mrtnmueller at users.berlios.de),
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de),
-		Matthias Tylkowski (micron at users.berlios.de)
-*/
-
-/*
-	dies ist das hauptFenster des Programms
-*/
-
+package de.codeforum.wedabecha.ui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -37,14 +25,19 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-
 import de.codeforum.wedabecha.wedabecha;
 import de.codeforum.wedabecha.system.CoordinateSystem;
 import de.codeforum.wedabecha.system.draw.*;
 import de.codeforum.wedabecha.system.listeners.*;
 
 
-
+/**
+ * @author
+ * Martin Müller (mrtnmueller at users.berlios.de),
+ * Dominic Hopf (dmaphy at users.berlios.de),
+ * Robert Exner (ashrak at users.berlios.de),
+ * Matthias Tylkowski (micron at users.berlios.de)
+ */
 public class MainWindow extends JFrame {
 	/*
 	 * Deklaration von Klassenvariablen
@@ -54,6 +47,10 @@ public class MainWindow extends JFrame {
 	
 	protected static MenuBar hauptMenu = new MenuBar();
 	protected static JLayeredPane mainPane = new JLayeredPane();
+	
+	/**
+	 * layeredPane ist das Pane, auf dem die Zeichnungen etc. stattfinden. 
+	 */
 	public static JLayeredPane layeredPane = new JLayeredPane();
 	protected static JLayeredPane toolbarPane = new JLayeredPane();
 
@@ -126,7 +123,7 @@ public class MainWindow extends JFrame {
 		this.setTitle("wedabecha");
 
 		// Hauptmenu in das Fenster einbinden
-		this.setJMenuBar(hauptMenu.getHauptMenu());
+		this.setJMenuBar(new MenuBar());
 
 		// Listener zum Fensterschliessen per "wegkreuzen"
 		this.addWindowListener(new WindowListener() {
@@ -279,7 +276,7 @@ public class MainWindow extends JFrame {
 								"neues Textfeld erstellen.",
 								JOptionPane.QUESTION_MESSAGE);
 				    if(text != null){
-					Line zeichneText = new Line(text, me.getX(), me.getY());
+					Text zeichneText = new Text(text, me.getX(), me.getY());
 					layeredPane.add(zeichneText, new Integer(9));
 // 					System.out.println(text);
 				    }// if
