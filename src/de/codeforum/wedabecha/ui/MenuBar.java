@@ -89,7 +89,7 @@ public class MenuBar extends JMenuBar {
 		final JMenuItem I_DataExport = new JMenuItem("Daten exportieren");
 		I_DataExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				new DataExport();
+				new DataExportUI();
 			}
 		});
 		
