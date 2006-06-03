@@ -30,11 +30,12 @@ import de.codeforum.wedabecha.wedabecha;
  * Matthias Tylkowski (micron at users.berlios.de)
  */
 public class MainToolBar {
+	private String imagepath =  "./de/codeforum/wedabecha/ui/";
 	protected JToolBar toolBar = new JToolBar("Werkzeugleiste");
-		private ImageIcon oeffnen = new ImageIcon("Images/oeffnen.gif");
-			private JButton oeffnenbutton = new JButton(oeffnen);
-		private ImageIcon speichern = new ImageIcon("Images/speichern.gif");
-			private JButton speichernbutton = new JButton(speichern);
+		private ImageIcon oeffnen = new ImageIcon(this.imagepath + "open.gif");
+			private JButton oeffnenbutton = new JButton(this.oeffnen);
+		private ImageIcon speichern = new ImageIcon(this.imagepath + "save.gif");
+			private JButton speichernbutton = new JButton(this.speichern);
 		/*
 			werden erst gebraucht, wenn die Funktion implementiert ist
 		*/
@@ -43,14 +44,14 @@ public class MainToolBar {
 // 		private ImageIcon redo = new ImageIcon("Images/redo.gif");
 // 			private JButton redobutton = new JButton(redo);
 
-		private ImageIcon gitter = new ImageIcon("Images/gitter.gif");
-			private JToggleButton gitterbutton = new JToggleButton(gitter);
-		private ImageIcon liniezeichnen = new ImageIcon("Images/linie.gif");
-			protected JToggleButton liniezeichnenbutton = new JToggleButton(liniezeichnen);
-		private ImageIcon pfeilzeichnen = new ImageIcon("Images/pfeil.gif");
-			protected JToggleButton pfeilzeichnenbutton = new JToggleButton(pfeilzeichnen);
-		private ImageIcon textzeichnen = new ImageIcon("Images/text.gif");
-			protected JToggleButton textzeichnenbutton = new JToggleButton(textzeichnen);
+		private ImageIcon gitter = new ImageIcon(this.imagepath + "grid.gif");
+			private JToggleButton gitterbutton = new JToggleButton(this.gitter);
+		private ImageIcon liniezeichnen = new ImageIcon(this.imagepath + "line.gif");
+			protected JToggleButton liniezeichnenbutton = new JToggleButton(this.liniezeichnen);
+		private ImageIcon pfeilzeichnen = new ImageIcon(this.imagepath + "arrow.gif");
+			protected JToggleButton pfeilzeichnenbutton = new JToggleButton(this.pfeilzeichnen);
+		private ImageIcon textzeichnen = new ImageIcon(this.imagepath + "text.gif");
+			protected JToggleButton textzeichnenbutton = new JToggleButton(this.textzeichnen);
 		private JLabel kurveLabel = new JLabel("Kurve: ");
 		protected JToggleButton kurveButton[] = {
 						    new JToggleButton(" 1 "),

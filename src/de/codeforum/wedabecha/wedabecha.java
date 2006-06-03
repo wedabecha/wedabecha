@@ -30,7 +30,6 @@ import de.codeforum.wedabecha.ui.MainWindow;
  *  TODO: curve zu einer dynamisch anpassbaren Liste (Array) machen.
  *  
  *  Hauptklasse die als Programm aufgerufen wird.
- *  Das Programm soll fünf Kurven zeichnen können.
  */
 public class wedabecha {
 	private static Curve curve[];
@@ -41,7 +40,15 @@ public class wedabecha {
 	 * @return Die Kurve
 	 */
 	public static Curve getCurve(int number){
-		return curve[number - 1];
+		Curve c = new Curve(0);
+		
+		try {
+			c = curve[number - 1];
+		}  catch (NullPointerException exception) {
+			wedabecha.genericProgramError(exception);
+		}
+		
+		return c;
 	} // getKurve()
 	
 	
@@ -74,6 +81,13 @@ public class wedabecha {
 	public static void notImplementedError() {
 		JOptionPane.showMessageDialog(null,
 			"Die Funktion ist in dieser Version noch nicht implementiert.","Nicht Implementiert",
+			JOptionPane.ERROR_MESSAGE
+		);
+	}
+	
+	public static void genericProgramError(Exception exception) {
+		JOptionPane.showMessageDialog(null,
+			"Die folgende Exception ist während des Programmablaufs aufgetreten: " + exception,"Allgemeiner Programmfehler",
 			JOptionPane.ERROR_MESSAGE
 		);
 	}

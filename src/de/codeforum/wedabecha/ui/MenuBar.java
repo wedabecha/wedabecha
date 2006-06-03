@@ -131,70 +131,78 @@ public class MenuBar extends JMenuBar {
 		// curveMenu
 		final JMenu curveMenu = new JMenu("Kurve");
 		
-		for (int i = 1; i < this.curveEditable.length; i++) {
-			final int currentCurve = i;
+		try {
 			
-			JMenu I_curveMenu = new JMenu("Kurve " + currentCurve);
-			
-			JMenuItem I_openCurve = new JMenuItem("Oeffnen");
-			I_openCurve.setEnabled(false);
-			I_curveMenu.add(I_openCurve);
-			
-			JMenuItem I_saveCurve = new JMenuItem("Speichern");
-			I_saveCurve.setEnabled(false);
-			I_curveMenu.add(I_saveCurve);
-			
-			JMenuItem I_curveGraph = new JMenuItem("Darstellung");
-			I_curveGraph.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent event) {
-					new CurveType(currentCurve);
-				}
-			});
-			I_curveMenu.add(I_curveGraph);
-			
-			JMenuItem I_curveRedraw = new JMenuItem("Neu Zeichnen");
-			I_curveRedraw.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent event){
-					// alle importierten Tabellen als Kurve zeichnen
-					if (wedabecha.getCurve(currentCurve).isset()) {
-						try {
-							MainWindow.layeredPane.remove(
-									MainWindow.layeredPane.getIndexOf (
-											wedabecha.getCurve(currentCurve).zeichneAktienKurve
-									)
-							);
-						} catch (ArrayIndexOutOfBoundsException except){
-							try {
-								MainWindow.layeredPane.remove(
-										MainWindow.layeredPane.getIndexOf (
-												wedabecha.getCurve(currentCurve).zeichneLinienKurve
-										)
-								);
-							} catch (ArrayIndexOutOfBoundsException exception) {
-								// mache von mir aus nix
-							} // try
-						} // try
-	
-						MainWindow.layeredPane.repaint();
-						
-						wedabecha.getCurve(currentCurve).zeichneKurve();
-						MainWindow.toolBar.setKurve1Button();
-					} // if
-
-					/*
-					java.util.Arrays.sort(datenLaengen);
-					MainWindow.maxDate = datenLaengen[4];
-					*/
+			// Wenn die Liste der Kurven nicht leer ist, gibts auch nen Kurve-Menu
+			if (this.curveEditable.length != 0) {
+				for (int i = 1; i < this.curveEditable.length; i++) {
+					final int currentCurve = i;
 					
-					MainWindow.layeredPane.repaint();
-				} // actionPerformed()
-			} // ActionListener()
-			);
-
-			I_curveMenu.add(I_curveRedraw);
-				
-			curveMenu.add(I_curveMenu);			
-		} // for
+					JMenu I_curveMenu = new JMenu("Kurve " + currentCurve);
+					
+					JMenuItem I_openCurve = new JMenuItem("Oeffnen");
+					I_openCurve.setEnabled(false);
+					I_curveMenu.add(I_openCurve);
+					
+					JMenuItem I_saveCurve = new JMenuItem("Speichern");
+					I_saveCurve.setEnabled(false);
+					I_curveMenu.add(I_saveCurve);
+					
+					JMenuItem I_curveGraph = new JMenuItem("Darstellung");
+					I_curveGraph.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent event) {
+							new CurveType(currentCurve);
+						}
+					});
+					I_curveMenu.add(I_curveGraph);
+					
+					JMenuItem I_curveRedraw = new JMenuItem("Neu Zeichnen");
+					I_curveRedraw.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent event){
+							// alle importierten Tabellen als Kurve zeichnen
+							if (wedabecha.getCurve(currentCurve).isset()) {
+								try {
+									MainWindow.layeredPane.remove(
+											MainWindow.layeredPane.getIndexOf (
+													wedabecha.getCurve(currentCurve).zeichneAktienKurve
+											)
+									);
+								} catch (ArrayIndexOutOfBoundsException except){
+									try {
+										MainWindow.layeredPane.remove(
+												MainWindow.layeredPane.getIndexOf (
+														wedabecha.getCurve(currentCurve).zeichneLinienKurve
+												)
+										);
+									} catch (ArrayIndexOutOfBoundsException exception) {
+										// mache von mir aus nix
+									} // try
+								} // try
+			
+								MainWindow.layeredPane.repaint();
+								
+								wedabecha.getCurve(currentCurve).zeichneKurve();
+								MainWindow.toolBar.setKurve1Button();
+							} // if
+		
+							/*
+							java.util.Arrays.sort(datenLaengen);
+							MainWindow.maxDate = datenLaengen[4];
+							*/
+							
+							MainWindow.layeredPane.repaint();
+						} // actionPerformed()
+					} // ActionListener()
+					);
+		
+					I_curveMenu.add(I_curveRedraw);
+						
+					curveMenu.add(I_curveMenu);			
+				} // for
+			} // if (this.curveEditable.length != 0)
+		} catch (NullPointerException exception) {
+			wedabecha.genericProgramError(exception);
+		}
 		// curveMenu END
 		
 		// annotationMenu
