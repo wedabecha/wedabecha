@@ -98,45 +98,45 @@ public class subImportDialogUI extends JDialog {
 			public void actionPerformed(ActionEvent event){
 				//System.out.println( event.getActionCommand());
 
-				DataImport.setPfad(
-					DataImport.tabellen[getTableNumber() - 1].getImportPfad(),
+				DataImportUI.setPath(
+					DataImportUI.tabellen[getTableNumber() - 1].getImportPfad(),
 					getTableNumber()
 				);
 
-				DataImport.tabellen[getTableNumber() - 1].setTrennzeichenIndex(
+				DataImportUI.tabellen[getTableNumber() - 1].setTrennzeichenIndex(
 					trennzeichenBox.getSelectedIndex()
 				);
 
 				wedabecha.getCurve(getTableNumber()).setWerte(
-					DataImport.tabellen[getTableNumber() - 1].getWerte()
+					DataImportUI.tabellen[getTableNumber() - 1].getWerte()
 				);
 
 				wedabecha.getCurve(getTableNumber()).setDaten(
-					DataImport.tabellen[getTableNumber() - 1].getDaten()
+					DataImportUI.tabellen[getTableNumber() - 1].getDaten()
 				);
 
 				wedabecha.getCurve(getTableNumber()).setExists(true);
 				// Button zur jeweiligen eingelesenen Kurve anzeigen
-				MainWindow.toolBar.kurveWaehlen(getTableNumber(), true);
-				MainWindow.hauptMenu.setKurveEditable(getTableNumber(), true);
+				MainWindow.getToolBar().kurveWaehlen(getTableNumber(), true);
+				MainWindow.getMainMenuBar().setCurveEditable(getTableNumber(), true);
 
 				if (wedabecha.getCurve(getTableNumber()).isset()){
 					switch(getTableNumber()){
-						case 1:	DataImport.oeffneTabelle2.setEnabled(true);
-								DataImport.speicherTabelle[1].setEnabled(true);
-								DataImport.darstellungsTypButton2.setEnabled(true);
+						case 1:	DataImportUI.oeffneTabelle2.setEnabled(true);
+								DataImportUI.speicherTabelle[1].setEnabled(true);
+								DataImportUI.darstellungsTypButton2.setEnabled(true);
 								break;
-						case 2:	DataImport.oeffneTabelle3.setEnabled(true);
-								DataImport.speicherTabelle[2].setEnabled(true);
-								DataImport.darstellungsTypButton3.setEnabled(true);
+						case 2:	DataImportUI.oeffneTabelle3.setEnabled(true);
+								DataImportUI.speicherTabelle[2].setEnabled(true);
+								DataImportUI.darstellungsTypButton3.setEnabled(true);
 								break;
-						case 3:	DataImport.oeffneTabelle4.setEnabled(true);
-								DataImport.speicherTabelle[3].setEnabled(true);
-								DataImport.darstellungsTypButton4.setEnabled(true);
+						case 3:	DataImportUI.oeffneTabelle4.setEnabled(true);
+								DataImportUI.speicherTabelle[3].setEnabled(true);
+								DataImportUI.darstellungsTypButton4.setEnabled(true);
 								break;
-						case 4:	DataImport.oeffneTabelle5.setEnabled(true);
-								DataImport.speicherTabelle[4].setEnabled(true);
-								DataImport.darstellungsTypButton5.setEnabled(true);
+						case 4:	DataImportUI.oeffneTabelle5.setEnabled(true);
+								DataImportUI.speicherTabelle[4].setEnabled(true);
+								DataImportUI.darstellungsTypButton5.setEnabled(true);
 								break;
 					}
 				}
@@ -156,7 +156,7 @@ public class subImportDialogUI extends JDialog {
 		cancelButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
 				wedabecha.getCurve(getTableNumber()).setExists(false);
-				MainWindow.hauptMenu.setKurveEditable(getTableNumber(), false);
+				MainWindow.getMainMenuBar().setCurveEditable(getTableNumber(), false);
 				setVisible(false);
 			}
 		});
@@ -219,11 +219,11 @@ public class subImportDialogUI extends JDialog {
     	int returnVal = auswahlDialog.showOpenDialog(this);
     	if(returnVal == JFileChooser.APPROVE_OPTION) {
 			this.pathField.setText(auswahlDialog.getSelectedFile().getPath());
-			DataImport.tabellen[tableNumber - 1].setImportPfad(
+			DataImportUI.tabellen[tableNumber - 1].setImportPfad(
 				auswahlDialog.getSelectedFile().getPath()
 			);
 
-			DataImport.tabellen[tableNumber - 1].setImportName(
+			DataImportUI.tabellen[tableNumber - 1].setImportName(
 				auswahlDialog.getSelectedFile().getName()
 			);
 		} // fi
