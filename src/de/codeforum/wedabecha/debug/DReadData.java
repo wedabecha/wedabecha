@@ -37,7 +37,11 @@ import de.codeforum.wedabecha.wedabecha;
 class DReadData {
 	private ArrayList werte;
 	private ArrayList daten;
-
+	
+	/**
+	 * Konstruktor liest die Werte aus der ersten Kurve.
+	 * Erwartet keine weiteren Parameter
+	 */
 	public DReadData(){
 		this.werte = wedabecha.getCurve(1).getValues();
 		this.daten = wedabecha.getCurve(1).getDates();
@@ -45,6 +49,7 @@ class DReadData {
 		this.printDaten();
 	} // DReadData()
 
+	
 	private void printWerte(){
 		// gibt die Werte aus
 
@@ -63,6 +68,7 @@ class DReadData {
 
 	} // printWerte()
 
+	
 	private void printDaten(){
 		String statArray[];
 		String debug;
