@@ -77,7 +77,9 @@ public class wedabecha {
 		System.exit(0);
 	}
 	
-	
+	/**
+	 * show Message, that a Function not yet is implemented
+	 */
 	public static void notImplementedError() {
 		JOptionPane.showMessageDialog(null,
 			"Die Funktion ist in dieser Version noch nicht implementiert.","Nicht Implementiert",
@@ -85,6 +87,10 @@ public class wedabecha {
 		);
 	}
 	
+	/**
+	 * show generic Errormessage including the exception
+	 * @param exception the exception to show
+	 */
 	public static void genericProgramError(Exception exception) {
 		JOptionPane.showMessageDialog(null,
 			"Die folgende Exception ist während des Programmablaufs aufgetreten: " + exception,"Allgemeiner Programmfehler",
@@ -92,13 +98,14 @@ public class wedabecha {
 		);
 	}
 
-	// Konstruktor
+	
 	/**
 	 * Konstruktor, erwartet keine weiteren Parameter
 	 */
 	public wedabecha(){
 		new MainWindow(700, 500);
 	} // wedabecha()
+	
 	
 	/**
 	 * Einstiegspunkt zum Starten des Programms.
