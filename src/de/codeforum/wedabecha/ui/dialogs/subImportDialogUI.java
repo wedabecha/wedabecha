@@ -85,7 +85,7 @@ public class subImportDialogUI extends JDialog {
 		final JLabel trennzeichenLabel = new JLabel("Trennzeichen");
 	
 	
-		final JComboBox trennzeichenBox = new JComboBox(DataImport.getTrennzeichenStr());
+		final JComboBox trennzeichenBox = new JComboBox(DataImport.getSeparators());
 	
 		final JButton durchsuchenKnopf = new JButton("Durchsuchen ...");
 		final JButton datumsFormatKnopf = new JButton("Datum"); // die beschriftung muss dynamisch anngepasst werden
@@ -99,11 +99,11 @@ public class subImportDialogUI extends JDialog {
 				//System.out.println( event.getActionCommand());
 
 				DataImportUI.setPath(
-					DataImportUI.tabellen[getTableNumber() - 1].getImportPfad(),
+					DataImportUI.tabellen[getTableNumber() - 1].getImportPath(),
 					getTableNumber()
 				);
 
-				DataImportUI.tabellen[getTableNumber() - 1].setTrennzeichenIndex(
+				DataImportUI.tabellen[getTableNumber() - 1].setSeparatorIndex(
 					trennzeichenBox.getSelectedIndex()
 				);
 
@@ -219,7 +219,7 @@ public class subImportDialogUI extends JDialog {
     	int returnVal = auswahlDialog.showOpenDialog(this);
     	if(returnVal == JFileChooser.APPROVE_OPTION) {
 			this.pathField.setText(auswahlDialog.getSelectedFile().getPath());
-			DataImportUI.tabellen[tableNumber - 1].setImportPfad(
+			DataImportUI.tabellen[tableNumber - 1].setImportPath(
 				auswahlDialog.getSelectedFile().getPath()
 			);
 
