@@ -93,8 +93,8 @@ public class WedaFile {
 			    	int returnVal = auswahlDialog.showOpenDialog(auswahlDialog);
 			    	if(returnVal == JFileChooser.APPROVE_OPTION){
 
-						DataImport.setImportPfad(auswahlDialog.getSelectedFile().getPath());
-						DataImport.setTrennzeichenIndex(0); //das Trennzeichen ist immer Semikolon
+						DataImport.setImportPath(auswahlDialog.getSelectedFile().getPath());
+						DataImport.setSeparatorIndex(0); //das Trennzeichen ist immer Semikolon
 						DataImport.setDatumsFormatIndex(0);//das Datumsformat ist immer YYYY-MM-DD
 						DataImport.setDatumsPosFirstColumn(true);//das Datum steht immer an erster Stelle
 
