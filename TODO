@@ -1,10 +1,33 @@
-Namensgebung:
-englische Namen für Variablen und Funktionen 
+Bei der Namensgebung von Methoden und Variablen bitte darauf achten, diese
+englisch zu halten.
 
 ##############################################################################
 
-Berechnungen sollten während des Imports bzw. als Folge des Imports geschehen,
-das entlastet die CPU beim Scrollen.
+Eclipse zeigt noch viele Warnungen, die behoben werden müssen.
+
+##############################################################################
+
+In de.codeforum.wedabecha.MenuBar ist ein Denkfehler beim generieren des Menu
+für die Kurve (curveMenu) .
+Vor beheben dieses Fehlers macht es evtl. Sinn die Klasse Curve neu zu
+schreiben (übersichtlichere Gestaltung, keine Warnungen, 
+alle Dokumentationskommentare) . Ebenfalls denke ich über eine andere Art der
+internen Verwaltung der Kurven nach. (zur Zeit Array curve[] in wedabecha.java).
+Mit einem Blick auf die Zukunft sollten die Kurven auf jeden Fall serialisiert
+abgespeichert werden können. (Speichern-Funktion des Programms)
+Für die Toolbar muss eine Alternative gefunden werden, um die Bilder mit im
+src-Verzeichnis zu speichern, so dass sie automatisch beim Build-Vorgang mit
+in das bin-Verzeichnis übernommen werden. Zur Zeit war es so implementiert,
+dass der Images-Ordner bereits im bin-Verzeichnis vorhanden war. Ein Build
+in Eclipse hat diesen allerdings gelöscht. o.O
+
+Die Berechnungen der Grafiken sollten während des Imports/Öffnens bzw. als
+Folge des Imports geschehen, das entlastet die CPU beim Scrollen und der
+Scrollvorgang sollte schneller ablaufen.
+
+Die JSpinner sollten möglichst durch richtige Scrollbalken ersetzt werden.
+
+##############################################################################
 
 !!!!!!!!!!!!
 importiereTabelle.definiereDatumUI
@@ -46,7 +69,6 @@ Exception in thread "AWT-EventQueue-0" java.lang.ClassCastException:
 sun.awt.image.DataBufferNative
 funktioniert auf einer win32-maschine ohne probleme,
 scheinbar unabhängig von der java-version
-
 
 ##############################################################################
 
