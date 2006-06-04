@@ -37,7 +37,9 @@ import de.codeforum.wedabecha.ui.dialogs.GraphicExportUI;
 public class GraphicExport {
 	private String dateiname;
 
-
+	/**
+	 * führt den letztendlichen Export aus
+	 */
 	public void doExport() {
 
 		//holt die Größe des Bildes aus HauptFensterUI
@@ -74,12 +76,19 @@ public class GraphicExport {
 		} // try
 	} // doExport()
 
-
+	/**
+	 * setzt den Dateinamen für den Grafikexport
+	 * @param name Der Name der Datei.
+	 */
 	public void setFilename(String name){
 		this.dateiname = name;
 	} // setFilename()
 
-
+	
+	/**
+	 * liefert den Namen der zu exportierenden Grafik zurück.
+	 * @return Der Name der Datei
+	 */
 	public String getFilename(){
 		return this.dateiname;
 	} // getFilename()
