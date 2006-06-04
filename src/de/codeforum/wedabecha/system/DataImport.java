@@ -32,15 +32,15 @@ import javax.swing.*;
 public class DataImport {
 
 	// enthält nur den Namen der Datei
-	private  String importName;
+	private String importName;
 
 	// der pfad setzt sich aus absolutem verzeichnis UND dateinamen zusammen
-	private static  String importPfad;
+	private static String importPath;
 
 	// zeichenketten für die JComboBox in der subImportDialogUI
-	private static String trennzeichenStr[] = {"; (Semikolon)",", (Komma)","# (Raute)","  (Leerzeichen)"};
+	private static String separators[] = {"; (Semikolon)",", (Komma)","# (Raute)","  (Leerzeichen)"};
 	// wird von der subImportDialogUI bei klick auf [OK] gesetzt
-	private static  int trennzeichenIndex;
+	private static  int separatorIndex;
 
 	// an welcher stelle der ascii-datei das datum steht...
 	// erste spalte->true
@@ -60,80 +60,132 @@ public class DataImport {
 
 	// falls das datum nur eine inkrementierende Zahl ist,
 	// enthält diese Variable einen String, was die Zahl repräsentiert
-	private  String inkZahlRep;
+	private String inkZahlRep;
 
 	// ob dieses instanz der tabelle gespeichert werden soll
-	private  boolean speichern;
+	private boolean speichern;
 
 
 	/*
 		im folgenden alle nötigen get-und set-methoden, um die variabeln zu verändern
 	*/
-	public void setImportName(String name){
-		this.importName = name;
+	
+	/**
+	 * setzt den Dateinamen für die zu importierende Datei
+	 * @param pname der Name der zu importierenden Datei
+	 */
+	public void setImportName(String pname){
+		this.importName = pname;
 	} // setImportName(String name)
 
-
+	
+	/**
+	 * liefert den Namen der zu importierenden Datei zurück
+	 * @return der Name der zu importierenden Datei.
+	 */
 	public String getImportName(){
 		return this.importName;
 	} // getImportName()
 
 
-	public static void setImportPfad(String pfad){
-		importPfad = pfad;
+	/**
+	 * setze den kompletten Pfad der zu importierenden Datei
+	 * @param path der Pfad zu der importierenden Datei.
+	 */
+	public static void setImportPath(String path){
+		importPath = path;
 	} // setImportPfad(String pfad)
 
-
-	public String getImportPfad(){
-		return importPfad;
+	
+	/**
+	 * liefert den Pfad zu der importierenden Datei
+	 * @return pfad zu der zu importierenden Datei.
+	 */
+	public String getImportPath(){
+		return importPath;
 	} // getImportPfad()
 
-
-	public static void setTrennzeichenIndex(int zahl){
-		trennzeichenIndex = zahl;
+	
+	/**
+	 * setze das Trennzeichen, das im aktuellen Import benutzt werden soll.
+	 * @param index Der index der in separators[] das Trennzeichen identifiziert.
+	 */
+	public static void setSeparatorIndex(int index){
+		separatorIndex = index;
 	} // setTrennzeichenIndex()
 
-
-	public static String[] getTrennzeichenStr(){
-		return trennzeichenStr;
+	
+	/**
+	 * liefere eine Liste von möglichen Separatoren zurück.
+	 * @return Liste von Trennzeichen.
+	 */
+	public static String[] getSeparators(){
+		return separators;
 	}
 
 
-	public static void setDatumsFormatIndex(int zahl){
-		datumsFormatIndex = zahl;
+	/**
+	 * @param index der Index, der das Format des Datums für diesen Import identifiziert.
+	 */
+	public static void setDatumsFormatIndex(int index){
+		datumsFormatIndex = index;
 	} // setDatum(Datum datum)
 
 
+	/**
+	 * @return Formate für das Datum
+	 */
 	public static String[] getDatenFormate(){
 		return datenFormate;
 	} // getDatenFormate()
 
-
+	
+	/**
+	 * setzt, ob das Datum in der ersten oder in der letzten Spalte der Datei steht.
+	 * @param bla true oder false, erste oder letzte Spalte
+	 */
 	public static void setDatumsPosFirstColumn(boolean bla){
 		isDatumsPosFirstColumn = bla;
 	} // setDatumsPosFirstColumn(boolean bla)
 
-
+	
+	/**
+	 * liefert zurück, ob das Datum in der ersten oder in der letzten Spalte der Datei ist
+	 * @return true oder false
+	 */
 	public boolean isDatumsPosFirstColumn(){
 		return isDatumsPosFirstColumn;
 	} // isDatumsPosFirstColumn()
 
 
+	/**
+	 * @param blo
+	 */
 	public void setInkZahlRep(String blo){
 		this.inkZahlRep = blo;
 	} // setInkZahlRep(boolean blo)
 
 
+	/**
+	 * @return inkZahlRep
+	 */
 	public String getInkZahlRep(){
 		return this.inkZahlRep;
 	} // getInkZahlRep()
 
-
+	/**
+	 * setzt, ob die Daten aus diesem Import nochmal gespeichert werden sollen.
+	 * @param save true oder false.
+	 */
 	public void setSpeichern(boolean save){
 		this.speichern = save;
 	} // setSpeichern()
 
-
+	
+	/**
+	 * liefert zurück, ob die Daten aus diesem Import gespeichert werden sollen.
+	 * @return true oder false.
+	 */
 	public boolean isSpeichern(){
 		return this.speichern;
 	} // isSpeichern()
@@ -145,7 +197,7 @@ public class DataImport {
 	public String zurZeichenKette(){
 		String toString = new String(
 			"importName: \t\t\t" + getImportName() +
-			",\n importPfad: \t\t\t" + importPfad +
+			",\n importPfad: \t\t\t" + importPath +
 			",\n isDatumsPosFirstColumn: \t" + isDatumsPosFirstColumn +
 			",\n inkZahlRep \t\t\t" + getInkZahlRep()
 		);
@@ -155,8 +207,8 @@ public class DataImport {
 
 
 	// Destruktor
-	protected void zerstoeren(){
-		importPfad = "";
+	@Override protected void finalize(){
+		importPath = "";
 	} // finalize()
 
 	/**
@@ -186,7 +238,7 @@ public class DataImport {
 
 		try {
 			// 1. datei auslesen
-			FileReader readfile = new FileReader(importPfad);
+			FileReader readfile = new FileReader(importPath);
 
 			// 2. datei im puffer zwischenspeichern
 			BufferedReader bufferread = new BufferedReader(readfile);
@@ -197,7 +249,7 @@ public class DataImport {
 				//debug = "";
 
 				zeileL = zeile.split( Character.toString(
-						DataImport.trennzeichenStr[trennzeichenIndex].charAt(0)
+						DataImport.separators[separatorIndex].charAt(0)
 					)
 				);
 
