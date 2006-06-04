@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.system;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,23 +17,21 @@ package de.codeforum.wedabecha.system;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Martin Müller (mrtnmueller at users.berlios.de),
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de)
-
-*/
-
+package de.codeforum.wedabecha.system;
 
 import java.awt.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 import de.codeforum.wedabecha.wedabecha;
 
 
-import java.util.ArrayList;
-
+/**
+ * @author
+ * Martin Müller (mrtnmueller at users.berlios.de),
+ * Dominic Hopf (dmaphy at users.berlios.de),
+ * Robert Exner (ashrak at users.berlios.de)
+ */
 public class CoordinateSystem extends JComponent {
 
 	/**
@@ -184,7 +181,7 @@ public class CoordinateSystem extends JComponent {
 
 		ArrayList daten; // mehrzahl von datum
 		int xTextPos = 0; // horizontale position der beschriftung
-		daten = wedabecha.getCurve(1).getDaten();
+		daten = wedabecha.getCurve(1).getDates();
 		
 		for (int i = startDateIndex; i < endDateIndex; i+= abstandx){
 			g.setColor(Color.BLACK);
@@ -216,7 +213,7 @@ public class CoordinateSystem extends JComponent {
 
 		for (int i = 1; i < 6;i++){
 			if (wedabecha.getCurve(i).isset()){
-				werte = wedabecha.getCurve(i).getWerte();
+				werte = wedabecha.getCurve(i).getValues();
 				maxZeilenWerte = new double[werte.size()];
 
 				for (int j = 0; j < werte.size(); j++){

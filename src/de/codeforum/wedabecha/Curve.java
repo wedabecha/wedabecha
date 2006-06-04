@@ -42,12 +42,11 @@ import de.codeforum.wedabecha.ui.MainWindow;
  * um die letztendliche grafische Darstellung zu berechnen und auf dem Bildschirm
  * auszugeben...
  * */
-
 public class Curve {
-	// Klassenvariablen
-
-	// Diese Liste wird von der DarstellungsTypUI für die JComboBox benötigt
-	private static String kurvenStile[] = {
+	/**
+	 * Die Liste styles[] wird von der DarstellungsTypUI für die JComboBox benötigt
+	 */
+	private static String styles[] = {
 		"Aktienkurve",
 		"Linienkurve (Tagesmittelwerte)", // 1
 		"Linienkurve (Wochenmittelwerte)", // 2
@@ -58,41 +57,50 @@ public class Curve {
 		"gleitende Kurve"*/
 	};
 	
+	
 	/**
 	 * liefert die Stile zurück, in denen eine Kurve gezeichnet werden kann.
 	 * @return Stile
 	 */
-	public static String[] getKurvenStile(){
-		return kurvenStile;
+	public static String[] getStyles(){
+		return styles;
 	}
+	
+	
+	/**
+	 * style ist der Index für das Array styles[] .
+	 * Dieser identifiziert den Momentanen Stil der Kurve.
+	 */
+	private int style;
 
-	// Objekt-Variablen
-	// fünf verschiedene Kurven, jede hat eine Nummer
-	private int nummer;
+	
+	/**
+	 * jede Kurve hat eine ID, an der sie eindeutig zu identifizieren ist.
+	 */
+	private int id;
+	
 	
 	/**
 	 * Konstruktor
-	 * @param id die ID der Kurve.
+	 * @param pid die ID der Kurve.
 	 */
-	public Curve (int id) {
-		this.nummer = id;
+	public Curve (int pid) {
+		this.id = pid;
 	} // kurve()
 
-	/*
-		ob eine Kurve mit einer bestimmten Nummer von
-		1 bis 5 existiert oder nicht
-		wird vom subImportDialog auf true oder false gesetzt,
-		da nur dieser bestimmen kann, ob die benötigten
-		Werte für die Kurve existieren
-	*/
+	
+	/**
+	 * ob eine Kurve mit einer bestimmten Nummer existiert oder nicht.
+	 * wird vom Datenimport auf true oder false gesetzt,
+	 * da nur dieser bestimmen kann, ob die benötigten
+	 * Werte für die Kurve existieren.
+	 */
 	private boolean exists = false;
 
-	private Color farbe;
+	private Color color;
 
-	private int kurvenStilIndex; // enthält Index-wert für kurvenStile
-
-	private ArrayList werte = new ArrayList(1);
-	private ArrayList daten = new ArrayList(1); // Mehrzahl von Datum
+	private ArrayList values = new ArrayList(1);
+	private ArrayList dates = new ArrayList(1); // Mehrzahl von Datum
 
 //	private ArrayList tagesMittel = new ArrayList(1);
 //	private ArrayList wochenMittel = new ArrayList(1);
@@ -102,63 +110,125 @@ public class Curve {
 //	private ArrayList datumMonatsMittel = new ArrayList(1);
 //	private ArrayList datumJahresMittel = new ArrayList(1);
 //	private ArrayList datumWochenMittel = new ArrayList(1);
+	
 
-	public LineCurve zeichneLinienKurve;
-	public ShareCurve zeichneAktienKurve;
+	private LineCurve lineCurve;
+	private ShareCurve shareCurve;
+	
+	/**
+	 * liefert die Linienkurve zurück.
+	 * @return die Linienkurve
+	 */
+	public LineCurve getLineCurve() {
+		return this.lineCurve;
+	}
+	
+	
+	/**
+	 * liefert die Aktienkurve zurück.
+	 * @return die Aktienkurve.
+	 */
+	public ShareCurve getShareCurve() {
+		return this.shareCurve;
+	}
 
-	// set- und get-Methoden für die Attribute der Kurve
-	public void setExists(boolean exists){
-		this.exists = exists;
+	/**
+	 * Setzen, ob die Kurve existiert oder nicht. Diese Methode wird vom Datenimport benötigt,
+	 * nur der kann bestimmen, ob die Kurve letztendlich existiert oder nicht.
+	 * (Alle erforderlichen Daten vorhanden oder nicht.)
+	 * @param pexists true oder false, existiert oder nicht.
+	 */
+	public void setExists(boolean pexists){
+		this.exists = pexists;
 	} // setExists()
 
-
+	
+	/**
+	 * liefert zurück ob die Kurve existiert oder nicht.
+	 * @return true oder false, existiert oder nicht.
+	 */
 	public boolean isset(){
 		return this.exists;
 	} // isset()
 
+	/**
+	 * liefert die Farbe der Kurve zurück.
+	 * @return Die Farbe der Kurve.
+	 */
+	public Color getColor(){
+		return this.color;
+	} // getColor()
 
-	public Color getFarbe(){
-		return this.farbe;
-	} // getFarbe()
+	/**
+	 * Setze die Farbe der Kurve.
+	 * @param pcolor Farbe der Kurve.
+	 */
+	public void setColor(Color pcolor){
+		this.color = pcolor;
+	} // setColor()
 
+	
+	/**
+	 * liefert den Stil der Kurve als Zahl.
+	 * @return Stil der Kurve.
+	 */
+	public int getStyleIndex(){
+		return this.style;
+	} // getStyleIndex()
 
-	public void setFarbe(Color farbe){
-		this.farbe = farbe;
-	} // setFarbe()
+	
+	/**
+	 * liefert den Stil der Kurve als Zeichenkette zurück
+	 * @return der Stil der Kurve-
+	 */
+	public String getStyle(){
+		return styles[this.style];
+	} // getStyle()
 
+	
+	/**
+	 * setze den Stil der Kurve.
+	 * @param index eine eindeutige Zahl als index für das array styles[]
+	 */
+	public void setStyle(int index){
+		this.style = index;
+	} // setStyle()
 
-	public int getKurvenStilIndex(){
-		return this.kurvenStilIndex;
-	} // getKurvenStilIndex()
-
-
-	public String getKurvenStil(){
-		return kurvenStile[this.kurvenStilIndex];
-	} // getKurvenStil()
-
-
-	public void setKurvenStilIndex(int index){
-		this.kurvenStilIndex = index;
-	} // setKurvenStilIndex()
-
-
-	public ArrayList getWerte(){
-		return this.werte;
+	
+	/**
+	 * liefert die Werte der Kurve zurück.
+	 * @return die Werte der Kurve auf der ?-Achse
+	 * TODO: sind die Werte für die Y-Achse? Dann sollte das an dieser Stelle mal korrigiert werden.
+	 */
+	public ArrayList getValues(){
+		return this.values;
 	} // getWerte()
 
-
-	public void setWerte(ArrayList werte){
-		this.werte = werte;
+	
+	/**
+	 * setze die Werte der Kurve
+	 * @param pvalues die Werte für die Kurve
+	 */
+	public void setValues(ArrayList pvalues){
+		this.values = pvalues;
 	} // setWerte()
 
-
-	public ArrayList getDaten(){
-		return this.daten; // mehrzahl von datum
+	
+	/**
+	 * liefere die Daten (! Mehrzahl von Datum !) zurück.
+	 * @return die Daten
+	 */
+	public ArrayList getDates(){
+		return this.dates;
 	} // getDaten()
 
-
-	public void setDaten(ArrayList daten){
-		this.daten = daten; // mehrzahl von datum
+	
+	/**
+	 * setze die Daten (! Mehrzahl von Datum !) für die Kuerve
+	 * @param pdates Die Daten für die Kurve.
+	 */
+	public void setDates(ArrayList pdates){
+		this.dates = pdates; // mehrzahl von datum
 	} // setDaten()
 
 
@@ -239,62 +309,63 @@ public class Curve {
 //		this.datumJahresMittel = datumJahresMittel;
 //	} // setDatumJahresMittel()
 
-
-	public void zeichneKurve(){
-		CalculateAverages berechneMittelwerte = new CalculateAverages(this.getWerte(), this.getDaten());
-		switch(this.getKurvenStilIndex()){
+	/**
+	 * Zeichne die Kurve.
+	 */
+	public void draw(){
+		CalculateAverages berechneMittelwerte = new CalculateAverages(this.getValues(), this.getDates());
+	
+		switch(this.getStyleIndex()){
 		    case 0:
 				MainWindow.layeredPane.add(
-					zeichneAktienKurve = new ShareCurve (
-						this.getWerte(),
-						this.getFarbe()
+					this.shareCurve = new ShareCurve (
+						this.getValues(),
+						this.getColor()
 					),
-					new Integer(nummer + 2)
+					new Integer(this.id + 2)
 				);
 			    break;
 		    case 1:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new LineCurve (
+					this.lineCurve = new LineCurve (
 						berechneMittelwerte.berechneTagesMittel(),
-						this.getFarbe(),
-						this.getWerte()
+						this.getColor(),
+						this.getValues()
 					),
-					new Integer(nummer + 2)
+					new Integer( + 2)
 				);
 			    break;
 		    case 2:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new LineCurve (
+					this.lineCurve = new LineCurve (
 						berechneMittelwerte.berechneWochenMittel(),
-						this.getFarbe(),
-						this.getWerte()
+						this.getColor(),
+						this.getValues()
 					),
-					new Integer(nummer + 2)
+					new Integer(this.id + 2)
 				);
 			    break;
 		    case 3:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new LineCurve (
+					this.lineCurve = new LineCurve (
 						berechneMittelwerte.berechneMonatsMittel(),
-						this.getFarbe(),
-						this.getWerte()
+						this.getColor(),
+						this.getValues()
 					),
-					new Integer(nummer + 2)
+					new Integer(this.id + 2)
 				);
 			    break;
 		    case 4:
 				MainWindow.layeredPane.add(
-					zeichneLinienKurve = new LineCurve (
+					this.lineCurve = new LineCurve (
 						berechneMittelwerte.berechneJahresMittel(),
-						this.getFarbe(),
-						this.getWerte()
+						this.getColor(),
+						this.getValues()
 					),
-					new Integer(nummer + 2)
+					new Integer(this.id + 2)
 				);
 			    break;
 		}// switch()
 
-	} // zeichneKurve()
-
-
+	} // draw()
 } // class Curve

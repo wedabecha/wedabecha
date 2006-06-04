@@ -107,11 +107,11 @@ public class subImportDialogUI extends JDialog {
 					trennzeichenBox.getSelectedIndex()
 				);
 
-				wedabecha.getCurve(getTableNumber()).setWerte(
+				wedabecha.getCurve(getTableNumber()).setValues(
 					DataImportUI.tabellen[getTableNumber() - 1].getWerte()
 				);
 
-				wedabecha.getCurve(getTableNumber()).setDaten(
+				wedabecha.getCurve(getTableNumber()).setValues(
 					DataImportUI.tabellen[getTableNumber() - 1].getDaten()
 				);
 

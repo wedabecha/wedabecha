@@ -164,14 +164,14 @@ public class MenuBar extends JMenuBar {
 								try {
 									MainWindow.layeredPane.remove(
 											MainWindow.layeredPane.getIndexOf (
-													wedabecha.getCurve(currentCurve).zeichneAktienKurve
+													wedabecha.getCurve(currentCurve).getShareCurve()
 											)
 									);
 								} catch (ArrayIndexOutOfBoundsException except){
 									try {
 										MainWindow.layeredPane.remove(
 												MainWindow.layeredPane.getIndexOf (
-														wedabecha.getCurve(currentCurve).zeichneLinienKurve
+														wedabecha.getCurve(currentCurve).getLineCurve()
 												)
 										);
 									} catch (ArrayIndexOutOfBoundsException exception) {
@@ -181,7 +181,7 @@ public class MenuBar extends JMenuBar {
 			
 								MainWindow.layeredPane.repaint();
 								
-								wedabecha.getCurve(currentCurve).zeichneKurve();
+								wedabecha.getCurve(currentCurve).draw();
 								MainWindow.toolBar.setKurve1Button();
 							} // if
 		
@@ -238,8 +238,11 @@ public class MenuBar extends JMenuBar {
 		final JCheckBoxMenuItem I_showToolbar = new JCheckBoxMenuItem("Werkzeugleiste anzeigen");
 		I_showToolbar.setEnabled(false);
 		viewMenu.add(I_showToolbar);
+		
+		this.add(viewMenu);
 		// viewMenu END
-
+		
+		// helpMenu
 		final JMenu helpMenu = new JMenu("Hilfe");
 		final JMenuItem I_shortDoc = new JMenuItem("Kurzanleitung");
 		I_shortDoc.addActionListener(new ActionListener() {
@@ -263,7 +266,9 @@ public class MenuBar extends JMenuBar {
 				new About();
 			}
 		});
-
+		
+		this.add(helpMenu);
+		// helpMenu END
 	} // pack()
 	
 	/**

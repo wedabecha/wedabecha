@@ -19,12 +19,7 @@
 
 package de.codeforum.wedabecha.ui.dialogs;
 
-
-
-
 //Diese Klasse dient zum Aufruf des "Speichern"-Dialoges
-
-
 
 import java.io.File;
 import javax.swing.*;

@@ -83,7 +83,7 @@ public class CurveType extends JDialog {
 		final JPanel bottomRightPanel = new JPanel( new FlowLayout(FlowLayout.LEFT) );
 		
 		final JLabel styleLabel = new JLabel("Kurvenstil:"); //$NON-NLS-1$
-		final JComboBox styleComboBox = new JComboBox(Curve.getKurvenStile());
+		final JComboBox styleComboBox = new JComboBox(Curve.getStyles());
 
 		final JLabel colorLabel = new JLabel(Messages.getString("darstellungsTypUI.0")); //$NON-NLS-1$
 		final JButton colorButton = new JButton(Messages.getString("darstellungsTypUI.1")); //$NON-NLS-1$
@@ -106,11 +106,11 @@ public class CurveType extends JDialog {
 		okayButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
 				if (wedabecha.getCurve(getID()).isset()){
-					wedabecha.getCurve(getID()).setKurvenStilIndex(
+					wedabecha.getCurve(getID()).setStyle(
 						styleComboBox.getSelectedIndex()
 					);
 
-						wedabecha.getCurve(getID()).setFarbe(getColor());
+					wedabecha.getCurve(getID()).setColor(getColor());
 
 					setVisible(false);
 				} // if

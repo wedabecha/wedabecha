@@ -240,9 +240,9 @@ public class DataImportUI extends JDialog  {
 						 */
 
 						if(wedabecha.getCurve(i).isset()){
-							wedabecha.getCurve(i).zeichneKurve();
+							wedabecha.getCurve(i).draw();
 							MainWindow.getToolBar().setKurve1Button();
-							datenLaengen[i] = wedabecha.getCurve(i).getDaten().size();
+							datenLaengen[i] = wedabecha.getCurve(i).getDates().size();
 						} // if
 
 						if (speicherTabelle[i - 1].isSelected()){

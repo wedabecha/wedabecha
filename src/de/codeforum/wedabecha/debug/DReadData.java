@@ -39,8 +39,8 @@ class DReadData {
 	private ArrayList daten;
 
 	public DReadData(){
-		this.werte = wedabecha.getCurve(1).getWerte();
-		this.daten = wedabecha.getCurve(1).getDaten();
+		this.werte = wedabecha.getCurve(1).getValues();
+		this.daten = wedabecha.getCurve(1).getDates();
 		this.printWerte();
 		this.printDaten();
 	} // DReadData()

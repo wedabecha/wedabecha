@@ -214,12 +214,12 @@ public class MainWindow extends JFrame {
 
 					for (int i = 1; i < 6; i++){
 						if (wedabecha.getCurve(i).isset()){
-							if (wedabecha.getCurve(i).getKurvenStilIndex() == 0){
-								wedabecha.getCurve(i).zeichneAktienKurve.dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getCurve(i).zeichneAktienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+							if (wedabecha.getCurve(i).getStyleIndex() == 0){
+								wedabecha.getCurve(i).getShareCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								wedabecha.getCurve(i).getShareCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} else {
-								wedabecha.getCurve(i).zeichneLinienKurve.dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getCurve(i).zeichneLinienKurve.dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+								wedabecha.getCurve(i).getLineCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								wedabecha.getCurve(i).getLineCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} // if
 
 							coords.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
@@ -409,10 +409,10 @@ public class MainWindow extends JFrame {
 
 					for(int i = 1; i <= 5; i++){
 						if(wedabecha.getCurve(i).isset()){
-							if(wedabecha.getCurve(i).getKurvenStilIndex() == 0){
-								wedabecha.getCurve(i).zeichneAktienKurve.setGroesse(d.width, d.height);
+							if(wedabecha.getCurve(i).getStyleIndex() == 0){
+								wedabecha.getCurve(i).getShareCurve().setGroesse(d.width, d.height);
 							}else{
-								wedabecha.getCurve(i).zeichneLinienKurve.setGroesse(d.width, d.height);
+								wedabecha.getCurve(i).getLineCurve().setGroesse(d.width, d.height);
 							}// if-else()
 						} // if()
 					} // for
