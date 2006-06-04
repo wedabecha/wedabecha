@@ -255,7 +255,7 @@ public class DataImportUI extends JDialog  {
 					MainWindow.setMaxDate(datenLaengen[4]);
 
 					// hier muss das Koordinatensystem aufgerufen und gezeichnet werden
-					MainWindow.getCoords().zeichnen();
+					MainWindow.getCoords().draw();
 					setVisible(false);
 				} //  actionPerformed(ActionEvent event)
 			});
