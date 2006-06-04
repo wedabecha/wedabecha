@@ -134,7 +134,7 @@ public class WedaFile {
 						} // for
 
 						// Koordinatensystem zeichnen
-						MainWindow.getCoords().zeichnen();
+						MainWindow.getCoords().draw();
 
 			    	}//if [JFileChooser.APPROVE_OPTION() ist nicht null]
 
