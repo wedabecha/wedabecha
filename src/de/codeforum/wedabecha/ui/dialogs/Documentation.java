@@ -53,15 +53,15 @@ public class Documentation extends JFrame {
 
 		setTitle(title);
 		if(title.equals("Kurzanleitung")) {
-		    path = new File("hilfe/schnellstart.html");
+		    this.path = new File("hilfe/schnellstart.html");
 		} else if (title.equals("Dokumentation")) {
-		    path = new File("hilfe/anleitung.html");
+		    this.path = new File("hilfe/anleitung.html");
 		} // else if()
 
 		try {
 			// gibt an, wie die eingelesene Datei dargestellt werden soll
-			doku.setContentType("text/html");
-			doku.setEditable(false);
+			this.doku.setContentType("text/html");
+			this.doku.setEditable(false);
 
 			/* Der eingelesene Pfad kann nur relativ sein, weil bei jedem,
 			 * das Programm ausführt der Pfad zum wedabecha-Ordner anders
@@ -72,15 +72,15 @@ public class Documentation extends JFrame {
 			 * interpretiert werden kann.
 			 */
 
-		    URL url = path.toURI().toURL();
-		    doku.setPage(url);
+		    URL url = this.path.toURI().toURL();
+		    this.doku.setPage(url);
 
 
 		    /* Der HyperlinkListener dient, wie der Name schon sagt, dazu, die html-Links
 		     * in der geladenen Seite anzusteuern.
 			 */
 
-		    doku.addHyperlinkListener(new HyperlinkListener(){
+		    this.doku.addHyperlinkListener(new HyperlinkListener(){
 				public void hyperlinkUpdate( HyperlinkEvent event ){
 					HyperlinkEvent.EventType typ = event.getEventType();
 					if ( typ == HyperlinkEvent.EventType.ACTIVATED ){
@@ -120,15 +120,15 @@ public class Documentation extends JFrame {
 		getContentPane().add((gridLayoutPanel),BorderLayout.CENTER);
 		gridLayoutPanel.setLayout(new GridLayout(1,1));
 
-		gridLayoutPanel.add(doku);
-		gridLayoutPanel.add(new JScrollPane(doku));
+		gridLayoutPanel.add(this.doku);
+		gridLayoutPanel.add(new JScrollPane(this.doku));
 
 		JPanel flowLayoutPanel = new JPanel();
 		getContentPane().add((flowLayoutPanel),BorderLayout.SOUTH);
 		flowLayoutPanel.setLayout(new FlowLayout());
 
-		schliessenButton = new JButton("Schliessen");
-		flowLayoutPanel.add(schliessenButton);
+		this.schliessenButton = new JButton("Schliessen");
+		flowLayoutPanel.add(this.schliessenButton);
 
 		this.schliessenButton.addActionListener(new schliessenListener());
 

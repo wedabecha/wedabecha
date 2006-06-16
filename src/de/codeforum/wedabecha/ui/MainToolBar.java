@@ -78,9 +78,9 @@ public class MainToolBar {
 
 	// Setzt die ToolBar zusammen
 	public void pack(){
-		this.toolBar.add(oeffnenbutton);
+		this.toolBar.add(this.oeffnenbutton);
 			this.oeffnenbutton.setContentAreaFilled(true);
-		this.toolBar.add(speichernbutton);
+		this.toolBar.add(this.speichernbutton);
 			this.speichernbutton.setContentAreaFilled(true);
 		/* werden vielleicht noch Implementiert wenn noch Zeit ist */
 		//this.toolBar.add(undobutton);
@@ -88,7 +88,7 @@ public class MainToolBar {
 		//this.toolBar.add(redobutton);
 			//this.redobutton.setContentAreaFilled(true);
 		this.toolBar.addSeparator();
-		this.toolBar.add(gitterbutton);
+		this.toolBar.add(this.gitterbutton);
 			this.gitterbutton.setContentAreaFilled(true);
 			this.gitterbutton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
@@ -101,15 +101,15 @@ public class MainToolBar {
 			});
 			this.gitterbutton.setToolTipText("Raster anzeigen");
 		this.toolBar.addSeparator();
-		this.toolBar.add(liniezeichnenbutton);
+		this.toolBar.add(this.liniezeichnenbutton);
 			this.liniezeichnenbutton.setContentAreaFilled(true);
 			this.liniezeichnenbutton.addActionListener(new linieButtonListener());
 			this.liniezeichnenbutton.setToolTipText("Linie zeichnen");
-		this.toolBar.add(pfeilzeichnenbutton);
+		this.toolBar.add(this.pfeilzeichnenbutton);
 			this.pfeilzeichnenbutton.setContentAreaFilled(true);
 			this.pfeilzeichnenbutton.addActionListener(new pfeilButtonListener());
 			this.pfeilzeichnenbutton.setToolTipText("Pfeil zeichnen");
-		this.toolBar.add(textzeichnenbutton);
+		this.toolBar.add(this.textzeichnenbutton);
 			this.textzeichnenbutton.setContentAreaFilled(true);
 			this.textzeichnenbutton.addActionListener(new textButtonListener());
 			this.textzeichnenbutton.setToolTipText("Text einf\u00fcgen");
@@ -118,8 +118,8 @@ public class MainToolBar {
 		this.toolBar.addSeparator();
 
 		this.toolBar.add(this.kurveLabel);
-		for(int i=0; i<5; i++){
-		    this.toolBar.add(kurveButton[i]);
+		for(int i = 0; i < 5; i++){
+		    this.toolBar.add(this.kurveButton[i]);
 		    this.kurveButton[i].addActionListener(new kurveButtonListener());
 			this.kurveButton[i].setEnabled(false);
 		}// for
@@ -141,12 +141,17 @@ public class MainToolBar {
 	}// kurveWaehlen()
 
 
-	class kurveButtonListener implements ActionListener{
+	class kurveButtonListener implements ActionListener {
 
 	    public void actionPerformed(ActionEvent e) {
 			try{
 				for(int i = 0; i < 5; i++){
 					if(wedabecha.getCurve(i + 1).isset()){
+						/*
+						 * Wie spricht man ein Objekt der übergeordneten Klasse an?
+						 * Ich hätte an sowas wie parent.objekt gedacht,
+						 * ist es aber nicht.
+						 */
 						if(kurveButton[i].isSelected()){
 							if(wedabecha.getCurve(i + 1).getStyleIndex() == 0){
 								wedabecha.getCurve(i + 1).getShareCurve().setVisibility(true);
@@ -226,22 +231,22 @@ public class MainToolBar {
 
 	// get-Methoden für die jeweiligen Buttons in der Toolbar
 	public boolean textGewaehlt(){
-	    return textzeichnenbutton.isSelected();
+	    return this.textzeichnenbutton.isSelected();
 	}// textGewählt()
 
 
 	public boolean gitterGewaehlt(){
-	    return gitterbutton.isSelected();
+	    return this.gitterbutton.isSelected();
 	}// gitterGewaehlt()
 
 
 	public boolean pfeilGewaehlt(){
-	    return pfeilzeichnenbutton.isSelected();
+	    return this.pfeilzeichnenbutton.isSelected();
 	}// pfeilGewaehlt()
 
 
 	public boolean linieGewaehlt(){
-	    return liniezeichnenbutton.isSelected();
+	    return this.liniezeichnenbutton.isSelected();
 	}// linieGewaehlt
 
 	/* Diese Methode sorgt dafür, dass die erste Kurve, die importiert wird auch

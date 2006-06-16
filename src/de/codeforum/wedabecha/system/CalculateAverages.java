@@ -117,9 +117,9 @@ public class CalculateAverages {
 		ArrayList datumMonatsMittel = new ArrayList();
 
 		int zaehler1	= 0;
-		zaehler3		= 0;
-		summe			= 0;
-		start			= 0;
+		this.zaehler3		= 0;
+		this.summe			= 0;
+		this.start			= 0;
 
 		// der Monat steht immer an zweiter Stelle in der ArrayList datum
 		tempDatum = (String[])this.datum.get(0);
@@ -136,8 +136,8 @@ public class CalculateAverages {
 		 */
 
 		for(zaehler1 = 0; zaehler1 < this.datum.size(); zaehler1++){
-		    zaehler3++;
-		    tempDatum = (String[])this.datum.get(start++);
+		    this.zaehler3++;
+		    tempDatum = (String[])this.datum.get(this.start++);
 		    naechsterMonat = tempDatum[1];
 
 		    /* solange die Variable naechterMonat der Variable monat gleicht
@@ -152,15 +152,15 @@ public class CalculateAverages {
 		     */
 
 		    if(naechsterMonat.equals(monat)){
-				summe += ((Double)berechneTagesMittel().get(zaehler1)).doubleValue();
+				this.summe += ((Double)berechneTagesMittel().get(zaehler1)).doubleValue();
 		    } else {
-				monatsMittel.add(new Double(summe/(zaehler3-1)));
+				monatsMittel.add(new Double(this.summe/(this.zaehler3-1)));
 				datumMonatsMittel.add(this.datum.get(zaehler1));
-				zaehler3 = 0;
-				summe = 0;
+				this.zaehler3 = 0;
+				this.summe = 0;
 				zaehler1--;
-				start--;
-				tempDatum = (String[])this.datum.get(start);
+				this.start--;
+				tempDatum = (String[])this.datum.get(this.start);
 				monat = tempDatum[1];
 		    } // else
 		} // for
@@ -170,7 +170,7 @@ public class CalculateAverages {
 		 */
 
 		if(zaehler1 == this.datum.size()){
-		    monatsMittel.add(new Double(summe/(zaehler3)));
+		    monatsMittel.add(new Double(this.summe/(this.zaehler3)));
 		    datumMonatsMittel.add(this.datum.get(zaehler1-1));
 		} // if
 
@@ -206,9 +206,9 @@ public class CalculateAverages {
 		 * Jahr bestimmt wurde.
 		 */
 
-		for(zaehler1 = 0; zaehler1 < datum.size(); zaehler1++){
+		for(zaehler1 = 0; zaehler1 < this.datum.size(); zaehler1++){
 		    this.zaehler3++;
-		    tempDatum = (String[])this.datum.get(start++);
+		    tempDatum = (String[])this.datum.get(this.start++);
 		    naechstesJahr = tempDatum[0];
 
 		    if (naechstesJahr.equals(jahr)) {
@@ -229,7 +229,7 @@ public class CalculateAverages {
 		 * muss man diesen Wert mit dieser if-Anweisung hinzufgen
 		 */
 		if(zaehler1 == this.datum.size()){
-		    jahresMittel.add(new Double(summe/(zaehler3)));
+		    jahresMittel.add(new Double(this.summe/(this.zaehler3)));
 		    datumJahresMittel.add(this.datum.get(zaehler1-1));
 		} // if
 
@@ -245,9 +245,9 @@ public class CalculateAverages {
 		// enthält das dazugehörige Datum
 		ArrayList datumWochenMittel = new ArrayList();
 		int zaehler1	= 0;
-		zaehler2		= 0;
-		zaehler3		= 0;
-		summe			= 0;
+		this.zaehler2		= 0;
+		this.zaehler3		= 0;
+		this.summe			= 0;
 
 		/* Diese Schleife durchläuft die ArrayList mit dem Datum bis zum Ende, liest
 		 * bei jedem Durchlauf den jeweiligen Wert aus der ArrayList tagesMittel und
@@ -260,15 +260,15 @@ public class CalculateAverages {
 		 */
 
 		for(zaehler1 = 0; zaehler1 < this.datum.size(); zaehler1++){
-		    zaehler2++;
-		    summe += ((Double)berechneTagesMittel().get(zaehler1)).doubleValue();
+		    this.zaehler2++;
+		    this.summe += ((Double)berechneTagesMittel().get(zaehler1)).doubleValue();
 
-		    if(zaehler2 >= 5){
-				wochenMittel.add(new Double(summe/5));
+		    if(this.zaehler2 >= 5){
+				wochenMittel.add(new Double(this.summe/5));
 				datumWochenMittel.add(this.datum.get(zaehler1-1));
-				zaehler3++;
-				zaehler2 = 0;
-				summe = 0;
+				this.zaehler3++;
+				this.zaehler2 = 0;
+				this.summe = 0;
 		    } // if
 		} // for
 
@@ -280,7 +280,7 @@ public class CalculateAverages {
 		 */
 
 		if(zaehler1 - 1 < this.datum.size()){
-		    wochenMittel.add(new Double(summe/zaehler2));
+		    wochenMittel.add(new Double(this.summe/this.zaehler2));
 		    datumWochenMittel.add(this.datum.get(zaehler1-1));
 		}// if
 
@@ -288,4 +288,4 @@ public class CalculateAverages {
 	} // berechneWochenMittel
 
 
-} // berechneMittelwerte
+} // public class CalculateAverages

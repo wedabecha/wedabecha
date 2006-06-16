@@ -75,11 +75,11 @@ public class ShareCurve extends JComponent {
 		getMax();
 		int zaehler = 25;
 
-		kurve.setColor(farbe);
+		kurve.setColor(this.farbe);
 
 		this.abstand = 2 * this.breite / 700;
 
-		for(int i = dateBeginIndex; i < dateEndIndex; i++){
+		for(int i = this.dateBeginIndex; i < this.dateEndIndex; i++){
 			this.kurse = (double[])this.werte.get(i);
 			this.start = (int)this.kurse[0];
 			this.ende = (int)this.kurse[1];

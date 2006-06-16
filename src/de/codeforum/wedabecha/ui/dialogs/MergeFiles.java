@@ -59,7 +59,7 @@ public class MergeFiles extends JDialog{
 			welche verknuepft werden sollen
 		*/
 
-		private JList auswaehlen = new JList(daten);
+		private JList auswaehlen = new JList(this.daten);
 		private JLabel speicherpfadLabel = new JLabel("Pfad: ");
 		private JTextField speicherpfad = new JTextField(20);
 

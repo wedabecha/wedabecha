@@ -22,9 +22,9 @@ public class Text extends JComponent{
 
 
     public Text(String textP, int startXP, int startYP){
-		text = textP;
-		startX = startXP;
-		startY = startYP;
+		this.text = textP;
+		this.startX = startXP;
+		this.startY = startYP;
 		this.setSize(MainWindow.layeredPane.getWidth(), MainWindow.layeredPane.getHeight());
     } // zeichneText()
 

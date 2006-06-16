@@ -60,6 +60,6 @@ public class Line extends JComponent {
 
 
 	public void paintComponent(Graphics linie){
-		linie.drawLine(startX, startY, endX, endY);
+		linie.drawLine(this.startX, this.startY, this.endX, this.endY);
 	}// paintComponent(GGraphics linie)
 }// public class Line

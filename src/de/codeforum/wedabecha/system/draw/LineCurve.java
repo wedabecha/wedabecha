@@ -96,7 +96,7 @@ public class LineCurve extends JComponent {
 
 		this.abstand = (2 * this.ausgangsWerte.size() * this.breite / 700)  / this.werte.size();
 
-		for(int i = dateBeginIndex / (this.abstand / 2); i < dateEndIndex / (this.abstand / 2); i ++){
+		for(int i = this.dateBeginIndex / (this.abstand / 2); i < this.dateEndIndex / (this.abstand / 2); i ++){
 			kurve.setColor(this.farbe);
 			kurve.drawLine(	zaehler,
 							(MainWindow.layeredPane.getHeight() -

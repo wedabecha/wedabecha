@@ -321,25 +321,25 @@ public class MainWindow extends JFrame {
 						beim ersten klick werden die Startwerte gesetzt, beim
 						zweiten die endwerte
 					*/
-				    switch(zaehler){
+				    switch(this.zaehler){
 					case 0:
-					    startX = me.getX();
-					    startY = me.getY();
-					    zaehler = 1;
+					    this.startX = me.getX();
+					    this.startY = me.getY();
+					    this.zaehler = 1;
 					    break;
 					case 1:
-					    endX = me.getX();
-					    endY = me.getY();
-					    zaehler = 0;
+					    this.endX = me.getX();
+					    this.endY = me.getY();
+					    this.zaehler = 0;
 
 						/*
 							mit den so gewonnenen werten wird dann die linie gezeichnet
 							und der leyeredPane geadded
 						*/
 
-					    Line zeichneLinie = new Line (startX, startY, endX, endY);
+					    Line zeichneLinie = new Line (this.startX, this.startY, this.endX, this.endY);
 					    layeredPane.add(zeichneLinie, new Integer(8));
-					    startX = startY = endX = endY = 0;
+					    this.startX = this.startY = this.endX = this.endY = 0;
 					    break;
 				    }// switch(zaehler)
 				}// if()
@@ -367,21 +367,21 @@ public class MainWindow extends JFrame {
 							beim ersten klick werden die Startwerte gesetzt, beim
 							zweiten die endwerte
 						*/
-						switch(zaehler){
+						switch(this.zaehler){
 							case 0:
-								startX = me.getX();
-								startY = me.getY();
-								zaehler = 1;
+								this.startX = me.getX();
+								this.startY = me.getY();
+								this.zaehler = 1;
 								break;
 							case 1:
-								endX = me.getX();
-								endY = me.getY();
-								zaehler = 0;
+								this.endX = me.getX();
+								this.endY = me.getY();
+								this.zaehler = 0;
 
 								/* mit den so gewonnenen werten wird dann die linie gezeichnet
 								und der leyeredPane geadded */
 
-								Arrow zeichnePfeil = new Arrow(startX, startY, endX, endY);
+								Arrow zeichnePfeil = new Arrow(this.startX, this.startY, this.endX, this.endY);
 								layeredPane.add(zeichnePfeil, new Integer(7));
 								break;
 						}// switch(zaehler)

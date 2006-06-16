@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.system;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -17,6 +16,8 @@ package de.codeforum.wedabecha.system;
  *   Free Software Foundation, Inc.,                                        *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
+
+package de.codeforum.wedabecha.system;
 
 import java.util.*;
 import java.io.*;
