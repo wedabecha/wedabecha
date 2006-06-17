@@ -20,8 +20,9 @@ import java.util.ArrayList;
 import de.codeforum.wedabecha.wedabecha;
 
 /**
- * @author Martin Müller (mrtnmueller at users.berlios.de), Dominic Hopf (dmaphy
- *         at users.berlios.de), Robert Exner (ashrak at users.berlios.de)
+ * @author Martin Müller (mrtnmueller at users.berlios.de)
+ * @author Dominic Hopf (dmaphy at users.berlios.de)
+ * @author Robert Exner (ashrak at users.berlios.de)
  */
 public class CoordinateSystem extends JComponent {
 
@@ -30,45 +31,73 @@ public class CoordinateSystem extends JComponent {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
 	/*
 	 * auf geht's. heute zeichnen wir ein koordinatensystem. dazu brauchen wir
 	 * erstmal die start- und endpunkte für die beiden achsen...
 	 */
 	private int startX, endX, startY, endY;
 
+	
 	/*
 	 * für die einteilung der achsen müssen wir die maximalen werte kennen.
 	 * maxWert für die Y-Achse maxDate für die x-Achse
 	 */
 	private double maxWert;
 
+	
 	// private double maxDate;
 
-	private int dx, dy; // Länge der Achsen in px
-			// private int ddx, ddy; // Abstand der Achsen von Nullpunkt bis
-			// Maximalwert in px
+	
+	/*
+	 * Länge der Achsen in px
+	 */
+	private int dx, dy; // 
+	
+	/*
+	 * Abstand der Achsen von Nullpunkt bis Maximalwert in Pixeln
+	 */
+	// private int ddx, ddy;
 
-	private int abstandx = 25; // Abstand der einzelnen
-								// Achseneinteilungsstriche
-	// private int abstandy = 25; // Abstand der einzelnen
-	// Achseneinteilungsstriche
-
+	
+	/*
+	 * Abstand der einzelnen Achseneinteilungsstriche
+	 */
+	private int abstandx = 25;
+	
+	
+	/*
+	 * Abstand der einzelnen Achseneinteilungsstriche
+	 */
+	// private int abstandy = 25;
+	
+	
+	/*
+	 * Beschriftung für die Y-Achse 
+	 */
 	private int yBeschriftung;
+	
+	
+	/*
+	 * Startwert für den horizontalen Zeichenbereich
+	 */
+	private int startDateIndex = 0;  
 
-	private int startDateIndex = 0; // Startwert für den horizontalen
-									// Zeichenbereich
-
-	private int endDateIndex = 299; // Endwert für den horizontalen
-									// Zeichenbereich
-
+	
+	/*
+	 * Endwert für den horizontalen Zeichenbereich
+	 */
+	private int endDateIndex = 299;
+	
+	
 	/**
 	 * Konstruktor, erwartet zur Zeit keine weiteren Parameter
 	 */
 	public CoordinateSystem() {
-		/** nothing to do */
-
+		/** nothing to do yet */
 	}
 
+	
 	/**
 	 * setGroesse legt die Grösse für das Koordinatensystem fest. Diese Methode
 	 * wird von verschiedenen Punkten aufgerufen. Einmal vom Konstruktor, beim
@@ -77,10 +106,8 @@ public class CoordinateSystem extends JComponent {
 	 * wir für das System benötigen, können wir erst anhand der Fenstergrösse
 	 * berechnen...
 	 * 
-	 * @param breite
-	 *            Die Breite des Koordinatensystems
-	 * @param hoehe
-	 *            Die Höhe des Koordinatensystems
+	 * @param breite Die Breite des Koordinatensystems
+	 * @param hoehe Die Höhe des Koordinatensystems
 	 */
 	public void setGroesse(int breite, int hoehe) {
 
@@ -97,44 +124,43 @@ public class CoordinateSystem extends JComponent {
 		this.setSize(breite, hoehe);
 	} // setGroesse()
 
+	
 	/**
 	 * setzt den Index für das Anfangsdatum
-	 * 
-	 * @param index
-	 *            Index, welcher das Anfangsdatum identifiziert.
+	 * @param index Index, welcher das Anfangsdatum identifiziert.
 	 */
 	public void setStartDateIndex(int index) {
 		this.startDateIndex = index;
 	}
 
+	
 	/**
 	 * liefert den Index für das Anfangsdatum zurück.
-	 * 
 	 * @return Index der das Anfangsdatum identifiziert.
 	 */
 	public int getStartDateIndex() {
 		return this.startDateIndex;
 	}
 
+	
 	/**
 	 * setzt den Index, der das Enddatum identifiziert.
-	 * 
-	 * @param index
-	 *            der Index, der das Enddatum identifiziert.
+	 * @param index der Index, der das Enddatum identifiziert.
 	 */
 	public void setEndDateIndex(int index) {
 		this.endDateIndex = index;
 	}
 
+	
 	/**
 	 * liefert den Index zurück, der das Enddatum kennzeichnet.
-	 * 
 	 * @return Index, der das Enddatum identifiziert.
 	 */
 	public int getEndDateIndex() {
 		return this.endDateIndex;
 	}
 
+	
 	/**
 	 * zeichnet das Koordinatensystem *
 	 */
@@ -154,13 +180,13 @@ public class CoordinateSystem extends JComponent {
 		this.setVisible(true); // sichtbar machen
 	} // zeichneKoordinatensystem
 
+	
 	/**
 	 * Mit paintComponent() zeichnen wir das letztendliche Koordinatensystem.
 	 * Erst Achsen, dann Pfeilspitzen für die Achsen, dann noch die
 	 * Einteilung...
 	 * 
-	 * @param g
-	 *            missing doc
+	 * @param g missing doc
 	 */
 	@Override protected void paintComponent(Graphics g) {
 
@@ -197,18 +223,31 @@ public class CoordinateSystem extends JComponent {
 				g.drawLine((this.startX + i), (this.startY - 4), (this.startX + i),
 						(this.startY + 4));
 			} // if
-
 		} // for
-
-		/**
-		 * Beschriftung der X-Achse Diese Beschriftung orientiert sich immer an
-		 * der zuerst eingelesenen Tabelle, also der Tabelle bzw. Kurve mit der
-		 * Nummer 1.
+		
+		
+		/*
+		 * TODO: else-Zweig der in einer Statuszeile darauf hinweist,
+		 * dass noch keine Kurve vorhanden ist. 
 		 */
-
+		if (wedabecha.getCurveByID(1).isset()) {
+			this.drawAbscissaMarking(g);
+		}
+	} // paintComponent()
+	
+	
+	/**
+	 * Beschriftung der X-Achse<br />
+	 * Diese Beschriftung orientiert sich immer an der zuerst eingelesenen Tabelle,
+	 * also der Tabelle bzw. Kurve mit der Nummer 1.
+	 * 
+	 * @param g das Grafikobjekt auf dem gezeichnet wird.
+	 */
+	private void drawAbscissaMarking(Graphics g) {
 		ArrayList daten; // mehrzahl von datum
 		int xTextPos = 0; // horizontale position der beschriftung
-		daten = wedabecha.getCurve(1).getDates();
+		
+		daten = wedabecha.getCurveByID(1).getDates();
 
 		for (int i = this.startDateIndex; i < this.endDateIndex; i += this.abstandx) {
 			g.setColor(Color.BLACK);
@@ -218,8 +257,9 @@ public class CoordinateSystem extends JComponent {
 			xTextPos += 100;
 		} // for
 
-	} // paintComponent()
+	} // drawAbscissaMarking(Graphics g)
 
+	
 	private void berechneMaxima() {
 		/**
 		 * hier berechnen wir die Maximalwerte, die brauchen wir für die
@@ -237,8 +277,8 @@ public class CoordinateSystem extends JComponent {
 		 */
 
 		for (int i = 1; i < 6; i++) {
-			if (wedabecha.getCurve(i).isset()) {
-				werte = wedabecha.getCurve(i).getValues();
+			if (wedabecha.getCurveByID(i).isset()) {
+				werte = wedabecha.getCurveByID(i).getValues();
 				maxZeilenWerte = new double[werte.size()];
 
 				for (int j = 0; j < werte.size(); j++) {
@@ -258,6 +298,7 @@ public class CoordinateSystem extends JComponent {
 		this.maxWert = maxKurvenWerte[maxKurvenWerte.length - 1];
 
 	} // berechneMaxima()
+	
 	
 	/**
 	 * liefert die Daten über Zeichenbereich als Zeichenkette zurück.

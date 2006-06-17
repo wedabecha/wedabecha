@@ -146,23 +146,23 @@ public class MainToolBar {
 	    public void actionPerformed(ActionEvent e) {
 			try{
 				for(int i = 0; i < 5; i++){
-					if(wedabecha.getCurve(i + 1).isset()){
+					if(wedabecha.getCurveByID(i + 1).isset()){
 						/*
 						 * Wie spricht man ein Objekt der übergeordneten Klasse an?
 						 * Ich hätte an sowas wie parent.objekt gedacht,
 						 * ist es aber nicht.
 						 */
 						if(kurveButton[i].isSelected()){
-							if(wedabecha.getCurve(i + 1).getStyleIndex() == 0){
-								wedabecha.getCurve(i + 1).getShareCurve().setVisibility(true);
+							if(wedabecha.getCurveByID(i + 1).getStyleIndex() == 0){
+								wedabecha.getCurveByID(i + 1).getShareCurve().setVisibility(true);
 							}else{
-								wedabecha.getCurve(i + 1).getLineCurve().setVisibility(true);
+								wedabecha.getCurveByID(i + 1).getLineCurve().setVisibility(true);
 							} // if()-else
 						}else{
-							if(wedabecha.getCurve(i + 1).getStyleIndex() == 0){
-								wedabecha.getCurve(i + 1).getShareCurve().setVisibility(false);
+							if(wedabecha.getCurveByID(i + 1).getStyleIndex() == 0){
+								wedabecha.getCurveByID(i + 1).getShareCurve().setVisibility(false);
 							}else{
-								wedabecha.getCurve(i + 1).getLineCurve().setVisibility(false);
+								wedabecha.getCurveByID(i + 1).getLineCurve().setVisibility(false);
 							} // if()-else
 						} // if()-else
 					} // if()
@@ -255,50 +255,50 @@ public class MainToolBar {
 
 	public void setKurve1Button(){
 		this.kurveButton[0].setSelected(true);
-		if(wedabecha.getCurve(1).getStyleIndex() == 0){
-			wedabecha.getCurve(1).getShareCurve().setVisibility(true);
+		if(wedabecha.getCurveByID(1).getStyleIndex() == 0){
+			wedabecha.getCurveByID(1).getShareCurve().setVisibility(true);
 		}else{
-			wedabecha.getCurve(1).getLineCurve().setVisibility(true);
+			wedabecha.getCurveByID(1).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve2Button(){
 		this.kurveButton[1].setSelected(true);
-		if(wedabecha.getCurve(2).getStyleIndex() == 0){
-			wedabecha.getCurve(2).getShareCurve().setVisibility(true);
+		if(wedabecha.getCurveByID(2).getStyleIndex() == 0){
+			wedabecha.getCurveByID(2).getShareCurve().setVisibility(true);
 		}else{
-			wedabecha.getCurve(2).getLineCurve().setVisibility(true);
+			wedabecha.getCurveByID(2).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve3Button(){
 		this.kurveButton[2].setSelected(true);
-		if(wedabecha.getCurve(3).getStyleIndex() == 0){
-			wedabecha.getCurve(3).getShareCurve().setVisibility(true);
+		if(wedabecha.getCurveByID(3).getStyleIndex() == 0){
+			wedabecha.getCurveByID(3).getShareCurve().setVisibility(true);
 		}else{
-			wedabecha.getCurve(3).getLineCurve().setVisibility(true);
+			wedabecha.getCurveByID(3).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve4Button(){
 		this.kurveButton[3].setSelected(true);
-		if(wedabecha.getCurve(4).getStyleIndex() == 0){
-			wedabecha.getCurve(4).getShareCurve().setVisibility(true);
+		if(wedabecha.getCurveByID(4).getStyleIndex() == 0){
+			wedabecha.getCurveByID(4).getShareCurve().setVisibility(true);
 		}else{
-			wedabecha.getCurve(4).getLineCurve().setVisibility(true);
+			wedabecha.getCurveByID(4).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
 
 	public void setKurve5Button(){
 		this.kurveButton[4].setSelected(true);
-		if(wedabecha.getCurve(5).getStyleIndex() == 0){
-			wedabecha.getCurve(5).getShareCurve().setVisibility(true);
+		if(wedabecha.getCurveByID(5).getStyleIndex() == 0){
+			wedabecha.getCurveByID(5).getShareCurve().setVisibility(true);
 		}else{
-			wedabecha.getCurve(5).getLineCurve().setVisibility(true);
+			wedabecha.getCurveByID(5).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 

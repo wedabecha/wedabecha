@@ -43,8 +43,8 @@ class DReadData {
 	 * Erwartet keine weiteren Parameter
 	 */
 	public DReadData(){
-		this.werte = wedabecha.getCurve(1).getValues();
-		this.daten = wedabecha.getCurve(1).getDates();
+		this.werte = wedabecha.getCurveByID(1).getValues();
+		this.daten = wedabecha.getCurveByID(1).getDates();
 		this.printWerte();
 		this.printDaten();
 	} // DReadData()

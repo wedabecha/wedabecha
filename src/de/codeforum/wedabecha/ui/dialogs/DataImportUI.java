@@ -239,10 +239,10 @@ public class DataImportUI extends JDialog  {
 						 * Kurve zeichnen und die erste Kurve sichtbar machen
 						 */
 
-						if(wedabecha.getCurve(i).isset()){
-							wedabecha.getCurve(i).draw();
+						if(wedabecha.getCurveByID(i).isset()){
+							wedabecha.getCurveByID(i).draw();
 							MainWindow.getToolBar().setKurve1Button();
-							datenLaengen[i] = wedabecha.getCurve(i).getDates().size();
+							datenLaengen[i] = wedabecha.getCurveByID(i).getDates().size();
 						} // if
 
 						if (speicherTabelle[i - 1].isSelected()){

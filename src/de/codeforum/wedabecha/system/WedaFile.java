@@ -102,13 +102,13 @@ public class WedaFile {
 						ArrayList ergebnis = DataImport.getDaten();
 
 						//Werte auf Eingelesene setzen
-						wedabecha.getCurve(kurvennummer).setValues(resAL);
+						wedabecha.getCurveByID(kurvennummer).setValues(resAL);
 
 						//Daten auf Eingelesene setzen
-						wedabecha.getCurve(kurvennummer).setValues(ergebnis);
+						wedabecha.getCurveByID(kurvennummer).setValues(ergebnis);
 
 						//Kurve auf "existent" setzten
-						wedabecha.getCurve(kurvennummer).setExists(true);
+						wedabecha.getCurveByID(kurvennummer).setExists(true);
 
 						// Button zur jeweiligen eingelesenen Kurve anzeigen
 						MainWindow.getToolBar().kurveWaehlen(kurvennummer, true);
@@ -121,10 +121,10 @@ public class WedaFile {
 
 						for(int i = 1; i <= 5; i++){
 						    // alle importierten Tabellen als Kurve zeichnen
-							if(wedabecha.getCurve(i).isset()){
-								wedabecha.getCurve(i).draw();
+							if(wedabecha.getCurveByID(i).isset()){
+								wedabecha.getCurveByID(i).draw();
 
-								datenLaengen[i] = wedabecha.getCurve(i).getDates().size();
+								datenLaengen[i] = wedabecha.getCurveByID(i).getDates().size();
 							} // if
 
 							java.util.Arrays.sort(datenLaengen);
@@ -159,8 +159,8 @@ public class WedaFile {
 
 		//holt die Werte und Daten aus der übergebenen tabellennummer
 		//und speichert sie in die jeweilige ArrayList
-		werteAL = wedabecha.getCurve(id).getValues();
-		datenAL = wedabecha.getCurve(id).getDates();
+		werteAL = wedabecha.getCurveByID(id).getValues();
+		datenAL = wedabecha.getCurveByID(id).getDates();
 
 
 		//erzeugt eine leere Datei mit dem übergebenen Dateinamen

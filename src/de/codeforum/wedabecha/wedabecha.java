@@ -32,28 +32,39 @@ import de.codeforum.wedabecha.ui.MainWindow;
  *  Hauptklasse die als Programm aufgerufen wird.
  */
 public class wedabecha {
-	private static Curve curve[];
+	private static Curve[] curve = {new Curve(0)};
 	
 	
 	/**
-	 * @param number Die Nummer der abzurufenden Kurve
+	 * Liefert die Kurve mit dem Index im Array curve[]
+	 * @param index Der Index in curve[] der abzurufenden Kurve
 	 * @return Die Kurve
 	 */
-	public static Curve getCurve(int number){
-		Curve c = new Curve(0);
-		
-		try {
-			c = curve[number - 1];
-		}  catch (NullPointerException exception) {
-			wedabecha.genericProgramError(exception);
-		}
-		
-		return c;
-	} // getKurve()
+	public static Curve getCurveByIndex(int index){
+		return curve[index];
+	} // getCurveByIndex(int index)
 	
 	
 	/**
-	 * @return Die ID der Kurve
+	 * Liefert die Kurve mit der entsprechenden ID
+	 * @param id die ID der Kurve
+	 * @return die Kurve
+	 */
+	public static Curve getCurveByID(int id) {
+		Curve c = new Curve(1);
+				
+		for (int i = 0; i < curve.length; i++) {
+			if (curve[i].getID() == id) {
+				c = curve[i];
+			} // if
+		} // for
+	
+		return c;
+	} // getCurveByID(int id)
+	
+	
+	/**
+	 * @return der Index der Kurve
 	 */
 	public static int addCurve() {
 		curve[curve.length] = new Curve(curve.length);
@@ -66,8 +77,12 @@ public class wedabecha {
 	 * @param id die ID der Kurve, die gelöscht werden soll.
 	 */
 	public void removeCurve(int id) {
-		//true;
-	}
+		for (int i = 0; i < curve.length; i++) {
+			if (curve[i].getID() == id) {
+				curve[i] = new Curve(id);
+			} // if
+		} // for
+	} // public void removeCurve(int id)
 	
 	
 	/**
@@ -76,6 +91,7 @@ public class wedabecha {
 	public static void QuitProgram() {
 		System.exit(0);
 	}
+	
 	
 	/**
 	 * show Message, that a Function not yet is implemented
@@ -86,6 +102,7 @@ public class wedabecha {
 			JOptionPane.ERROR_MESSAGE
 		);
 	}
+	
 	
 	/**
 	 * show generic Errormessage including the exception

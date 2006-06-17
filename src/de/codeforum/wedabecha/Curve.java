@@ -131,6 +131,14 @@ public class Curve {
 	public ShareCurve getShareCurve() {
 		return this.shareCurve;
 	}
+	
+	/**
+	 * liefert die ID der Kurve zurück.
+	 * @return die ID der Kurve
+	 */
+	public int getID() {
+		return this.id;
+	}
 
 	/**
 	 * Setzen, ob die Kurve existiert oder nicht. Diese Methode wird vom Datenimport benötigt,

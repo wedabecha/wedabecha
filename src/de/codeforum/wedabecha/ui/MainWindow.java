@@ -212,13 +212,13 @@ public class MainWindow extends JFrame {
 					endDateSpinner.setValue(new Integer( ((Integer)startDateSpinner.getValue()).intValue() + 299));
 
 					for (int i = 1; i < 6; i++){
-						if (wedabecha.getCurve(i).isset()){
-							if (wedabecha.getCurve(i).getStyleIndex() == 0){
-								wedabecha.getCurve(i).getShareCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getCurve(i).getShareCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+						if (wedabecha.getCurveByID(i).isset()){
+							if (wedabecha.getCurveByID(i).getStyleIndex() == 0){
+								wedabecha.getCurveByID(i).getShareCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								wedabecha.getCurveByID(i).getShareCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} else {
-								wedabecha.getCurve(i).getLineCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getCurve(i).getLineCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+								wedabecha.getCurveByID(i).getLineCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								wedabecha.getCurveByID(i).getLineCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} // if
 
 							coords.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
@@ -407,11 +407,11 @@ public class MainWindow extends JFrame {
 					endDateSpinner.setLocation(new Point(d.width - 80,35));
 
 					for(int i = 1; i <= 5; i++){
-						if(wedabecha.getCurve(i).isset()){
-							if(wedabecha.getCurve(i).getStyleIndex() == 0){
-								wedabecha.getCurve(i).getShareCurve().setGroesse(d.width, d.height);
+						if(wedabecha.getCurveByID(i).isset()){
+							if(wedabecha.getCurveByID(i).getStyleIndex() == 0){
+								wedabecha.getCurveByID(i).getShareCurve().setGroesse(d.width, d.height);
 							}else{
-								wedabecha.getCurve(i).getLineCurve().setGroesse(d.width, d.height);
+								wedabecha.getCurveByID(i).getLineCurve().setGroesse(d.width, d.height);
 							}// if-else()
 						} // if()
 					} // for

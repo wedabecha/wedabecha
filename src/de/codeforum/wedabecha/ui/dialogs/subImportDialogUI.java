@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.ui.dialogs;
 /****************************************************************************
  *   Copyright (C) 2004 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,7 +17,7 @@ package de.codeforum.wedabecha.ui.dialogs;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-
+package de.codeforum.wedabecha.ui.dialogs;
 
 import javax.swing.*;
 
@@ -54,7 +53,10 @@ public class subImportDialogUI extends JDialog {
 			die eigenschaften festgelegt werden
 		*/
 
-		setTitle("Tabelle " + tableNumber + " f\u00fcr den Import vorbereiten - wedabecha");
+		setTitle("Tabelle " + tableNumber +
+				" f\u00fcr den Import vorbereiten - wedabecha"
+		);
+		
 		this.tabellenNummer = tableNumber;
 		this.pack();
 	} // subImportDialogUI()
@@ -107,20 +109,20 @@ public class subImportDialogUI extends JDialog {
 					trennzeichenBox.getSelectedIndex()
 				);
 
-				wedabecha.getCurve(getTableNumber()).setValues(
+				wedabecha.getCurveByID(getTableNumber()).setValues(
 					DataImportUI.tabellen[getTableNumber() - 1].getWerte()
 				);
 
-				wedabecha.getCurve(getTableNumber()).setValues(
+				wedabecha.getCurveByID(getTableNumber()).setValues(
 					DataImportUI.tabellen[getTableNumber() - 1].getDaten()
 				);
 
-				wedabecha.getCurve(getTableNumber()).setExists(true);
+				wedabecha.getCurveByID(getTableNumber()).setExists(true);
 				// Button zur jeweiligen eingelesenen Kurve anzeigen
 				MainWindow.getToolBar().kurveWaehlen(getTableNumber(), true);
 				MainWindow.getMainMenuBar().setCurveEditable(getTableNumber(), true);
 
-				if (wedabecha.getCurve(getTableNumber()).isset()){
+				if (wedabecha.getCurveByID(getTableNumber()).isset()){
 					switch(getTableNumber()){
 						case 1:	DataImportUI.oeffneTabelle2.setEnabled(true);
 								DataImportUI.speicherTabelle[1].setEnabled(true);
@@ -155,7 +157,7 @@ public class subImportDialogUI extends JDialog {
 		final JButton cancelButton = new JButton("Abbrechen");
 		cancelButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
-				wedabecha.getCurve(getTableNumber()).setExists(false);
+				wedabecha.getCurveByID(getTableNumber()).setExists(false);
 				MainWindow.getMainMenuBar().setCurveEditable(getTableNumber(), false);
 				setVisible(false);
 			}

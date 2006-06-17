@@ -160,18 +160,18 @@ public class MenuBar extends JMenuBar {
 					I_curveRedraw.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent event){
 							// alle importierten Tabellen als Kurve zeichnen
-							if (wedabecha.getCurve(currentCurve).isset()) {
+							if (wedabecha.getCurveByID(currentCurve).isset()) {
 								try {
 									MainWindow.layeredPane.remove(
 											MainWindow.layeredPane.getIndexOf (
-													wedabecha.getCurve(currentCurve).getShareCurve()
+													wedabecha.getCurveByID(currentCurve).getShareCurve()
 											)
 									);
 								} catch (ArrayIndexOutOfBoundsException except){
 									try {
 										MainWindow.layeredPane.remove(
 												MainWindow.layeredPane.getIndexOf (
-														wedabecha.getCurve(currentCurve).getLineCurve()
+														wedabecha.getCurveByID(currentCurve).getLineCurve()
 												)
 										);
 									} catch (ArrayIndexOutOfBoundsException exception) {
@@ -181,7 +181,7 @@ public class MenuBar extends JMenuBar {
 			
 								MainWindow.layeredPane.repaint();
 								
-								wedabecha.getCurve(currentCurve).draw();
+								wedabecha.getCurveByID(currentCurve).draw();
 								MainWindow.toolBar.setKurve1Button();
 							} // if
 		
