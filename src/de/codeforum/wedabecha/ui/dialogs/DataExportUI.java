@@ -54,14 +54,14 @@ public class DataExportUI {
 					//Dateien mit der Endung .weda und .csv anzuzeogen
 					fc.setFileFilter( new FileFilter() {
 
-						public boolean accept(File f) {
+						@Override public boolean accept(File f) {
 							return f.isDirectory() ||
 							f.getName().toLowerCase().endsWith(".weda") ||
 							f.getName().toLowerCase().endsWith(".csv");
 						}//accept
 
 						//die Beschreibung für die Dropdown-Liste im Dialog
-						public String getDescription() {
+						@Override public String getDescription() {
 							return "Tabellendateien (*.weda, *.csv)";
 						}
 					} );

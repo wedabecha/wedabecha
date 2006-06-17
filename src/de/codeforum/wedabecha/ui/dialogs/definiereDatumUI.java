@@ -51,7 +51,7 @@ class definiereDatumUI extends JDialog {
 		this.pack();
 	} // definiereDatumUI
 	
-	private int getTableNumber() {
+	protected int getTableNumber() {
 		return this.tabellenNummer;
 	}
 	
@@ -59,8 +59,7 @@ class definiereDatumUI extends JDialog {
 	/**
 	 * setzt das Dialogfeld zusammen
 	 */
-	@Override
-	public void pack(){
+	@Override public void pack(){
 		/**
 			pack() setzt das Dialogfeld aus den Bestandteilen zusammen
 		*/

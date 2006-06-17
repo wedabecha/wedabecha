@@ -69,7 +69,7 @@ public class MergeFiles extends JDialog{
 	} // verknuepfeTabellenUI()
 
 
-	public void pack(){
+	@Override public void pack(){
 		this.verknuepfe.setLayout(new BorderLayout(5,5));
 		this.verknuepfe.add((this.auswaehlen),BorderLayout.CENTER);
 			this.auswaehlen.setVisibleRowCount(6);

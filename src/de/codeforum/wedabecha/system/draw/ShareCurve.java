@@ -71,7 +71,7 @@ public class ShareCurve extends JComponent {
 	} // getMax
 
 
-	public void paintComponent(Graphics kurve){
+	@Override public void paintComponent(Graphics kurve){
 		getMax();
 		int zaehler = 25;
 

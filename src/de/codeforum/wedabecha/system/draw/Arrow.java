@@ -36,7 +36,7 @@ public class Arrow extends JComponent {
 	/* Algorithmus zum zeichnen des Pfeils zum größten teil aus dem Buch
 	 * "Profesional Java Fundamentals" entnommen */
 
-	public void paintComponent(Graphics pfeil){
+	@Override public void paintComponent(Graphics pfeil){
 
 		this.st = new Point(this.startX, this.startY);
 		this.end = new Point(this.endX, this.endY);

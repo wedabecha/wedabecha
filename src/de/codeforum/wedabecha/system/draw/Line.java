@@ -30,7 +30,6 @@ import de.codeforum.wedabecha.ui.MainWindow;
 
 
 import java.awt.*;
-import java.lang.Math;
 
 /**
  * Diese Klasse dient zum zeichnen einer Linie
@@ -59,7 +58,7 @@ public class Line extends JComponent {
 	}//setGroesse()
 
 
-	public void paintComponent(Graphics linie){
+	@Override public void paintComponent(Graphics linie){
 		linie.drawLine(this.startX, this.startY, this.endX, this.endY);
 	}// paintComponent(GGraphics linie)
 }// public class Line

@@ -28,7 +28,6 @@ import javax.swing.event.*;
 import de.codeforum.wedabecha.wedabecha;
 import de.codeforum.wedabecha.system.CoordinateSystem;
 import de.codeforum.wedabecha.system.draw.*;
-import de.codeforum.wedabecha.system.listeners.*;
 
 
 /**
@@ -135,7 +134,7 @@ public class MainWindow extends JFrame {
 	/**
 	 * setzt das Fenster als Ganzes aus den einzelnen Bestandteilen zusammen
 	 */
-	public void pack(){
+	@Override public void pack(){
 		this.setTitle("wedabecha");
 
 		// Hauptmenu in das Fenster einbinden

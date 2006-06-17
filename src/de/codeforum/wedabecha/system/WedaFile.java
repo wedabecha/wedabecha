@@ -58,7 +58,6 @@ public class WedaFile {
 	/**
 	 * Die Funktion zeigt öffnet .weda-Dateien
 	 * @param filename Der vollständige Dateiname (also inklusive Pfad) der .weda-Datei.
-	 * @return Eine zweidimensionale ArrayList mit den Daten.
 	 */
 	public void openFile (String filename) {
 

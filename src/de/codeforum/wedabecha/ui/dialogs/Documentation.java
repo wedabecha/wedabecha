@@ -39,7 +39,7 @@ import java.net.URL;
 public class Documentation extends JFrame {
 	final static long serialVersionUID = 1;
 	
-    private JEditorPane doku = new JEditorPane();
+    protected JEditorPane doku = new JEditorPane();
     private JButton schliessenButton;
 //    private String text; // wo wird diese Variable benutzt? oO
     File path;

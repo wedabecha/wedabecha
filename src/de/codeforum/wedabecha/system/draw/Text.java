@@ -29,7 +29,7 @@ public class Text extends JComponent{
     } // zeichneText()
 
 
-    public void paintComponent(Graphics text){
+    @Override public void paintComponent(Graphics text){
 	    text.drawString(this.text, this.startX, this.startY);
     } // paintComponent(Graphics text)
 

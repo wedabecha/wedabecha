@@ -51,7 +51,7 @@ public class GraphicExportUI {
 			//erzeugt zu fc einen Dateifilter
 			fc.setFileFilter( new FileFilter() {
 				//akzeptiert nur Dateien mit .jpg als Endung
-				public boolean accept( File f ) {
+				@Override public boolean accept( File f ) {
 					return 	f.isDirectory() ||
 							f.getName().toLowerCase().endsWith(".jpg");
 				} // accept()

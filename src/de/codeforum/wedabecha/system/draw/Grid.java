@@ -50,7 +50,7 @@ public class Grid extends JComponent {
 		this.setVisible(false);
 	} // zeichneRaster()
 
-	public void paintComponent(Graphics raster){
+	@Override public void paintComponent(Graphics raster){
 		// bestimmt den Abstand zwischen den Linien
 		int abstand = 12;
 		// zeichnet die senkrechten Linien im Abstand von 25 nach rechts

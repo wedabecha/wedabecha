@@ -284,12 +284,12 @@ public class DataImportUI extends JDialog  {
 	} // pack()
 
 
-	private void showSubDialog(int tabellenNummer) {
+	protected void showSubDialog(int tabellenNummer) {
 		new subImportDialogUI(tabellenNummer);
 	} // showSubDialog
 
 
-	private void showDarstellungsDialog(int tabellenNummer){
+	protected void showDarstellungsDialog(int tabellenNummer){
 		new CurveType(tabellenNummer);
 	}
 
