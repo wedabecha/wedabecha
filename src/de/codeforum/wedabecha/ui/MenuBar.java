@@ -266,6 +266,7 @@ public class MenuBar extends JMenuBar {
 				new About();
 			}
 		});
+		helpMenu.add(I_about);
 		
 		this.add(helpMenu);
 		// helpMenu END
