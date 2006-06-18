@@ -256,7 +256,7 @@ public class MainWindow extends JFrame {
 		MainWindow.layeredPane.add(coords, new Integer(1));
 
 		// Werkzeugleiste einbinden
-		MainWindow.mainPane.add(toolBar.getToolBar(), JLayeredPane.PALETTE_LAYER);
+		MainWindow.mainPane.add(toolBar, JLayeredPane.PALETTE_LAYER);
 
 		this.setLocation(Xposition,Yposition);
 		//this.setMinimumSize(new Dimension(this.fensterBreite,this.fensterHoehe));
