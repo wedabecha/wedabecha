@@ -21,6 +21,7 @@ package de.codeforum.wedabecha;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.Locale;
 
 /**
  * @author dmaphy
@@ -28,13 +29,16 @@ import java.util.ResourceBundle;
  */
 public class Messages {
     private static final String BUNDLE_NAME = "messages"; //$NON-NLS-1$
-
+    
+    private static final Locale locale = new Locale("de", "DE");
+    
     private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
-            .getBundle(BUNDLE_NAME);
+            .getBundle(BUNDLE_NAME,locale);
     
     private Messages() { /** Konstruktor, hat bisher noch keine Aufgaben */
     
     }
+    
     
     /**
      * 
