@@ -60,13 +60,31 @@ public class DataImportUI extends JDialog  {
 	private JLabel tabelle3Label = new JLabel(Messages.getString("importiereTabelleUI.2")); //$NON-NLS-1$
 	private JLabel tabelle4Label = new JLabel(Messages.getString("importiereTabelleUI.3")); //$NON-NLS-1$
 	private JLabel tabelle5Label = new JLabel(Messages.getString("importiereTabelleUI.4")); //$NON-NLS-1$
-
+	
+	
+	/*
+	 * TODO
+	 * die ersten vier Strings aus der messages.properties werden scheinbar
+	 * korrekt eingelesen. Ab dem fünften String, also den folgenden,
+	 * tritt bei der Ausführung des Programms folgende Ausnahme auf:
+	 * 
+	 * Caused by: java.util.MissingResourceException: Can't find bundle for base name messages, locale de_DE
+	 * 
+	 * Ich habe diese Verhalten bisher nur unter Windows 2000 mit dem
+	 * JRE bzw. JDK 1.5.0_07 beobachtet.
+	 * 
+	 * Im Blick auf Internationalisierung des Programms in der Zukunft wäre es
+	 * mir lieb die Ursache für dieses Problem zu finden anstatt einen
+	 * Workaround zu bauen.
+	 * 
+	 */
+	
 	protected static JButton oeffneTabelle1 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
 	protected static JButton oeffneTabelle2 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
 	protected static JButton oeffneTabelle3 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
 	protected static JButton oeffneTabelle4 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
 	protected static JButton oeffneTabelle5 = new JButton(Messages.getString("importiereTabelleUI.5")); //$NON-NLS-1$
-
+	
 	private static JTextField pfadTabelle1 = new JTextField(20);
 	private static JTextField pfadTabelle2 = new JTextField(20);
 	private static JTextField pfadTabelle3 = new JTextField(20);
