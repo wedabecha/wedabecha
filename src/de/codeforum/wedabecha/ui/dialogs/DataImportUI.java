@@ -72,6 +72,7 @@ public class DataImportUI extends JDialog  {
 	 * 
 	 * Ich habe diese Verhalten bisher nur unter Windows 2000 mit dem
 	 * JRE bzw. JDK 1.5.0_07 beobachtet.
+	 * Ergänzung: Auf Linux tritt das Problem auch auf.
 	 * 
 	 * Im Blick auf Internationalisierung des Programms in der Zukunft wäre es
 	 * mir lieb die Ursache für dieses Problem zu finden anstatt einen
