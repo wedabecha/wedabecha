@@ -22,7 +22,7 @@ package de.codeforum.wedabecha.ui;
 import java.awt.event.*;
 import javax.swing.*;
 
-import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.core;
 
 /**
  * @author Robert Exner (ashrak at users.berlios.de)
@@ -183,23 +183,23 @@ public class MainToolBar extends JToolBar {
 	    public void actionPerformed(ActionEvent e) {
 			try{
 				for(int i = 0; i < 5; i++){
-					if(wedabecha.getCurveByID(i + 1).isset()){
+					if(core.getCurveByID(i + 1).isset()){
 						/*
 						 * Wie spricht man ein Objekt der übergeordneten Klasse an?
 						 * Ich hätte an sowas wie parent.objekt gedacht,
 						 * ist es aber nicht.
 						 */
 						if (curveButton[i].isSelected()) {
-							if (wedabecha.getCurveByID(i + 1).getStyleIndex() == 0) {
-								wedabecha.getCurveByID(i + 1).getShareCurve().setVisibility(true);
+							if (core.getCurveByID(i + 1).getStyleIndex() == 0) {
+								core.getCurveByID(i + 1).getShareCurve().setVisibility(true);
 							} else {
-								wedabecha.getCurveByID(i + 1).getLineCurve().setVisibility(true);
+								core.getCurveByID(i + 1).getLineCurve().setVisibility(true);
 							} // if()-else
 						} else {
-							if (wedabecha.getCurveByID(i + 1).getStyleIndex() == 0){
-								wedabecha.getCurveByID(i + 1).getShareCurve().setVisibility(false);
+							if (core.getCurveByID(i + 1).getStyleIndex() == 0){
+								core.getCurveByID(i + 1).getShareCurve().setVisibility(false);
 							} else {
-								wedabecha.getCurveByID(i + 1).getLineCurve().setVisibility(false);
+								core.getCurveByID(i + 1).getLineCurve().setVisibility(false);
 							} // if()-else
 						} // if()-else
 					} // if()
@@ -287,10 +287,10 @@ public class MainToolBar extends JToolBar {
 	public void setKurve1Button(){
 		this.curveButton[0].setSelected(true);
 		
-		if (wedabecha.getCurveByID(1).getStyleIndex() == 0) {
-			wedabecha.getCurveByID(1).getShareCurve().setVisibility(true);
+		if (core.getCurveByID(1).getStyleIndex() == 0) {
+			core.getCurveByID(1).getShareCurve().setVisibility(true);
 		} else {
-			wedabecha.getCurveByID(1).getLineCurve().setVisibility(true);
+			core.getCurveByID(1).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
@@ -301,10 +301,10 @@ public class MainToolBar extends JToolBar {
 	public void setKurve2Button(){
 		this.curveButton[1].setSelected(true);
 		
-		if (wedabecha.getCurveByID(2).getStyleIndex() == 0) {
-			wedabecha.getCurveByID(2).getShareCurve().setVisibility(true);
+		if (core.getCurveByID(2).getStyleIndex() == 0) {
+			core.getCurveByID(2).getShareCurve().setVisibility(true);
 		} else {
-			wedabecha.getCurveByID(2).getLineCurve().setVisibility(true);
+			core.getCurveByID(2).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
@@ -315,10 +315,10 @@ public class MainToolBar extends JToolBar {
 	public void setKurve3Button(){
 		this.curveButton[2].setSelected(true);
 		
-		if (wedabecha.getCurveByID(3).getStyleIndex() == 0) {
-			wedabecha.getCurveByID(3).getShareCurve().setVisibility(true);
+		if (core.getCurveByID(3).getStyleIndex() == 0) {
+			core.getCurveByID(3).getShareCurve().setVisibility(true);
 		} else {
-			wedabecha.getCurveByID(3).getLineCurve().setVisibility(true);
+			core.getCurveByID(3).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
@@ -329,10 +329,10 @@ public class MainToolBar extends JToolBar {
 	public void setKurve4Button(){
 		this.curveButton[3].setSelected(true);
 		
-		if (wedabecha.getCurveByID(4).getStyleIndex() == 0) {
-			wedabecha.getCurveByID(4).getShareCurve().setVisibility(true);
+		if (core.getCurveByID(4).getStyleIndex() == 0) {
+			core.getCurveByID(4).getShareCurve().setVisibility(true);
 		} else {
-			wedabecha.getCurveByID(4).getLineCurve().setVisibility(true);
+			core.getCurveByID(4).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 
@@ -343,10 +343,10 @@ public class MainToolBar extends JToolBar {
 	public void setKurve5Button(){
 		this.curveButton[4].setSelected(true);
 		
-		if (wedabecha.getCurveByID(5).getStyleIndex() == 0) {
-			wedabecha.getCurveByID(5).getShareCurve().setVisibility(true);
+		if (core.getCurveByID(5).getStyleIndex() == 0) {
+			core.getCurveByID(5).getShareCurve().setVisibility(true);
 		} else {
-			wedabecha.getCurveByID(5).getLineCurve().setVisibility(true);
+			core.getCurveByID(5).getLineCurve().setVisibility(true);
 		} // if()-else
 	} // setKurve1Button()
 

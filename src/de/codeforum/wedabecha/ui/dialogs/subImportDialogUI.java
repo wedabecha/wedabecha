@@ -21,7 +21,7 @@ package de.codeforum.wedabecha.ui.dialogs;
 
 import javax.swing.*;
 
-import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.core;
 import de.codeforum.wedabecha.system.DataImport;
 import de.codeforum.wedabecha.ui.MainWindow;
 
@@ -109,20 +109,20 @@ public class subImportDialogUI extends JDialog {
 					trennzeichenBox.getSelectedIndex()
 				);
 
-				wedabecha.getCurveByID(getTableNumber()).setValues(
+				core.getCurveByID(getTableNumber()).setValues(
 					DataImportUI.tabellen[getTableNumber() - 1].getWerte()
 				);
 
-				wedabecha.getCurveByID(getTableNumber()).setValues(
+				core.getCurveByID(getTableNumber()).setValues(
 					DataImportUI.tabellen[getTableNumber() - 1].getDaten()
 				);
 
-				wedabecha.getCurveByID(getTableNumber()).setExists(true);
+				core.getCurveByID(getTableNumber()).setExists(true);
 				// Button zur jeweiligen eingelesenen Kurve anzeigen
 				MainWindow.getToolBar().kurveWaehlen(getTableNumber(), true);
 				MainWindow.getMainMenuBar().setCurveEditable(getTableNumber(), true);
 
-				if (wedabecha.getCurveByID(getTableNumber()).isset()){
+				if (core.getCurveByID(getTableNumber()).isset()){
 					switch(getTableNumber()){
 						case 1:	DataImportUI.oeffneTabelle2.setEnabled(true);
 								DataImportUI.speicherTabelle[1].setEnabled(true);
@@ -157,7 +157,7 @@ public class subImportDialogUI extends JDialog {
 		final JButton cancelButton = new JButton("Abbrechen");
 		cancelButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
-				wedabecha.getCurveByID(getTableNumber()).setExists(false);
+				core.getCurveByID(getTableNumber()).setExists(false);
 				MainWindow.getMainMenuBar().setCurveEditable(getTableNumber(), false);
 				setVisible(false);
 			}

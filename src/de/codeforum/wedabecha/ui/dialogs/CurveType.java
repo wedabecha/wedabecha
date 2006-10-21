@@ -105,12 +105,12 @@ public class CurveType extends JDialog {
 		final JButton okayButton = new JButton(Messages.getString("darstellungsTypUI.2")); //$NON-NLS-1$
 		okayButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
-				if (wedabecha.getCurveByID(getID()).isset()){
-					wedabecha.getCurveByID(getID()).setStyle(
+				if (core.getCurveByID(getID()).isset()){
+					core.getCurveByID(getID()).setStyle(
 						styleComboBox.getSelectedIndex()
 					);
 
-					wedabecha.getCurveByID(getID()).setColor(getColor());
+					core.getCurveByID(getID()).setColor(getColor());
 
 					setVisible(false);
 				} // if

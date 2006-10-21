@@ -25,7 +25,7 @@ package de.codeforum.wedabecha.ui;
 
 import javax.swing.*;
 
-import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.core;
 import de.codeforum.wedabecha.system.WedaFile;
 import de.codeforum.wedabecha.ui.dialogs.*;
 
@@ -81,7 +81,7 @@ public class MenuBar extends JMenuBar {
 		final JMenuItem I_MergeFiles = new JMenuItem("Daten verkn\u00fcpfen");
 		I_MergeFiles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				wedabecha.notImplementedError();
+				core.notImplementedError();
 			}
 		});
 		I_MergeFiles.setEnabled(false);
@@ -103,7 +103,7 @@ public class MenuBar extends JMenuBar {
 		final JMenuItem I_Print = new JMenuItem("Drucken");
 		I_Print.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				wedabecha.notImplementedError();
+				core.notImplementedError();
 			}
 		});
 		I_Print.setEnabled(false);
@@ -111,7 +111,7 @@ public class MenuBar extends JMenuBar {
 		final JMenuItem I_QuitProgram = new JMenuItem("Programm beenden");
 		I_QuitProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				wedabecha.QuitProgram();
+				core.QuitProgram();
 			}
 		});
 		
@@ -158,18 +158,18 @@ public class MenuBar extends JMenuBar {
 				I_curveRedraw.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent event){
 						// alle importierten Tabellen als Kurve zeichnen
-						if (wedabecha.getCurveByID(currentCurve).isset()) {
+						if (core.getCurveByID(currentCurve).isset()) {
 							try {
 								MainWindow.layeredPane.remove(
 										MainWindow.layeredPane.getIndexOf (
-												wedabecha.getCurveByID(currentCurve).getShareCurve()
+												core.getCurveByID(currentCurve).getShareCurve()
 										)
 								);
 							} catch (ArrayIndexOutOfBoundsException except){
 								try {
 									MainWindow.layeredPane.remove(
 											MainWindow.layeredPane.getIndexOf (
-													wedabecha.getCurveByID(currentCurve).getLineCurve()
+													core.getCurveByID(currentCurve).getLineCurve()
 											)
 									);
 								} catch (ArrayIndexOutOfBoundsException exception) {
@@ -179,7 +179,7 @@ public class MenuBar extends JMenuBar {
 		
 							MainWindow.layeredPane.repaint();
 							
-							wedabecha.getCurveByID(currentCurve).draw();
+							core.getCurveByID(currentCurve).draw();
 							MainWindow.toolBar.setKurve1Button();
 						} // if
 	

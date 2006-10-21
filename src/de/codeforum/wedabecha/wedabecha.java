@@ -19,117 +19,17 @@
 
 package de.codeforum.wedabecha;
 
-// import java.util.Arrays;
-
-import javax.swing.JOptionPane;
-
-import de.codeforum.wedabecha.ui.MainWindow;
-
 /**
  * 	@author Dominic Hopf (dmaphy at users.berlios.de)
- *  TODO: curve zu einer dynamisch anpassbaren Liste (Array) machen.
- *  
  *  Hauptklasse die als Programm aufgerufen wird.
  */
 public class wedabecha {
-	private static Curve[] curve = {new Curve(0)};
-	
-	
-	/**
-	 * Liefert die Kurve mit dem Index im Array curve[]
-	 * @param index Der Index in curve[] der abzurufenden Kurve
-	 * @return Die Kurve
-	 */
-	public static Curve getCurveByIndex(int index){
-		return curve[index];
-	} // getCurveByIndex(int index)
-	
-	
-	/**
-	 * Liefert die Kurve mit der entsprechenden ID
-	 * @param id die ID der Kurve
-	 * @return die Kurve
-	 */
-	public static Curve getCurveByID(int id) {
-		Curve c = new Curve(1);
-				
-		for (int i = 0; i < curve.length; i++) {
-			if (curve[i].getID() == id) {
-				c = curve[i];
-			} // if
-		} // for
-	
-		return c;
-	} // getCurveByID(int id)
-	
-	
-	/**
-	 * @return der Index der Kurve
-	 */
-	public static int addCurve() {
-		curve[curve.length] = new Curve(curve.length);
-		return curve.length;
-	} // addCurve
-	
-	
-	/**
-	 * TODO: Methode mit Funktion hinterlegen
-	 * @param id die ID der Kurve, die gelöscht werden soll.
-	 */
-	public void removeCurve(int id) {
-		for (int i = 0; i < curve.length; i++) {
-			if (curve[i].getID() == id) {
-				curve[i] = new Curve(id);
-			} // if
-		} // for
-	} // public void removeCurve(int id)
-	
-	
-	/**
-	 * exits the Program
-	 */
-	public static void QuitProgram() {
-		System.exit(0);
-	}
-	
-	
-	/**
-	 * show Message, that a Function not yet is implemented
-	 */
-	public static void notImplementedError() {
-		JOptionPane.showMessageDialog(null,
-			"Die Funktion ist in dieser Version noch nicht implementiert.","Nicht Implementiert",
-			JOptionPane.ERROR_MESSAGE
-		);
-	}
-	
-	
-	/**
-	 * show generic Errormessage including the exception
-	 * @param exception the exception to show
-	 */
-	public static void genericProgramError(Exception exception) {
-		JOptionPane.showMessageDialog(null,
-			"Die folgende Exception ist während des Programmablaufs aufgetreten: " + exception,"Allgemeiner Programmfehler",
-			JOptionPane.ERROR_MESSAGE
-		);
-	}
-
-	
-	/**
-	 * Konstruktor, erwartet keine weiteren Parameter
-	 */
-	public wedabecha(){
-		new MainWindow(700, 500);
-	} // wedabecha()
-	
-	
 	/**
 	 * Einstiegspunkt zum Starten des Programms.
 	 * @param args
 	 */
 	public static void main(String args[]){
 		// Einstiegspunkt für das Programm
-		new wedabecha();
+		new core();
 	} // main(String args[])
-} // wedabecha
+} // public class wedabecha

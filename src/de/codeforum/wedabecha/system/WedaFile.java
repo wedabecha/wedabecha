@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 // programminterne Imports
-import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.core;
 import de.codeforum.wedabecha.ui.MainWindow;
 import de.codeforum.wedabecha.ui.dialogs.DataImportUI;
 import de.codeforum.wedabecha.system.DataImport;
@@ -102,13 +102,13 @@ public class WedaFile {
 						ArrayList ergebnis = DataImport.getDaten();
 
 						//Werte auf Eingelesene setzen
-						wedabecha.getCurveByID(kurvennummer).setValues(resAL);
+						core.getCurveByID(kurvennummer).setValues(resAL);
 
 						//Daten auf Eingelesene setzen
-						wedabecha.getCurveByID(kurvennummer).setValues(ergebnis);
+						core.getCurveByID(kurvennummer).setValues(ergebnis);
 
 						//Kurve auf "existent" setzten
-						wedabecha.getCurveByID(kurvennummer).setExists(true);
+						core.getCurveByID(kurvennummer).setExists(true);
 
 						// Button zur jeweiligen eingelesenen Kurve anzeigen
 						MainWindow.getToolBar().kurveWaehlen(kurvennummer, true);
@@ -121,10 +121,10 @@ public class WedaFile {
 
 						for(int i = 1; i <= 5; i++){
 						    // alle importierten Tabellen als Kurve zeichnen
-							if(wedabecha.getCurveByID(i).isset()){
-								wedabecha.getCurveByID(i).draw();
+							if(core.getCurveByID(i).isset()){
+								core.getCurveByID(i).draw();
 
-								datenLaengen[i] = wedabecha.getCurveByID(i).getDates().size();
+								datenLaengen[i] = core.getCurveByID(i).getDates().size();
 							} // if
 
 							java.util.Arrays.sort(datenLaengen);
@@ -159,8 +159,8 @@ public class WedaFile {
 
 		//holt die Werte und Daten aus der übergebenen tabellennummer
 		//und speichert sie in die jeweilige ArrayList
-		werteAL = wedabecha.getCurveByID(id).getValues();
-		datenAL = wedabecha.getCurveByID(id).getDates();
+		werteAL = core.getCurveByID(id).getValues();
+		datenAL = core.getCurveByID(id).getDates();
 
 
 		//erzeugt eine leere Datei mit dem übergebenen Dateinamen

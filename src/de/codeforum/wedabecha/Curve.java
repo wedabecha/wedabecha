@@ -41,6 +41,8 @@ import de.codeforum.wedabecha.ui.MainWindow;
  * Damit können dann weitere Berechnungen angestellt werden,
  * um die letztendliche grafische Darstellung zu berechnen und auf dem Bildschirm
  * auszugeben...
+ * 
+ * TODO: externalize Strings
  * */
 public class Curve {
 	/**

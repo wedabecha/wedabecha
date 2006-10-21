@@ -31,7 +31,7 @@ package de.codeforum.wedabecha.debug;
 
 import java.util.ArrayList;
 
-import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.core;
 
 
 class DReadData {
@@ -43,8 +43,8 @@ class DReadData {
 	 * Erwartet keine weiteren Parameter
 	 */
 	public DReadData(){
-		this.werte = wedabecha.getCurveByID(1).getValues();
-		this.daten = wedabecha.getCurveByID(1).getDates();
+		this.werte = core.getCurveByID(1).getValues();
+		this.daten = core.getCurveByID(1).getDates();
 		this.printWerte();
 		this.printDaten();
 	} // DReadData()

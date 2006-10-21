@@ -17,7 +17,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-import de.codeforum.wedabecha.wedabecha;
+import de.codeforum.wedabecha.core;
 
 /**
  * @author Martin Müller (mrtnmueller at users.berlios.de)
@@ -230,7 +230,7 @@ public class CoordinateSystem extends JComponent {
 		 * TODO: else-Zweig der in einer Statuszeile darauf hinweist,
 		 * dass noch keine Kurve vorhanden ist. 
 		 */
-		if (wedabecha.getCurveByID(1).isset()) {
+		if (core.getCurveByID(1).isset()) {
 			this.drawAbscissaMarking(g);
 		}
 	} // paintComponent()
@@ -247,7 +247,7 @@ public class CoordinateSystem extends JComponent {
 		ArrayList daten; // mehrzahl von datum
 		int xTextPos = 0; // horizontale position der beschriftung
 		
-		daten = wedabecha.getCurveByID(1).getDates();
+		daten = core.getCurveByID(1).getDates();
 
 		for (int i = this.startDateIndex; i < this.endDateIndex; i += this.abstandx) {
 			g.setColor(Color.BLACK);
@@ -277,8 +277,8 @@ public class CoordinateSystem extends JComponent {
 		 */
 
 		for (int i = 1; i < 6; i++) {
-			if (wedabecha.getCurveByID(i).isset()) {
-				werte = wedabecha.getCurveByID(i).getValues();
+			if (core.getCurveByID(i).isset()) {
+				werte = core.getCurveByID(i).getValues();
 				maxZeilenWerte = new double[werte.size()];
 
 				for (int j = 0; j < werte.size(); j++) {

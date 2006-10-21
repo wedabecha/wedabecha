@@ -19,13 +19,15 @@
 
 package de.codeforum.wedabecha.ui;
 
+// Import von Java-Libs
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.event.*;
 
-import de.codeforum.wedabecha.wedabecha;
+// Import von programminternen Klassen
+import de.codeforum.wedabecha.core;
 import de.codeforum.wedabecha.system.CoordinateSystem;
 import de.codeforum.wedabecha.system.draw.*;
 
@@ -56,9 +58,9 @@ public class MainWindow extends JFrame {
 	Dimension d;
 
 	/*
-		auf die fensterBreite und fensterHoehe muss
-		von anderen Klassen aus zugegriffen werden können.
-	*/
+     * auf die fensterBreite und fensterHoehe muss
+     * von anderen Klassen aus zugegriffen werden können.
+	 */
 	private static int windowWidth = 700;
 	private static int windowHeight = 500;
 
@@ -143,7 +145,7 @@ public class MainWindow extends JFrame {
 		// Listener zum Fensterschliessen per "wegkreuzen"
 		this.addWindowListener(new WindowListener() {
 			public void windowClosing(WindowEvent event) {
-				wedabecha.QuitProgram();
+				core.QuitProgram();
 			} // windowClosing(WindowEvent event)
 
 			public void windowOpened(WindowEvent arg0) {
@@ -212,13 +214,13 @@ public class MainWindow extends JFrame {
 					endDateSpinner.setValue(new Integer( ((Integer)startDateSpinner.getValue()).intValue() + 299));
 
 					for (int i = 1; i < 6; i++){
-						if (wedabecha.getCurveByID(i).isset()){
-							if (wedabecha.getCurveByID(i).getStyleIndex() == 0){
-								wedabecha.getCurveByID(i).getShareCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getCurveByID(i).getShareCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+						if (core.getCurveByID(i).isset()){
+							if (core.getCurveByID(i).getStyleIndex() == 0){
+								core.getCurveByID(i).getShareCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getShareCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} else {
-								wedabecha.getCurveByID(i).getLineCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								wedabecha.getCurveByID(i).getLineCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getLineCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getLineCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
 							} // if
 
 							coords.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
@@ -407,11 +409,11 @@ public class MainWindow extends JFrame {
 					endDateSpinner.setLocation(new Point(d.width - 80,35));
 
 					for(int i = 1; i <= 5; i++){
-						if(wedabecha.getCurveByID(i).isset()){
-							if(wedabecha.getCurveByID(i).getStyleIndex() == 0){
-								wedabecha.getCurveByID(i).getShareCurve().setGroesse(d.width, d.height);
+						if(core.getCurveByID(i).isset()){
+							if(core.getCurveByID(i).getStyleIndex() == 0){
+								core.getCurveByID(i).getShareCurve().setGroesse(d.width, d.height);
 							}else{
-								wedabecha.getCurveByID(i).getLineCurve().setGroesse(d.width, d.height);
+								core.getCurveByID(i).getLineCurve().setGroesse(d.width, d.height);
 							}// if-else()
 						} // if()
 					} // for
