@@ -1,4 +1,3 @@
-package de.codeforum.wedabecha.debug;
 /****************************************************************************
  *   Copyright (C) 2005 by BTU SWP GROUP 04/6.1                             *
  *                                                                          *
@@ -18,22 +17,20 @@ package de.codeforum.wedabecha.debug;
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-/**
-	@author
-		Dominic Hopf (dmaphy at users.berlios.de),
-		Robert Exner (ashrak at users.berlios.de)
-
-	Debug
-	Testklasse zum auslesen der Daten,
-	kann evtl. in zeichneKurve übernommen und bearbeitet werden.
-*/
-
+package de.codeforum.wedabecha.debug;
 
 import java.util.ArrayList;
-
 import de.codeforum.wedabecha.core;
 
-
+/**
+ * @author
+ *      Dominic Hopf (dmaphy at users.berlios.de),
+ *      Robert Exner (ashrak at users.berlios.de)
+ *      
+ *      Debug
+ *      Testklasse zum auslesen der Daten,
+ *      kann evtl. in zeichneKurve übernommen und bearbeitet werden.
+ */
 class DReadData {
 	private ArrayList werte;
 	private ArrayList daten;
