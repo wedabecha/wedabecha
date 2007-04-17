@@ -25,9 +25,9 @@ public class Text extends JComponent{
     } // zeichneText()
 
 
-    @Override public void paintComponent(@SuppressWarnings("hiding")
-    Graphics text){
-	    text.drawString(this.text, this.startX, this.startY);
+    @Override
+    public void paintComponent(Graphics ptext){
+	    ptext.drawString(this.text, this.startX, this.startY);
     } // paintComponent(Graphics text)
 
 } // Text
