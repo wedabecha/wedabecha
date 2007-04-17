@@ -57,6 +57,7 @@ public class GraphicExportUI {
 				} // accept()
 
 				//Beschreibung des Dateityps im Speichern-Dialog
+				@Override
 				public String getDescription() {
 					return "JPEG-Bilddatei (*.jpg)";
 				}//getDescription()
