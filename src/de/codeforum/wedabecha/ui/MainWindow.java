@@ -70,10 +70,10 @@ public class MainWindow extends JFrame {
 	protected PopupMenu kontext = new PopupMenu();
 
 	// Elemente der GUI um den horizontalen Zeichenbereich festzulegen
-	private JLabel startDateLabel = new JLabel("Start-Datum ");
-	private JSpinner startDateSpinner =  new JSpinner();
-	private JLabel endDateLabel = new JLabel("End-Datum ");
-	private JSpinner endDateSpinner = new JSpinner();
+	protected JLabel startDateLabel = new JLabel("Start-Datum ");
+	protected JSpinner startDateSpinner =  new JSpinner();
+	protected JLabel endDateLabel = new JLabel("End-Datum ");
+	protected JSpinner endDateSpinner = new JSpinner();
 
 	protected static int maxDate = 300;
 	
@@ -207,24 +207,24 @@ public class MainWindow extends JFrame {
 			this.startDateSpinner.setValue(new Integer(1));
 			this.startDateSpinner.addChangeListener(new ChangeListener(){
 				public void stateChanged(ChangeEvent event){
-					if(((Integer)startDateSpinner.getValue()).intValue() <= 0){
-						startDateSpinner.setValue(new Integer(1));
+					if(((Integer)MainWindow.this.startDateSpinner.getValue()).intValue() <= 0){
+					    MainWindow.this.startDateSpinner.setValue(new Integer(1));
 					} // if()
 					
-					endDateSpinner.setValue(new Integer( ((Integer)startDateSpinner.getValue()).intValue() + 299));
+					MainWindow.this.endDateSpinner.setValue(new Integer( ((Integer)MainWindow.this.startDateSpinner.getValue()).intValue() + 299));
 
 					for (int i = 1; i < 6; i++){
 						if (core.getCurveByID(i).isset()){
 							if (core.getCurveByID(i).getStyleIndex() == 0){
-								core.getCurveByID(i).getShareCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								core.getCurveByID(i).getShareCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getShareCurve().dateBeginIndex = ((Integer)MainWindow.this.startDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getShareCurve().dateEndIndex = ((Integer)MainWindow.this.endDateSpinner.getValue()).intValue();
 							} else {
-								core.getCurveByID(i).getLineCurve().dateBeginIndex = ((Integer)startDateSpinner.getValue()).intValue();
-								core.getCurveByID(i).getLineCurve().dateEndIndex = ((Integer)endDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getLineCurve().dateBeginIndex = ((Integer)MainWindow.this.startDateSpinner.getValue()).intValue();
+								core.getCurveByID(i).getLineCurve().dateEndIndex = ((Integer)MainWindow.this.endDateSpinner.getValue()).intValue();
 							} // if
 
-							coords.setStartDateIndex( ((Integer)startDateSpinner.getValue()).intValue() );
-							coords.setEndDateIndex( ((Integer)endDateSpinner.getValue()).intValue() );
+							coords.setStartDateIndex( ((Integer)MainWindow.this.startDateSpinner.getValue()).intValue() );
+							coords.setEndDateIndex( ((Integer)MainWindow.this.endDateSpinner.getValue()).intValue() );
 						} // if
 					} // for
 				}
@@ -239,10 +239,10 @@ public class MainWindow extends JFrame {
 
 			this.endDateSpinner.addChangeListener(new ChangeListener(){
 				public void stateChanged(ChangeEvent event){
-					startDateSpinner.setValue(new Integer( ((Integer)endDateSpinner.getValue()).intValue() - 299));
+				    MainWindow.this.startDateSpinner.setValue(new Integer( ((Integer)MainWindow.this.endDateSpinner.getValue()).intValue() - 299));
 
-					if ( ((Integer)endDateSpinner.getValue()).intValue() >= maxDate){
-						endDateSpinner.setValue(new Integer(maxDate));
+					if ( ((Integer)MainWindow.this.endDateSpinner.getValue()).intValue() >= maxDate){
+					    MainWindow.this.endDateSpinner.setValue(new Integer(maxDate));
 					}
 					layeredPane.repaint();
 				}
@@ -283,6 +283,7 @@ public class MainWindow extends JFrame {
 
 		// dieser MouseListener sorgt dafür, dass die Textfelder dem Hauptfenster hinzugefügt werden können
 		MainWindow.layeredPane.addMouseListener(new MouseAdapter(){
+			@Override
 			public void mouseReleased(MouseEvent me) {
 			    // wenn der ToggleButton in der Toolbar aktiviert ist...
 			    if(toolBar.textGewaehlt()){
@@ -313,6 +314,7 @@ public class MainWindow extends JFrame {
 			private int zaehler; // legt die koordinaten für start- und endpunkte fest
 
 
+			@Override
 			public void mouseReleased(MouseEvent me) {
 			    // wenn der ToggleButton in der Toolbar aktiviert ist...
 			    if(toolBar.linieGewaehlt()){
@@ -359,6 +361,7 @@ public class MainWindow extends JFrame {
 			private int zaehler; // legt die koordinaten für start- und endpunkte fest
 
 
+			@Override
 			public void mouseReleased(MouseEvent me) {
 			    // wenn der JToggleButton in der Toolbar aktiviert ist...
 			    if(toolBar.pfeilGewaehlt()){
@@ -395,31 +398,33 @@ public class MainWindow extends JFrame {
 
 		// Klasse zur dynamischen Größenbestimmung des Frames
 		MainWindow.mainPane.addComponentListener(new ComponentAdapter(){
+			@Override
 			public void componentResized(ComponentEvent event){
 
 				if(event.getID() == ComponentEvent.COMPONENT_RESIZED){
+					@SuppressWarnings("hiding")
 					JLayeredPane layeredPane = (JLayeredPane) event.getComponent();
-					d = layeredPane.getSize();
-					zeichneRaster.setGroesse(d.width, d.height);
-					MainWindow.setGroesse(d.width, d.height);
-					coords.setGroesse(d.width, d.height);
-					startDateSpinner.setLocation(new Point(d.width - 250,35));
-					startDateLabel.setLocation(new Point(d.width - 340,35));
-					endDateLabel.setLocation(new Point(d.width - 170,35));
-					endDateSpinner.setLocation(new Point(d.width - 80,35));
+					MainWindow.this.d = layeredPane.getSize();
+					zeichneRaster.setGroesse(MainWindow.this.d.width, MainWindow.this.d.height);
+					MainWindow.setGroesse(MainWindow.this.d.width, MainWindow.this.d.height);
+					coords.setGroesse(MainWindow.this.d.width, MainWindow.this.d.height);
+					MainWindow.this.startDateSpinner.setLocation(new Point(MainWindow.this.d.width - 250,35));
+					MainWindow.this.startDateLabel.setLocation(new Point(MainWindow.this.d.width - 340,35));
+					MainWindow.this.endDateLabel.setLocation(new Point(MainWindow.this.d.width - 170,35));
+					MainWindow.this.endDateSpinner.setLocation(new Point(MainWindow.this.d.width - 80,35));
 
 					for(int i = 1; i <= 5; i++){
 						if(core.getCurveByID(i).isset()){
 							if(core.getCurveByID(i).getStyleIndex() == 0){
-								core.getCurveByID(i).getShareCurve().setGroesse(d.width, d.height);
+								core.getCurveByID(i).getShareCurve().setGroesse(MainWindow.this.d.width, MainWindow.this.d.height);
 							}else{
-								core.getCurveByID(i).getLineCurve().setGroesse(d.width, d.height);
+								core.getCurveByID(i).getLineCurve().setGroesse(MainWindow.this.d.width, MainWindow.this.d.height);
 							}// if-else()
 						} // if()
 					} // for
-					toolBar.setBreite(d.width);
-					toolbarPane.setSize(d.width, 35);
-					System.out.println(d);
+					toolBar.setBreite(MainWindow.this.d.width);
+					toolbarPane.setSize(MainWindow.this.d.width, 35);
+					System.out.println(MainWindow.this.d);
 				} // if
 			} // componentResized()
 		}); // addComponentListener()
