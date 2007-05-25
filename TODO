@@ -7,7 +7,7 @@ Eclipse zeigt noch viele Warnungen, die behoben werden müssen.
 
 ##############################################################################
 
-In de.codeforum.wedabecha.MenuBar ist ein Denkfehler beim generieren des Menu
+In org.wedabecha.MenuBar ist ein Denkfehler beim generieren des Menu
 für die Kurve (curveMenu) .
 Vor beheben dieses Fehlers macht es evtl. Sinn die Klasse Curve neu zu
 schreiben (übersichtlichere Gestaltung, keine Warnungen, 
@@ -26,6 +26,13 @@ Folge des Imports geschehen, das entlastet die CPU beim Scrollen und der
 Scrollvorgang sollte schneller ablaufen.
 
 Die JSpinner sollten möglichst durch richtige Scrollbalken ersetzt werden.
+
+##############################################################################
+
+Eventuell ist das JerichoHTML-Projekt irgendwann in einer nächsten Version
+nützlich für wedabecha.
+
+see http://jerichohtml.sourceforge.net/doc/index.html
 
 ##############################################################################
 
