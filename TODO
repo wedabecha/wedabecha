@@ -1,81 +1,70 @@
-Bei der Namensgebung von Methoden und Variablen bitte darauf achten, diese
-englisch zu halten.
+ - Eclipse zeigt noch viele Warnungen, die behoben werden müssen.
+ - org.wedabecha.ui.MenuBar.java
+		Hier ist ein Denkfehler beim generieren des Menus für die Kurve
+		(curveMenu). Vor beheben dieses Fehlers macht es evtl. Sinn die Klasse
+		Curve neu zu schreiben (übersichtlichere Gestaltung, keine Warnungen, 
+		alle Dokumentationskommentare). Ebenfalls denke ich über eine andere Art
+		der internen Verwaltung der Kurven nach. (zur Zeit das Array curve[] in
+		wedabecha.java).
+		Mit einem Blick auf die Zukunft sollten die Kurven auf jeden Fall
+		serialisiert abgespeichert werden können. (Speichern-Funktion des Programms)
+ - Für die Toolbar muss eine Alternative gefunden werden, um die Bilder mit im
+   src-Verzeichnis zu speichern, so dass sie automatisch beim Build-Vorgang mit
+   in das bin-Verzeichnis übernommen werden. Zur Zeit ist es so implementiert,
+   dass der Images-Ordner bereits im bin-Verzeichnis vorhanden war. Ein Build
+   in Eclipse hat diesen allerdings gelöscht. o.O
 
-##############################################################################
+ - Die Berechnungen der Grafiken sollten während des Imports/Öffnens bzw. als
+   Folge des Imports geschehen, das entlastet die CPU beim Scrollen und der
+   Scrollvorgang sollte schneller ablaufen.
 
-Eclipse zeigt noch viele Warnungen, die behoben werden müssen.
+ - Die JSpinner zum "scrollen" der Kurve sollten möglichst durch richtige
+   Scrollbalken ersetzt werden.
 
-##############################################################################
+ - org.wedabecha.ui.dialogs.definiereDatumUI
+		Die Möglichkeit hier ein Datum einzugeben existiert zwar, ist aber evtl.
+		nicht die beste Methode um das zu realisieren. Eventuell gibt es Klassen,
+		die soetwas schon besser können (GTK und Qt bringen hierfür ja
+		beispielsweise Felder mit)
+		Das eingegebene Datum müsste an sich auch auf Korrektheit überprüft werden,
+		so dass es beispielsweise nicht möglich ist, den 30. Februar einzutragen ;)
 
-In org.wedabecha.MenuBar ist ein Denkfehler beim generieren des Menu
-für die Kurve (curveMenu) .
-Vor beheben dieses Fehlers macht es evtl. Sinn die Klasse Curve neu zu
-schreiben (übersichtlichere Gestaltung, keine Warnungen, 
-alle Dokumentationskommentare) . Ebenfalls denke ich über eine andere Art der
-internen Verwaltung der Kurven nach. (zur Zeit Array curve[] in wedabecha.java).
-Mit einem Blick auf die Zukunft sollten die Kurven auf jeden Fall serialisiert
-abgespeichert werden können. (Speichern-Funktion des Programms)
-Für die Toolbar muss eine Alternative gefunden werden, um die Bilder mit im
-src-Verzeichnis zu speichern, so dass sie automatisch beim Build-Vorgang mit
-in das bin-Verzeichnis übernommen werden. Zur Zeit war es so implementiert,
-dass der Images-Ordner bereits im bin-Verzeichnis vorhanden war. Ein Build
-in Eclipse hat diesen allerdings gelöscht. o.O
+ - org.wedabecha.system.draw.ShareCurve.java
+		zeichneKurve:
+			Aktienkurve
+			DARSTELLUNG von Wochen-,Monats- und Jahresmitteln
+			Zeitachse zoombar
+			Veränderung des Maßstabs der Achsen
 
-Die Berechnungen der Grafiken sollten während des Imports/Öffnens bzw. als
-Folge des Imports geschehen, das entlastet die CPU beim Scrollen und der
-Scrollvorgang sollte schneller ablaufen.
+ - Kalenderfunktion und konkrete Datumsbeschriftung der Zeitachse
+   (Beschriftungen der x-Achse auf Tages-, Monats-, Jahresbasis)
 
-Die JSpinner sollten möglichst durch richtige Scrollbalken ersetzt werden.
+ - Hilfe, Dokumentation, Kurzanleitung
 
-##############################################################################
+###############################################################################
 
 Eventuell ist das JerichoHTML-Projekt irgendwann in einer nächsten Version
 nützlich für wedabecha.
 
 see http://jerichohtml.sourceforge.net/doc/index.html
 
-##############################################################################
-
-!!!!!!!!!!!!
-importiereTabelle.definiereDatumUI
-die Möglichkeit ein Datum einzugeben ist da, aber evtl. nicht die beste,
-andere Vorschläge erwünscht...
-das eingegebene Datum müsste an sich noch auf Korrektheit überprüft werden,
-dass niemand son schrott wie 30. februar eingibt und so...
-
-##############################################################################
-
-zeichneKurve:
-Aktienkurve
-DARSTELLUNG von Wochen-,Monats- und Jahresmitteln
-Zeitachse zoombar
-Veränderung des Maßstabs der Achsen
-
-##############################################################################
-
-Kalenderfunktion und konkrete Datumsbeschriftung der Zeitachse
-(Beschriftungen der x-Achse auf Tages-, Monats-, Jahresbasis)
-
-##############################################################################
-
-Hilfe, Dokumentation, Kurzanleitung
-
-##############################################################################
+###############################################################################
 
 QUALITÄTSMANAGEMENT:
 Grösse, Breite, Titel der Fenster im "Standard"-Bereich der pack()-Methoden
 durchgehen, und ggf. ändern.
 Die ganzen Texte auf Rechtschreibung und Umlaute durchsehen und Umlaute ala
-ae, oe, usw. durch den richtigen Code Ersetzen...
+ae, oe, usw. durch die entsprechende Unicode-Escape-Sequenz ersetzen...
 
-##############################################################################
+###############################################################################
 
 BUG:
-exportiereGrafik.java:43 -> wirft unter Linux eine 
+exportiereGrafik.java:43 -> wirft unter Linux eine
 Exception in thread "AWT-EventQueue-0" java.lang.ClassCastException:
 sun.awt.image.DataBufferNative
-funktioniert auf einer win32-maschine ohne probleme,
-scheinbar unabhängig von der java-version
+
+Funktioniert auf einer Win32-Maschine aber ohne Probleme, scheinbar unabhängig
+von der Java-Version
 
 ##############################################################################
 
