@@ -119,7 +119,7 @@ public class core {
 	 */
 	public static void genericProgramError(Exception exception) {
 		JOptionPane.showMessageDialog(null,
-			"Die folgende Exception ist wae�hrend des Programmablaufs aufgetreten: " + exception,
+			"Die folgende Ausnahme ist waehrend des Programmablaufs aufgetreten: " + exception,
             "Allgemeiner Programmfehler",
 			JOptionPane.ERROR_MESSAGE
 		);
