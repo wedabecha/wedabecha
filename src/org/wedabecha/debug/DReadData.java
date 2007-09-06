@@ -29,55 +29,58 @@ import org.wedabecha.core;
  *      Robert Exner (ashrak at users.berlios.de)
  *      
  *      Debug
- *      Testklasse zum auslesen der Daten,
- *      kann evtl. in zeichneKurve übernommen und bearbeitet werden.
+ *      Testklasse zum Auslesen der Daten
  */
 class DReadData {
-	private ArrayList werte;
-	private ArrayList daten;
+	private ArrayList values;
+	private ArrayList dates;
 	
 	/**
 	 * Konstruktor liest die Werte aus der ersten Kurve.
 	 * Erwartet keine weiteren Parameter
 	 */
-	public DReadData(){
-		this.werte = core.getCurveByID(1).getValues();
-		this.daten = core.getCurveByID(1).getDates();
-		this.printWerte();
-		this.printDaten();
+	public DReadData() {
+		this.values = core.getCurveByID(1).getValues();
+		this.dates = core.getCurveByID(1).getDates();
+		this.printValues();
+		this.printDates();
 	} // DReadData()
 
 	
-	private void printWerte(){
-		// gibt die Werte aus
-
+	private void printValues() { // gibt die Werte aus
 		double statArray[];
 		String debug;
-		for (int i = 0; i < this.werte.size(); i++){
+
+		for (int i = 0; i < this.values.size(); i++){
 			// zeile für zeile
-			statArray = (double[])this.werte.get(i);
+			statArray = (double[])this.values.get(i);
 			debug = "";
+
 			for (int j = 0; j < statArray.length; j++){
 				// element für element einer zeile...
 				debug += statArray[j];
 			} // for(j)
+
 			System.out.println(debug);
 		} // for(i)
 
-	} // printWerte()
+	} // private void printValues()
 
 	
-	private void printDaten(){
+	private void printDates() {
 		String statArray[];
 		String debug;
-		for (int i = 0; i < this.daten.size(); i++){
-			statArray = (String[])this.daten.get(i);
+		
+		for (int i = 0; i < this.dates.size(); i++) {
+			statArray = (String[])this.dates.get(i);
 // 			System.out.println(statArray);
 			debug = "";
-			for (int j = 0; j < statArray.length; j++){
+			
+			for (int j = 0; j < statArray.length; j++) {
 				debug += statArray[j] + "-";
 			} // for(j)
+			
 			System.out.println(debug);
 		} // for(i)
-	} // printDaten()
+	} // private void printDates()
 } // DReadData
