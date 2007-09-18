@@ -2,7 +2,7 @@
  - org.wedabecha.ui.MenuBar.java
 		Hier ist ein Denkfehler beim generieren des Menus für die Kurve
 		(curveMenu). Vor beheben dieses Fehlers macht es evtl. Sinn die Klasse
-		Curve neu zu schreiben (übersichtlichere Gestaltung, keine Warnungen, 
+		Curve neu zu schreiben (übersichtlichere Gestaltung, keine Warnungen,
 		alle Dokumentationskommentare). Ebenfalls denke ich über eine andere Art
 		der internen Verwaltung der Kurven nach. (zur Zeit das Array curve[] in
 		wedabecha.java).
@@ -40,6 +40,8 @@
    (Beschriftungen der x-Achse auf Tages-, Monats-, Jahresbasis)
 
  - Hilfe, Dokumentation, Kurzanleitung
+ - für die Verarbeitung von CSV-Dateien lässt sich darüber nachdenken, diese
+   Bibliothek zu benutzen: http://supercsv.sourceforge.net/
 
 ###############################################################################
 
@@ -81,14 +83,14 @@ WÜNSCHE :
  - Proportionales vergrössern des HauptFensters
  - Tooltips und Statusleiste
  - Menupunkt [Hilfe]->[Lizenz] ?
- - Menupunkt [Annotation] 
+ - Menupunkt [Annotation]
  	-> Pfeil zeichnen
  	-> Linie zeichnen
- 	-> Text einfügen 
+ 	-> Text einfügen
 
 ##############################################################################
 
-WUNSCHKRITERIUM: 
-Speicherfunktion 
+WUNSCHKRITERIUM:
+Speicherfunktion
 ganzes Objekt mit darstellungsTyp und Linienart als Objekt
 mit serialize (?) abspeichern als .weda-Datei
