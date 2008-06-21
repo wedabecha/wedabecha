@@ -91,6 +91,7 @@ public class LineCurve extends JComponent {
 	} // getMax()
 
 
+	@Override
 	public void paintComponent(Graphics kurve){
 		getMax();
 		int zaehler = 25;
