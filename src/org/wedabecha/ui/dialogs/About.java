@@ -1,5 +1,6 @@
 /****************************************************************************
  *   Copyright (C) 2005 by BTU SWP GROUP 04/6.1                             *
+ * 	 Copyright (C) 2008 by Dominic Hopf <dh@dmaphy.de>                      *
  *                                                                          *
  *   This program is free software; you can redistribute it and/or modify   *
  *   it under the terms of the GNU General Public License as published by   *
@@ -16,6 +17,8 @@
  *   Free Software Foundation, Inc.,                                        *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
+
+
 package org.wedabecha.ui.dialogs;
 
 import javax.swing.*;
@@ -23,19 +26,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author Dominic Hopf (dmaphy at users.berlios.de)
- * 
+ * @author Dominic Hopf <dh@dmaphy.de>
+ *
  * Die Klasse wird vom Menupunkt [Hilfe] -> [Über] aufgerufen
  */
 public class About extends JDialog {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private JLabel text = new JLabel(
 		"<html>Diese Software wurde unter der <br>GNU General Public License ver\u00f6ffentlicht.<br>" +
-		"Weitere Hinweise entnehmen sie bitte<br> der Datei 'COPYING' im sources/ - Verzeichnis dieser Distribution<br>" +
+		"Weitere Hinweise entnehmen sie bitte<br> der Datei 'COPYING' im Verzeichnis src/ dieser Distribution<br>" +
 		"<br><br>" +
 		"Die BTU SWP GROUP 04/6.1 ist:<br>" +
 		"<center>" +
@@ -45,17 +48,17 @@ public class About extends JDialog {
 		"Dominic Hopf (dmaphy at users.berlios.de)" +
 		"</center>" +
 		"<br><br>" +
-		"Besuchen Sie uns im Internet unter <a href='http://wedabecha.berlios.de/'>http://wedabecha.berlios.de/</a></html>"
+		"Besuchen Sie uns im Internet unter <a href='http://www.wedabecha.org/'>http://www.wedabecha.org/</a></html>"
 	);
 
-	
+
 	/**
 	 * Konstruktor, erwartet zur Zeit keine weiteren Parameter
 	 */
 	public About(){
 		this.pack();
 	}
-	
+
 	/**
 	 * @see java.awt.Window#pack()
 	 */
@@ -67,7 +70,7 @@ public class About extends JDialog {
 				setVisible(false);
 			}
 		});
-		
+
 		this.getContentPane().setLayout(new FlowLayout());
 		this.getContentPane().add(this.text);
 		this.text.addMouseListener( new MouseAdapter() {
@@ -77,9 +80,9 @@ public class About extends JDialog {
 					setVisible(false);
 			}
         } );
-		
+
 		this.getContentPane().add(closeButton);
-			
+
 
 		/*
 			standard zum erzeugen und positionieren des dialogs
