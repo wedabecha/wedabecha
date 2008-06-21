@@ -86,7 +86,7 @@ public class Documentation extends JFrame {
 					if ( typ == HyperlinkEvent.EventType.ACTIVATED ){
 						try{
 							setTitle( ""+event.getURL() );
-							doku.setPage( event.getURL() );
+							Documentation.this.doku.setPage( event.getURL() );
 						} catch( IOException e ) {
 							JOptionPane.showMessageDialog( null,
 								"Can't follow link to "
@@ -112,6 +112,7 @@ public class Documentation extends JFrame {
 	} // dokuUI();
 
 
+	@Override
 	public void pack() {
 		// Layout
 		getContentPane().setLayout(new BorderLayout(5,5));
