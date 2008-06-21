@@ -43,9 +43,9 @@ public class CalculateAverages {
     // start dient der zu Bestimmung, wann ein Monat/ Jahr zu ende ist
     private int start = 0;
 
-	private ArrayList tagesMittel;
-	private double[] statArray;
-	private double zeilenSumme = 0;
+    private ArrayList tagesMittel;
+    private double[] statArray;
+    private double zeilenSumme = 0;
 
     public CalculateAverages(ArrayList pwerte, ArrayList pdatum){
 
