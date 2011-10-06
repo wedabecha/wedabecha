@@ -1,0 +1,32 @@
+Release Notes wedabecha 0.0.1 beta 1
+
+Dieses Release beinhaltet Vier Pakete:
+
+wedabecha-0.0.1-beta-1.bin.zip
+================================================================================
+Dieses Zip-Archiv enthält die binären .class-Dateien, sie wurden mit
+Java 1.5.0_04 auf einer i386-Maschine kompiliert.
+Zum Ausführen des Programms die Dateien entpacken, in das Verzeichnis wechseln,
+und `java wedabecha` ausführen.
+
+
+
+wedabecha-0.0.1-beta-1.doc.zip
+================================================================================
+Dieses Archiv enthält die Dokumentationen zu dem Programm, das heisst, sowohl
+zur Anwendung des Programms als auch die Klassen-Dokumentationen für Entwickler.
+
+
+
+wedabecha-0.0.1-beta-1.src.zip
+================================================================================
+Hier sind die Quelltexte für das Programm gepackt.
+Zum kompilieren ist ein Java Development Kit erforderlich, mindestens
+Version 1.4.X, wir empfehlen jedoch, immer die neuste Version zu verwenden,
+zur Zeit Java 1.5 . ;)
+
+
+
+wedabecha-examples.zip
+================================================================================
+Das Paket enthält Beispieldateien die mit wedabecha geöffnet werden können.
